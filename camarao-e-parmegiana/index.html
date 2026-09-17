@@ -1,0 +1,425 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Camarão e Parmegiana</title>
+<meta name="description" content="Restaurante e Pizzaria Camarão e Parmegiana, no centro de Cachoeira Paulista. Parmegianas, grelhados, porções e pizza. Delivery e reserva pelo WhatsApp.">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="Camarão e Parmegiana">
+<meta property="og:description" content="Parmegianas, grelhados e pizza no centro de Cachoeira Paulista. Peça pelo WhatsApp.">
+<meta property="og:type" content="restaurant">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="estilo.css">
+<style>
+/* ---------- capa ---------- */
+.capa{position:relative;border-bottom:1px solid var(--line);display:grid;isolation:isolate}
+.capa img{grid-area:1/1;width:100%;height:100%;object-fit:cover;opacity:.55}
+.capa .sobre{grid-area:1/1;display:flex;align-items:flex-end;min-height:440px}
+@media(min-width:768px){.capa .sobre{min-height:520px}}
+@media(min-width:1280px){.capa .sobre{min-height:560px}}
+.capa .sobre > .in{max-width:1080px;margin:0 auto;padding:0 24px 48px;width:100%}
+.capa h1{font-size:30px;line-height:1.05;font-weight:700;letter-spacing:-.03em;
+  background:linear-gradient(90deg,#FFFFFF,#9B9B9B);
+  -webkit-background-clip:text;background-clip:text;color:transparent;max-width:14ch}
+@media(min-width:480px){.capa h1{font-size:40px;line-height:1}}
+@media(min-width:768px){.capa h1{font-size:60px}}
+.capa .lin{font-size:18px;line-height:28px;color:var(--tx2);margin-top:16px;max-width:680px}
+.capa .acts{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.capa::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,.85) 70%,#000 100%)}
+.capa .sobre{z-index:2}
+
+/* ---------- prova ---------- */
+.prova{border-bottom:1px solid var(--line);background:var(--warm)}
+.prova > .in{max-width:1080px;margin:0 auto;padding:24px;display:grid;gap:24px}
+@media(min-width:768px){.prova > .in{grid-template-columns:repeat(4,1fr)}}
+.prova div{display:grid;gap:4px}
+.prova .k{font-size:12px;line-height:16px;color:var(--tx3);letter-spacing:.16em;
+  text-transform:uppercase;font-weight:600}
+.prova .v{font-family:var(--mono);font-size:20px;line-height:28px;color:var(--tx)}
+.prova .v small{font-family:var(--sans);font-size:14px;line-height:20px;color:var(--tx2)}
+
+/* ---------- a casa ---------- */
+.casa{display:grid;gap:32px;margin-top:32px}
+@media(min-width:900px){.casa{grid-template-columns:1fr 1fr;align-items:center}}
+.casa p + p{margin-top:16px}
+.casa .foto{border:1px solid var(--line);border-radius:16px;overflow:hidden;margin:0}
+.casa .foto img{width:100%;height:auto;aspect-ratio:1200/480;object-fit:cover}
+.casa .foto figcaption{padding:12px 16px;font-size:12px;line-height:16px;color:var(--tx3);
+  background:var(--s1)}
+
+/* ---------- destaques ---------- */
+.pratos{display:grid;gap:16px;margin-top:32px}
+@media(min-width:768px){.pratos{grid-template-columns:repeat(3,1fr)}}
+.prato{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--s1);
+  margin:0;display:flex;flex-direction:column}
+.prato img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
+.prato figcaption{padding:24px;flex:1}
+.prato h3{font-size:20px;line-height:28px}
+.prato p{font-size:14px;line-height:20px;color:var(--tx2);margin-top:8px}
+.prato .nota{font-size:12px;line-height:16px;color:var(--tx3);margin-top:12px}
+
+/* ---------- onde ---------- */
+.onde{display:grid;gap:24px;margin-top:32px}
+@media(min-width:900px){.onde{grid-template-columns:1fr 1fr;align-items:center}}
+.ondeimg{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--s1);margin:0}
+.ondeimg img{width:100%;height:auto;aspect-ratio:900/558;object-fit:cover}
+.onde > *{min-width:0}
+.ondecard dl{margin-top:24px;display:grid;grid-template-columns:1fr;gap:4px;
+  font-size:14px;line-height:20px}
+.ondecard dt{color:var(--tx3)}
+.ondecard dd{margin:0;font-family:var(--mono);color:var(--tx2);min-width:0}
+.ondecard dd + dt{margin-top:12px}
+@media(min-width:480px){
+  .ondecard dl{grid-template-columns:auto 1fr;gap:12px 24px}
+  .ondecard dd{text-align:right}
+  .ondecard dd + dt{margin-top:0}
+}
+
+/* ---------- faixa de pedido ---------- */
+.faixa{margin-top:96px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  background:var(--warm)}
+.faixa > .in{max-width:760px;margin:0 auto;padding:80px 24px;text-align:center}
+.faixa h2{margin-top:16px}
+.faixa p{font-size:18px;line-height:28px;color:var(--tx2);margin-top:16px}
+.faixa .acts{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:32px}
+
+/* ---------- proposta ---------- */
+.corte{margin-top:96px;padding:24px 0;border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);background:var(--s1)}
+.corte > .in{max-width:1080px;margin:0 auto;padding:0 24px;display:flex;align-items:center;
+  gap:16px;flex-wrap:wrap;justify-content:space-between}
+.corte p{font-size:14px;line-height:20px;color:var(--tx2);max-width:680px}
+.corte b{color:var(--amber);font-weight:600}
+.final > .in{max-width:760px;margin:0 auto;padding:80px 24px}
+.final h2{margin-top:16px}
+.final .lead{font-size:18px;line-height:28px;color:var(--tx2);margin-top:16px}
+.pacote{background:var(--s1);border:1px solid var(--line);border-radius:16px;padding:24px;
+  margin-top:32px}
+.pacote h3{font-size:16px;line-height:24px}
+.pacote ul{list-style:none;margin-top:16px;padding:0;display:grid;gap:12px}
+.pacote li{display:flex;gap:12px;align-items:flex-start;font-size:14px;line-height:20px;
+  color:var(--tx2)}
+.pacote li svg{flex:0 0 auto;color:var(--ok);margin-top:2px}
+.pacote li b{color:var(--tx);font-weight:600}
+.passos{display:grid;gap:12px;margin-top:32px}
+.passos div{display:flex;gap:12px;align-items:flex-start;font-size:16px;line-height:24px;
+  color:var(--tx2)}
+.passos .n{font-family:var(--mono);font-size:14px;line-height:24px;color:var(--amber);flex:0 0 auto}
+.finalacts{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.nota{font-size:14px;line-height:20px;color:var(--tx3);margin-top:24px}
+
+.faq{margin-top:32px;border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;padding:24px 0;font-size:16px;line-height:24px;
+  font-weight:600;display:flex;justify-content:space-between;gap:16px;align-items:center;
+  transition:color 700ms var(--ease)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:hover{color:var(--amber)}
+.faq summary svg{flex:0 0 auto;color:var(--tx3);transition:transform 700ms var(--ease)}
+.faq details[open] summary svg{transform:rotate(45deg)}
+.faq p{margin-bottom:24px;font-size:16px;line-height:24px;color:var(--tx2);max-width:680px}
+</style>
+
+<a class="skip" href="#casa">Ir para o conteúdo</a>
+
+<div class="flag">
+  <b>Demonstração</b> feita pela HIGH Development para o Camarão e Parmegiana. Não é a página oficial.
+  Endereço, telefone, Instagram e nota do Google são reais. Sabores, valores e fotos são exemplo.
+</div>
+
+<nav>
+  <div class="navin">
+    <div class="navtop">
+    <a class="brand" href="index.html">
+      <svg width="20" height="20" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M128 24a104 104 0 1 0 104 104A104.1 104.1 0 0 0 128 24Zm0 192a88 88 0 1 1 88-88a88.1 88.1 0 0 1-88 88Zm12-88a12 12 0 1 1-12-12a12 12 0 0 1 12 12Zm40-28a12 12 0 1 1-12-12a12 12 0 0 1 12 12Zm-72 0a12 12 0 1 1-12-12a12 12 0 0 1 12 12Zm28 76a12 12 0 1 1-12-12a12 12 0 0 1 12 12Z"/></svg>
+      Camarão e Parmegiana
+    </a>
+    <a class="btn sm" href="pedido.html">Fazer pedido</a>
+    </div>
+    <div class="navlinks">
+      <a href="index.html" aria-current="page">Início</a>
+      <a href="#casa">A casa</a>
+      <a href="#pratos">Pratos</a>
+      <a href="#onde">Onde ficamos</a>
+      <a href="#proposta">Para o dono</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+<div class="capa">
+  <img src="forno.webp" width="1200" height="624" alt="Pizza sendo colocada na boca do forno a lenha, com as chamas ao fundo" loading="eager">
+  <div class="sobre">
+    <div class="in">
+      <p class="eyebrow">Centro de Cachoeira Paulista</p>
+      <h1>Parmegiana, grelhado e forno a lenha</h1>
+      <p class="lin">Em frente ao Produtor Supermercado, com salão para comer no lugar, retirada no balcão e entrega em casa.</p>
+      <div class="acts">
+        <a class="btn big" href="pedido.html">Fazer pedido</a>
+        <a class="btn big ghost" href="#onde">Ver onde ficamos</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="prova">
+  <div class="in">
+    <div><span class="k">Nota no Google</span><span class="v">4,4 <small>com 156 avaliações</small></span></div>
+    <div><span class="k">Faixa de preço</span><span class="v">R$ 40 <small>a R$ 60 por pessoa</small></span></div>
+    <div><span class="k">Pedidos e reservas</span><span class="v">(12) 99258-0245</span></div>
+    <div><span class="k">No Instagram</span><span class="v" style="font-size:14px;line-height:20px">@camaraoeparmegianarestaurante</span></div>
+  </div>
+</div>
+
+<div class="wrap">
+  <section id="casa">
+    <div class="sechead">
+      <p class="eyebrow rv">A casa</p>
+      <h2 class="rv">Comida de restaurante, porção de casa</h2>
+    </div>
+    <div class="casa">
+      <div class="rv">
+        <p style="font-size:18px;line-height:28px;color:var(--tx2)">A cozinha vai da parmegiana borbulhando no molho ao grelhado na chapa, passando pelas porções para dividir e pela pizza de fermentação lenta. Prato de restaurante em tamanho que serve duas pessoas, que é como se come por aqui.</p>
+        <p style="font-size:18px;line-height:28px;color:var(--tx2)">Dá para sentar no salão, buscar no balcão ou pedir para entregar. A conversa é sempre a mesma: WhatsApp.</p>
+      </div>
+      <figure class="foto rv">
+        <img src="churrasco.webp" width="1200" height="480" alt="Carnes e queijo assando na grelha sobre as brasas" loading="lazy">
+        <figcaption>Foto ilustrativa. As fotos reais da casa entram no lugar.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="pratos">
+    <div class="sechead">
+      <p class="eyebrow rv">Pratos</p>
+      <h2 class="rv">O que mais sai</h2>
+      <p class="secsub rv">O cardápio inteiro, com todos os sabores e os valores, está na página de pedido.</p>
+    </div>
+    <div class="pratos">
+      <figure class="prato rv">
+        <img src="parm.webp" width="720" height="540" alt="Parmegiana servida no prato, com molho e manjericão" loading="lazy">
+        <figcaption>
+          <h3>Parmegiana</h3>
+          <p>De camarão ou de filé, empanada e gratinada, com arroz e fritas. Serve duas pessoas.</p>
+          <p class="nota">Foto ilustrativa</p>
+        </figcaption>
+      </figure>
+      <figure class="prato rv">
+        <img src="grelhado.webp" width="720" height="540" alt="Corte grelhado servido com fritas douradas e salada" loading="lazy">
+        <figcaption>
+          <h3>Grelhados</h3>
+          <p>Na chapa, com acompanhamento. Prato individual, para quem quer comer bem sem dividir.</p>
+          <p class="nota">Foto ilustrativa</p>
+        </figcaption>
+      </figure>
+      <figure class="prato rv">
+        <img src="hero.webp" width="720" height="540" alt="Pizza assada coberta com calabresa, tomate e queijo" loading="lazy">
+        <figcaption>
+          <h3>Pizza</h3>
+          <p>Massa de fermentação lenta, salgada ou doce, e meio a meio quando não dá para escolher.</p>
+          <p class="nota">Foto ilustrativa</p>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+</div>
+
+<div class="wrap tagline">
+  <p id="tag">Você escolhe na tela, confere o total e manda. A cozinha recebe escrito, somado e sem sabor trocado.</p>
+</div>
+
+<div class="wrap">
+  <section id="onde">
+    <div class="sechead">
+      <p class="eyebrow rv">Onde ficamos</p>
+      <h2 class="rv">Praça Dr. Evangelista Rodrigues, 45</h2>
+      <p class="secsub rv">No centro de Cachoeira Paulista, em frente ao Produtor Supermercado.</p>
+    </div>
+    <div class="onde">
+      <figure class="ondeimg rv">
+        <img src="city.webp" width="900" height="558" alt="Vista parcial da cidade de Cachoeira Paulista, com casas e morros ao fundo" loading="lazy">
+      </figure>
+      <div class="blk ondecard rv">
+        <h3>Como falar com a gente</h3>
+        <p style="font-size:16px;line-height:24px;color:var(--tx2);margin-top:12px">Pedido, reserva de mesa e dúvida vão todos pelo mesmo número. Os dados abaixo são os que o restaurante divulga hoje.</p>
+        <dl>
+          <dt>WhatsApp</dt><dd>(12) 99258-0245</dd>
+          <dt>Instagram</dt><dd>@camaraoeparmegianarestaurante</dd>
+          <dt>Endereço</dt><dd>Praça Dr. Evangelista Rodrigues, 45</dd>
+          <dt>Referência</dt><dd>em frente ao Produtor</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="faixa">
+  <div class="in">
+    <p class="eyebrow rv">Pronto para pedir</p>
+    <h2 class="rv">Monte seu pedido em menos de um minuto</h2>
+    <p class="rv">Escolha o tamanho da pizza, dois sabores se quiser, some as porções e confira o total antes de enviar. O pedido chega escrito e somado no WhatsApp.</p>
+    <div class="acts rv">
+      <a class="btn big" href="pedido.html">Abrir o cardápio</a>
+      <a class="btn big ghost" href="https://wa.me/5512992580245" target="_blank" rel="noopener">Chamar no WhatsApp</a>
+    </div>
+  </div>
+</div>
+
+<div class="corte">
+  <div class="in">
+    <p><b>Daqui para baixo é recado para o dono do restaurante.</b> O que está acima é a página como o cliente veria. O que vem agora é a proposta da HIGH Development.</p>
+    <a class="btn sm ghost" href="#proposta">Ler a proposta</a>
+  </div>
+</div>
+
+<div class="wrap">
+  <section id="proposta" style="padding-top:96px">
+    <div class="sechead">
+      <p class="eyebrow rv">Depois do pedido</p>
+      <h2 class="rv">O que mais dá para ligar aqui</h2>
+      <p class="secsub rv">Tudo abaixo roda no mesmo WhatsApp e no mesmo link. Não precisa ser tudo de uma vez, e cada um resolve uma dor diferente da casa.</p>
+    </div>
+    <div class="cols2">
+      <article class="blk icon rv">
+        <svg width="20" height="20" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M128 24a104 104 0 1 0 104 104A104.1 104.1 0 0 0 128 24Zm0 192a88 88 0 1 1 88-88a88.1 88.1 0 0 1-88 88Zm64-88a8 8 0 0 1-8 8h-56a8 8 0 0 1-8-8V72a8 8 0 0 1 16 0v48h48a8 8 0 0 1 8 8Z"/></svg>
+        <div><h3>Confirmação com tempo de entrega</h3><p>O cliente recebe na hora o aviso de que o pedido entrou e em quanto tempo sai. Corta o "já saiu?" que ocupa o telefone no meio do movimento.</p></div>
+      </article>
+      <article class="blk icon rv">
+        <svg width="20" height="20" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M247.4 121.9L200.7 60.5A16 16 0 0 0 188 54h-36V48a16 16 0 0 0-16-16H32a16 16 0 0 0-16 16v128a16 16 0 0 0 16 16h17a32 32 0 0 0 62 0h50a32 32 0 0 0 62 0h17a16 16 0 0 0 16-16v-46a15.9 15.9 0 0 0-3.6-10.1ZM188 70l35.5 46H152V70ZM32 48h104v56H32Zm0 72h104v24H32Zm48 80a16 16 0 1 1 16-16a16 16 0 0 1-16 16Zm112 0a16 16 0 1 1 16-16a16 16 0 0 1-16 16Z"/></svg>
+        <div><h3>Aviso de saiu para entrega</h3><p>Uma mensagem sai sozinha quando o motoboy pega o pedido. O cliente para de ligar e o entregador encontra a casa com a luz acesa.</p></div>
+      </article>
+      <article class="blk icon rv">
+        <svg width="20" height="20" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M208 32H48a16 16 0 0 0-16 16v160a16 16 0 0 0 16 16h160a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16Zm0 176H48V48h160ZM80 100a12 12 0 1 1 12 12a12 12 0 0 1-12-12Zm0 56a12 12 0 1 1 12 12a12 12 0 0 1-12-12Zm40-56a8 8 0 0 1 8-8h40a8 8 0 0 1 0 16h-40a8 8 0 0 1-8-8Zm0 56a8 8 0 0 1 8-8h40a8 8 0 0 1 0 16h-40a8 8 0 0 1-8-8Z"/></svg>
+        <div><h3>Reserva de mesa no fim de semana</h3><p>Mesma tela do pedido, com dia, horário e número de pessoas. A confirmação sai automática e o salão para de perder reserva anotada no guardanapo.</p></div>
+      </article>
+      <article class="blk icon rv">
+        <svg width="20" height="20" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M128 80a48 48 0 1 0 48 48a48 48 0 0 0-48-48Zm0 80a32 32 0 1 1 32-32a32 32 0 0 1-32 32Zm88-29.8v-4.4l14-17.5a8 8 0 0 0 1.6-6.9a104 104 0 0 0-10.5-25.3a8 8 0 0 0-5.9-3.9l-22.2-3.7a89 89 0 0 0-3.1-3.1L186.2 41a8 8 0 0 0-3.9-5.9a104.6 104.6 0 0 0-25.3-10.5a8 8 0 0 0-6.9 1.6l-17.5 14h-4.4L112 26.2a8 8 0 0 0-6.9-1.6A104 104 0 0 0 79.8 35.1a8 8 0 0 0-3.9 5.9l-3.7 22.2a89 89 0 0 0-3.1 3.1L41 69.8a8 8 0 0 0-5.9 3.9a104.6 104.6 0 0 0-10.5 25.3a8 8 0 0 0 1.6 6.9l14 17.5v4.4l-14 17.5a8 8 0 0 0-1.6 6.9a104 104 0 0 0 10.5 25.3a8 8 0 0 0 5.9 3.9l22.2 3.7a89 89 0 0 0 3.1 3.1l3.7 22.2a8 8 0 0 0 3.9 5.9a104.6 104.6 0 0 0 25.3 10.5a8 8 0 0 0 6.9-1.6l17.5-14h4.4l17.5 14a8 8 0 0 0 6.9 1.6a104 104 0 0 0 25.3-10.5a8 8 0 0 0 3.9-5.9l3.7-22.2a89 89 0 0 0 3.1-3.1l22.2-3.7a8 8 0 0 0 5.9-3.9a104.6 104.6 0 0 0 10.5-25.3a8 8 0 0 0-1.6-6.9Z"/></svg>
+        <div><h3>Cardápio que vocês mesmos mudam</h3><p>Acabou o camarão hoje? Some da tela em dois toques. Ninguém pede o que não tem, e vocês não precisam ligar para avisar.</p></div>
+      </article>
+      <article class="blk icon rv">
+        <svg width="20" height="20" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="m234.5 114.4l-45 39.5l13.5 58.1a16 16 0 0 1-23.8 17.3L128 198.2l-51.2 31.1a16 16 0 0 1-23.8-17.3l13.5-58.1l-45-39.5A16 16 0 0 1 30.6 86.5l59.2-5.1l23.1-54.5a16 16 0 0 1 29.5 0l23.1 54.5l59.2 5.1a16 16 0 0 1 9.1 27.9Z"/></svg>
+        <div><h3>Convite para avaliar no Google</h3><p>Uma hora depois da entrega sai o convite para avaliar. Quem já está em 4,4 com 156 avaliações sobe rápido, e nota alta é o que traz gente de fora da cidade.</p></div>
+      </article>
+      <article class="blk icon rv">
+        <svg width="20" height="20" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M216 40H40a16 16 0 0 0-16 16v144a16 16 0 0 0 16 16h176a16 16 0 0 0 16-16V56a16 16 0 0 0-16-16Zm0 160H40V56h176ZM88 144v24a8 8 0 0 1-16 0v-24a8 8 0 0 1 16 0Zm40-32v56a8 8 0 0 1-16 0v-56a8 8 0 0 1 16 0Zm40-24v80a8 8 0 0 1-16 0V88a8 8 0 0 1 16 0Z"/></svg>
+        <div><h3>Resumo da semana no seu WhatsApp</h3><p>Toda segunda, quanto saiu, qual sabor mais pediram e qual dia rendeu mais. Serve para decidir compra e escala sem depender da memória.</p></div>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <div class="sechead">
+      <p class="eyebrow rv">Dúvidas</p>
+      <h2 class="rv">O que costumam perguntar</h2>
+    </div>
+    <div class="faq rv">
+      <details><summary>Precisa instalar alguma coisa?<svg width="20" height="20" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M224 128a8 8 0 0 1-8 8h-80v80a8 8 0 0 1-16 0v-80H40a8 8 0 0 1 0-16h80V40a8 8 0 0 1 16 0v80h80a8 8 0 0 1 8 8Z"/></svg></summary>
+        <p>Não. É uma página na internet, abre no navegador do celular. O cliente não baixa aplicativo e vocês não instalam nada.</p></details>
+      <details><summary>O número do WhatsApp muda?<svg width="20" height="20" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M224 128a8 8 0 0 1-8 8h-80v80a8 8 0 0 1-16 0v-80H40a8 8 0 0 1 0-16h80V40a8 8 0 0 1 16 0v80h80a8 8 0 0 1 8 8Z"/></svg></summary>
+        <p>Continua o mesmo. O pedido chega no número que vocês já usam, como uma mensagem comum, só que escrita e somada.</p></details>
+      <details><summary>Quem atualiza sabores e preços?<svg width="20" height="20" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M224 128a8 8 0 0 1-8 8h-80v80a8 8 0 0 1-16 0v-80H40a8 8 0 0 1 0-16h80V40a8 8 0 0 1 16 0v80h80a8 8 0 0 1 8 8Z"/></svg></summary>
+        <p>Vocês, por uma tela simples, sem mexer em código. Se preferirem, a gente atualiza quando mandarem a lista nova.</p></details>
+      <details><summary>Substitui o iFood?<svg width="20" height="20" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M224 128a8 8 0 0 1-8 8h-80v80a8 8 0 0 1-16 0v-80H40a8 8 0 0 1 0-16h80V40a8 8 0 0 1 16 0v80h80a8 8 0 0 1 8 8Z"/></svg></summary>
+        <p>Não precisa substituir. Aqui não existe comissão por pedido e o cliente é de vocês. Muita casa usa os dois, e manda este link para quem já é cliente de casa.</p></details>
+      <details><summary>E se o cliente errar o pedido?<svg width="20" height="20" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M224 128a8 8 0 0 1-8 8h-80v80a8 8 0 0 1-16 0v-80H40a8 8 0 0 1 0-16h80V40a8 8 0 0 1 16 0v80h80a8 8 0 0 1 8 8Z"/></svg></summary>
+        <p>A conversa continua sendo WhatsApp, então é só responder e acertar ali mesmo. A página organiza o pedido, não fecha a porta.</p></details>
+      <details><summary>Quanto tempo leva para ficar no ar?<svg width="20" height="20" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M224 128a8 8 0 0 1-8 8h-80v80a8 8 0 0 1-16 0v-80H40a8 8 0 0 1 0-16h80V40a8 8 0 0 1 16 0v80h80a8 8 0 0 1 8 8Z"/></svg></summary>
+        <p>Esta demonstração saiu em um dia, só com o que já é público de vocês. Com o cardápio e as fotos em mãos, a versão de verdade sobe na mesma semana.</p></details>
+    </div>
+  </section>
+</div>
+
+<div class="final">
+  <div class="in">
+    <p class="eyebrow rv">Recado final, sem rodeio</p>
+    <h2 class="rv">Esta página é sua se quiser</h2>
+    <p class="lead rv">Montamos por conta própria, com o que já é público do Camarão e Parmegiana, para mostrar na prática em vez de explicar por mensagem. Se fizer sentido, a gente termina com os dados reais de vocês. Se não fizer, é só dizer e ela sai do ar hoje mesmo.</p>
+
+    <div class="pacote rv">
+      <h3>O que entra na versão de verdade</h3>
+      <ul>
+        <li><svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M232.5 82.5l-128 128a12 12 0 0 1-17 0l-56-56a12 12 0 0 1 17-17L96 185.1L215.5 65.5a12 12 0 0 1 17 17Z"/></svg><span><b>O cardápio de vocês</b>, com os sabores, tamanhos e preços certos, e a tela para vocês mesmos alterarem.</span></li>
+        <li><svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M232.5 82.5l-128 128a12 12 0 0 1-17 0l-56-56a12 12 0 0 1 17-17L96 185.1L215.5 65.5a12 12 0 0 1 17 17Z"/></svg><span><b>As fotos do salão e dos pratos</b> no lugar das ilustrativas. Estas aqui são de banco de imagem, e isso aparece.</span></li>
+        <li><svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M232.5 82.5l-128 128a12 12 0 0 1-17 0l-56-56a12 12 0 0 1 17-17L96 185.1L215.5 65.5a12 12 0 0 1 17 17Z"/></svg><span><b>Endereço próprio na internet</b>, para colar na bio do Instagram, no cartão e na embalagem.</span></li>
+        <li><svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M232.5 82.5l-128 128a12 12 0 0 1-17 0l-56-56a12 12 0 0 1 17-17L96 185.1L215.5 65.5a12 12 0 0 1 17 17Z"/></svg><span><b>O pedido caindo no (12) 99258-0245</b>, o mesmo número de hoje. Nada muda para quem já atende.</span></li>
+        <li><svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M232.5 82.5l-128 128a12 12 0 0 1-17 0l-56-56a12 12 0 0 1 17-17L96 185.1L215.5 65.5a12 12 0 0 1 17 17Z"/></svg><span><b>Uma automação à sua escolha</b> da lista acima, já ligada na entrega.</span></li>
+      </ul>
+    </div>
+
+    <div class="passos rv">
+      <div><span class="n">01</span><span>Você responde no WhatsApp dizendo se faz sentido.</span></div>
+      <div><span class="n">02</span><span>A gente conversa quinze minutos para pegar cardápio, preços e fotos.</span></div>
+      <div><span class="n">03</span><span>Na mesma semana ela sobe no ar, e aí sim vocês decidem se querem manter.</span></div>
+    </div>
+
+    <div class="finalacts rv">
+      <a class="btn big" href="https://wa.me/5512991231603?text=Oi%20Matheus%2C%20sou%20do%20Camar%C3%A3o%20e%20Parmegiana.%20Vi%20a%20p%C3%A1gina%20que%20voc%C3%AAs%20montaram." target="_blank" rel="noopener">Responder no WhatsApp</a>
+      <a class="btn big ghost" href="https://www.high-development.com.br/" target="_blank" rel="noopener">Ver quem somos</a>
+    </div>
+    <p class="nota rv">Falar com a gente não custa nada e não gera compromisso. Se preferirem que a página saia do ar agora, basta pedir.</p>
+  </div>
+</div>
+</main>
+
+<div class="sig">
+  <div class="in">
+    <div class="g">
+      <div>
+        <h3>HIGH Development</h3>
+        <p>Matheus e Vinicius, de Cachoeira Paulista. Fazemos site e atendimento automático no WhatsApp para o comércio da região. A maior parte do nosso trabalho é com casas de eventos e negócios daqui e de Lorena. Somos dois: quem monta a página é quem responde você depois.</p>
+      </div>
+      <a class="btn ghost" href="https://www.high-development.com.br/" target="_blank" rel="noopener">high-development.com.br</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="links">
+    <a href="pedido.html">Fazer pedido</a>
+    <a href="#onde">Onde ficamos</a>
+    <a href="#proposta">Para o dono</a>
+    <a href="https://www.high-development.com.br/" target="_blank" rel="noopener">Política de privacidade</a>
+    <a href="https://www.high-development.com.br/" target="_blank" rel="noopener">Termos de uso</a>
+  </div>
+  <small>
+    Demonstração sem vínculo oficial com o Restaurante e Pizzaria Camarão e Parmegiana. Feita pela HIGH Development em 2026.<br>
+    Fotos do Wikimedia Commons: forno por Jared Tarbell (CC BY 2.0), grelha por Leonardo Carvalho (CC BY-SA 2.5),
+    grelhado por PattayaPatrol (CC BY-SA 4.0), parmegiana por Andy Li (CC0), pizza por Kurt Kaiser (CC0),
+    Cachoeira Paulista por HVL (CC BY 3.0).
+  </small>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("vis"); io.unobserve(e.target);} });
+  },{rootMargin:"0px 0px -10% 0px",threshold:0.1});
+  [].forEach.call(document.querySelectorAll(".rv"),function(el){ io.observe(el); });
+
+  var tag=document.getElementById("tag");
+  tag.innerHTML=tag.textContent.split(" ").map(function(w){return '<span class="w">'+w+'</span>';}).join(" ");
+  var pal=tag.querySelectorAll(".w");
+  var io2=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting) return;
+      var i=[].indexOf.call(pal,e.target);
+      window.setTimeout(function(){ e.target.classList.add("on"); }, i*45);
+      io2.unobserve(e.target);
+    });
+  },{rootMargin:"0px 0px -35% 0px",threshold:1});
+  [].forEach.call(pal,function(w){ io2.observe(w); });
+
+  var io3=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting) return;
+      document.querySelectorAll('.navlinks a[href^="#"]').forEach(function(a){
+        a.setAttribute("aria-current", a.getAttribute("href")==="#"+e.target.id ? "true":"false");
+      });
+    });
+  },{rootMargin:"-40% 0px -55% 0px"});
+  ["casa","pratos","onde","proposta"].forEach(function(id){
+    var el=document.getElementById(id); if(el) io3.observe(el);
+  });
+})();
+</script>

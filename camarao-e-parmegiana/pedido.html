@@ -1,0 +1,492 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fazer pedido · Camarão e Parmegiana</title>
+<meta name="description" content="Monte a pizza meio a meio, escolha as porções, confira o total e mande o pedido no WhatsApp do Camarão e Parmegiana.">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="estilo.css">
+<style>
+header.topo{padding:48px 0 0}
+header.topo h1{font-size:36px;line-height:40px;font-weight:700;letter-spacing:-.03em;
+  margin-top:12px;background:linear-gradient(90deg,#FFFFFF,#9B9B9B);
+  -webkit-background-clip:text;background-clip:text;color:transparent;max-width:680px}
+@media(min-width:768px){header.topo h1{font-size:48px;line-height:1}}
+header.topo p{font-size:18px;line-height:28px;color:var(--tx2);margin-top:16px;max-width:680px}
+
+.build{display:grid;gap:24px;margin-top:48px}
+.build > *{min-width:0}
+.card{min-width:0}
+@media(min-width:1000px){.build{grid-template-columns:1fr 380px;align-items:start}}
+.card + .card{margin-top:24px}
+.card h3{font-size:20px;line-height:28px}
+.card .hint{font-size:14px;line-height:20px;color:var(--tx3);margin-top:4px}
+
+.step{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.step .k{width:24px;height:24px;border-radius:8px;background:var(--s3);color:var(--tx2);
+  display:grid;place-items:center;font-family:var(--mono);font-size:12px;flex:0 0 auto}
+.step.on .k{background:var(--amber);color:var(--onamber)}
+.step h3{margin:0}
+
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-family:var(--sans);font-size:14px;line-height:20px;font-weight:500;
+  background:var(--s2);color:var(--tx2);border:1px solid var(--line);border-radius:8px;
+  padding:8px 12px;cursor:pointer;transition:background 700ms var(--ease),
+  border-color 700ms var(--ease),color 700ms var(--ease)}
+.chip:hover{background:var(--s3);color:var(--tx)}
+.chip:active{transform:translateY(1px)}
+.chip[aria-pressed="true"]{background:var(--amber);border-color:var(--amber);
+  color:var(--onamber);font-weight:600}
+.chip .px{font-family:var(--mono);opacity:.75;margin-left:8px}
+
+.sabores{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;margin-top:8px}
+.sab{display:flex;align-items:center;justify-content:space-between;gap:8px;
+  font-family:var(--sans);font-size:14px;line-height:20px;text-align:left;
+  background:var(--s2);color:var(--tx2);border:1px solid var(--line);border-radius:8px;
+  padding:12px;cursor:pointer;transition:background 700ms var(--ease),
+  border-color 700ms var(--ease),color 700ms var(--ease)}
+.sab:hover:not(:disabled){background:var(--s3);color:var(--tx)}
+.sab .tag{font-family:var(--mono);font-size:12px;line-height:16px;color:var(--tx3)}
+.sab[aria-pressed="true"]{background:var(--amber);border-color:var(--amber);
+  color:var(--onamber);font-weight:600}
+.sab[aria-pressed="true"] .tag{color:var(--onamber);opacity:.7}
+.sab:disabled{opacity:.4;cursor:not-allowed}
+
+.previa{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  margin-top:24px;padding-top:24px;border-top:1px solid var(--line)}
+.previa .txt{font-size:14px;line-height:20px;color:var(--tx2)}
+.previa .txt b{color:var(--tx);font-weight:600}
+.previa .vl{font-family:var(--mono);font-size:24px;line-height:32px;color:var(--amber)}
+
+.itens{display:grid;gap:8px;margin-top:8px}
+.item{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:4px 16px;align-items:center;
+  background:var(--s2);border:1px solid var(--line);border-radius:8px;padding:12px}
+.item .nm{font-size:14px;line-height:20px;font-weight:600}
+.item .ds{grid-column:1/-1;font-size:12px;line-height:16px;color:var(--tx3)}
+.item .pr{font-family:var(--mono);font-size:14px;line-height:20px;color:var(--amber)}
+.stepper{display:flex;align-items:center;gap:8px}
+.sbtn{width:32px;height:32px;border-radius:8px;background:var(--s3);color:var(--tx);
+  border:1px solid var(--line);cursor:pointer;font-size:16px;line-height:20px;
+  display:grid;place-items:center;font-family:var(--sans);transition:background 700ms var(--ease)}
+.sbtn:hover:not(:disabled){background:var(--amber);color:var(--onamber)}
+.sbtn:disabled{opacity:.35;cursor:not-allowed}
+.sqt{font-family:var(--mono);font-size:14px;line-height:20px;min-width:20px;text-align:center}
+
+.cart{position:sticky;top:80px}
+.lines{list-style:none;margin:0;padding:0}
+.lines li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;padding:12px 0;
+  border-bottom:1px solid var(--s3)}
+.lines li:last-child{border-bottom:0}
+.lines .t{font-size:14px;line-height:20px;font-weight:600}
+.lines .d{grid-column:1;font-size:12px;line-height:16px;color:var(--tx3)}
+.lines .v{font-family:var(--mono);font-size:14px;line-height:20px;color:var(--tx2);white-space:nowrap}
+.lines .rm{grid-column:2;justify-self:end;background:none;border:0;color:var(--tx3);
+  font-size:12px;line-height:16px;cursor:pointer;padding:0;font-family:var(--sans);
+  text-decoration:underline;transition:color 700ms var(--ease)}
+.lines .rm:hover{color:var(--bad)}
+.empty{display:flex;gap:12px;align-items:flex-start;color:var(--tx2);font-size:14px;line-height:20px}
+.empty svg{flex:0 0 auto;color:var(--tx3);margin-top:2px}
+.soma{margin-top:16px;padding-top:16px;border-top:1px solid var(--line);display:grid;gap:8px}
+.soma div{display:flex;justify-content:space-between;font-size:14px;line-height:20px;color:var(--tx2)}
+.soma .tot{font-size:16px;line-height:24px;color:var(--tx);font-weight:600;padding-top:8px;
+  border-top:1px solid var(--s3)}
+.soma .tot span:last-child{font-family:var(--mono);font-size:24px;line-height:32px;
+  color:var(--amber);font-weight:500}
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:16px}
+.field{margin-top:16px}
+.field label{display:block;font-size:14px;line-height:20px;color:var(--tx2);margin-bottom:8px}
+.field input,.field textarea{width:100%;background:var(--s2);border:1px solid var(--line);
+  border-radius:8px;padding:12px;color:var(--tx);font-family:var(--sans);font-size:16px;
+  line-height:24px;transition:border-color 700ms var(--ease)}
+.field textarea{resize:vertical;min-height:64px}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--amber)}
+.field [aria-invalid="true"]{border-color:#E5484D}
+.err{display:none;margin-top:8px;font-size:14px;line-height:20px;color:var(--bad)}
+.err[data-show="1"]{display:block}
+.cart .btn{width:100%;margin-top:16px}
+.sent{margin-top:16px;display:none}
+.sent[data-show="1"]{display:block}
+.sent .lbl{display:flex;align-items:center;gap:8px;margin-bottom:8px;font-size:12px;
+  line-height:16px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--tx3)}
+.sent .lbl svg{color:var(--ok)}
+.msg{background:var(--warm);border:1px solid var(--line);border-radius:12px;padding:16px;
+  font-size:14px;line-height:20px;white-space:pre-line;color:var(--tx2);font-family:var(--mono)}
+.msg b{color:var(--tx);font-weight:500}
+.voltar{margin-top:96px;border-top:1px solid var(--line);background:var(--warm)}
+.voltar > .in{max-width:760px;margin:0 auto;padding:64px 24px;text-align:center}
+.voltar p{font-size:18px;line-height:28px;color:var(--tx2);margin-top:16px}
+.voltar .acts{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:32px}
+</style>
+
+<a class="skip" href="#montar">Ir para o cardápio</a>
+
+<div class="flag">
+  <b>Demonstração</b> feita pela HIGH Development. Não é a página oficial do restaurante.
+  Sabores, valores e taxa de entrega são exemplo. O pedido não é enviado de verdade.
+</div>
+
+<nav>
+  <div class="navin">
+    <div class="navtop">
+    <a class="brand" href="index.html">
+      <svg width="20" height="20" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M128 24a104 104 0 1 0 104 104A104.1 104.1 0 0 0 128 24Zm0 192a88 88 0 1 1 88-88a88.1 88.1 0 0 1-88 88Zm12-88a12 12 0 1 1-12-12a12 12 0 0 1 12 12Zm40-28a12 12 0 1 1-12-12a12 12 0 0 1 12 12Zm-72 0a12 12 0 1 1-12-12a12 12 0 0 1 12 12Zm28 76a12 12 0 1 1-12-12a12 12 0 0 1 12 12Z"/></svg>
+      Camarão e Parmegiana
+    </a>
+    <a class="btn sm" href="#montar" aria-current="page">Fazer pedido</a>
+    </div>
+    <div class="navlinks">
+      <a href="index.html">Início</a>
+      <a href="index.html#casa">A casa</a>
+      <a href="index.html#pratos">Pratos</a>
+      <a href="index.html#onde">Onde ficamos</a>
+      <a href="index.html#proposta">Para o dono</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+<div class="wrap">
+  <header class="topo" id="montar">
+    <p class="eyebrow">Cardápio</p>
+    <h1>Monte a pizza do seu jeito</h1>
+    <p>Escolha o tamanho, um ou dois sabores, some as porções e confira o total antes de enviar. Meio a meio vale o preço do sabor mais caro, que é a conta que a casa já faz.</p>
+  </header>
+
+  <div class="build">
+    <div>
+      <div class="card">
+        <div class="step on" id="st1"><span class="k">1</span><h3>Tamanho da pizza</h3></div>
+        <div class="chips" id="tamanhos"></div>
+
+        <div class="step" id="st2" style="margin-top:24px">
+          <span class="k">2</span>
+          <h3>Sabores <span id="contador" style="color:var(--tx3);font-weight:400">(escolha até 2)</span></h3>
+        </div>
+        <div class="sabores" id="sabores"></div>
+
+        <div class="previa">
+          <p class="txt" id="previa-txt">Escolha um tamanho para começar.</p>
+          <span class="vl" id="previa-vl" aria-live="polite">—</span>
+        </div>
+        <button class="btn" id="addpizza" style="width:100%;margin-top:16px" disabled>Adicionar pizza ao pedido</button>
+      </div>
+
+      <div class="card">
+        <h3>Para acompanhar</h3>
+        <p class="hint">Pratos e bebidas entram direto, sem montagem.</p>
+        <div class="itens" id="itens"></div>
+      </div>
+    </div>
+
+    <div class="cart card">
+      <h3>Seu pedido</h3>
+      <div id="vazio" class="empty" style="margin-top:16px">
+        <svg width="20" height="20" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M216 64h-40a48 48 0 0 0-96 0H40a16 16 0 0 0-16 16v120a16 16 0 0 0 16 16h176a16 16 0 0 0 16-16V80a16 16 0 0 0-16-16ZM128 32a32 32 0 0 1 32 32H96a32 32 0 0 1 32-32Zm88 168H40V80h176Z"/></svg>
+        <span>Ainda sem itens. Monte uma pizza ao lado ou escolha algo para acompanhar. Nada é enviado sem você confirmar.</span>
+      </div>
+
+      <ul class="lines" id="linhas" hidden></ul>
+
+      <div class="soma" id="soma" hidden>
+        <div><span>Subtotal</span><span id="subtotal">R$ 0,00</span></div>
+        <div id="taxaline"><span>Taxa de entrega</span><span id="taxa">R$ 0,00</span></div>
+        <div class="tot"><span>Total</span><span id="total">R$ 0,00</span></div>
+      </div>
+
+      <div class="seg">
+        <button class="chip" id="mEntrega" aria-pressed="true" style="justify-content:center">Entrega</button>
+        <button class="chip" id="mRetirada" aria-pressed="false" style="justify-content:center">Retirada</button>
+      </div>
+
+      <div class="field" id="fEndereco">
+        <label for="endereco">Endereço para entrega</label>
+        <input id="endereco" type="text" placeholder="Rua, número e bairro" autocomplete="street-address" aria-describedby="eErr">
+        <p class="err" id="eErr">Escreva a rua, o número e o bairro.</p>
+      </div>
+      <div class="field">
+        <label for="nome">Seu nome</label>
+        <input id="nome" type="text" placeholder="Como o restaurante deve te chamar" autocomplete="name" aria-describedby="nErr">
+        <p class="err" id="nErr">Escreva seu nome.</p>
+      </div>
+      <div class="field">
+        <label for="fone">Seu WhatsApp</label>
+        <input id="fone" type="tel" inputmode="numeric" placeholder="(12) 90000-0000" autocomplete="tel" aria-describedby="fErr">
+        <p class="err" id="fErr">Escreva um número com DDD, como (12) 90000-0000.</p>
+      </div>
+      <div class="field">
+        <label for="obs">Alguma observação</label>
+        <textarea id="obs" placeholder="Sem cebola, troco para 100, tocar a campainha"></textarea>
+      </div>
+
+      <button class="btn" id="enviar" disabled>Escolha pelo menos um item</button>
+
+      <div class="sent" id="saida">
+        <p class="lbl">
+          <svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M232.5 82.5l-128 128a12 12 0 0 1-17 0l-56-56a12 12 0 0 1 17-17L96 185.1L215.5 65.5a12 12 0 0 1 17 17Z"/></svg>
+          Chegou assim no WhatsApp do restaurante
+        </p>
+        <div class="msg" id="msg"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="voltar">
+  <div class="in">
+    <p class="eyebrow">É isso que a HIGH Development entrega</p>
+    <p>Esta tela é a parte que funciona. A apresentação do restaurante, os pratos, o endereço e a proposta completa estão na página inicial.</p>
+    <div class="acts">
+      <a class="btn big" href="index.html">Voltar para o início</a>
+      <a class="btn big ghost" href="index.html#proposta">Ler a proposta</a>
+    </div>
+  </div>
+</div>
+</main>
+
+<footer>
+  <div class="links">
+    <a href="index.html">Início</a>
+    <a href="index.html#onde">Onde ficamos</a>
+    <a href="index.html#proposta">Para o dono</a>
+  </div>
+  <small>Demonstração sem vínculo oficial com o Restaurante e Pizzaria Camarão e Parmegiana. Feita pela HIGH Development em 2026.</small>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var TAM=[
+    {id:"broto", n:"Broto",   fat:"4 fatias",  p:3200},
+    {id:"media", n:"Média",   fat:"6 fatias",  p:4800},
+    {id:"grande",n:"Grande",  fat:"8 fatias",  p:6800},
+    {id:"fam",   n:"Família", fat:"12 fatias", p:8200}
+  ];
+  var SAB=[
+    {id:"cala", n:"Calabresa",          cls:"tradicional", ad:0},
+    {id:"muss", n:"Mussarela",          cls:"tradicional", ad:0},
+    {id:"port", n:"Portuguesa",         cls:"tradicional", ad:0},
+    {id:"marg", n:"Marguerita",         cls:"tradicional", ad:0},
+    {id:"fran", n:"Frango com catupiry",cls:"especial",    ad:700},
+    {id:"quat", n:"Quatro queijos",     cls:"especial",    ad:700},
+    {id:"cama", n:"Camarão",            cls:"especial",    ad:1800},
+    {id:"bana", n:"Banana com canela",  cls:"doce",        ad:400}
+  ];
+  var ITENS=[
+    {id:"pcam", n:"Parmegiana de camarão", d:"Com arroz e fritas. Serve duas pessoas.", p:8900},
+    {id:"pfil", n:"Parmegiana de filé",    d:"Com arroz e fritas. Serve duas pessoas.", p:7400},
+    {id:"grel", n:"Grelhado misto",        d:"Na chapa, com acompanhamento. Individual.",p:5200},
+    {id:"pcal", n:"Porção de calabresa",   d:"Acebolada, com pão e vinagrete.",         p:4300},
+    {id:"refr", n:"Refrigerante 2 litros", d:"Cola, guaraná ou laranja.",               p:1400},
+    {id:"suco", n:"Suco natural 500 ml",   d:"Laranja, maracujá ou abacaxi.",           p:1200}
+  ];
+  var TAXA=800;
+
+  var sel={tam:null, sab:[]};
+  var pedido={pizzas:[], itens:{}};
+  var modo="entrega";
+
+  function brl(c){ return "R$ "+(c/100).toFixed(2).replace(".",","); }
+  function $(id){ return document.getElementById(id); }
+
+  var cTam=$("tamanhos");
+  TAM.forEach(function(t){
+    var b=document.createElement("button");
+    b.type="button"; b.className="chip"; b.setAttribute("aria-pressed","false");
+    b.innerHTML=t.n+' <span class="px">'+t.fat+'</span>';
+    b.addEventListener("click",function(){
+      sel.tam=t;
+      [].forEach.call(cTam.children,function(x){x.setAttribute("aria-pressed",String(x===b));});
+      previa();
+    });
+    cTam.appendChild(b);
+  });
+
+  var cSab=$("sabores");
+  SAB.forEach(function(s){
+    var b=document.createElement("button");
+    b.type="button"; b.className="sab"; b.setAttribute("aria-pressed","false"); b.dataset.id=s.id;
+    var tag = s.ad ? "+"+brl(s.ad).replace("R$ ","R$") : s.cls;
+    b.innerHTML='<span>'+s.n+'</span><span class="tag">'+tag+'</span>';
+    b.addEventListener("click",function(){
+      var i=sel.sab.indexOf(s.id);
+      if(i>-1) sel.sab.splice(i,1);
+      else if(sel.sab.length<2) sel.sab.push(s.id);
+      previa();
+    });
+    cSab.appendChild(b);
+  });
+
+  function precoPizza(){
+    if(!sel.tam) return 0;
+    var ad=0;
+    sel.sab.forEach(function(id){
+      var s=SAB.filter(function(x){return x.id===id;})[0];
+      if(s && s.ad>ad) ad=s.ad;
+    });
+    return sel.tam.p+ad;
+  }
+
+  function previa(){
+    [].forEach.call(cSab.children,function(b){
+      var on=sel.sab.indexOf(b.dataset.id)>-1;
+      b.setAttribute("aria-pressed",String(on));
+      b.disabled = !on && sel.sab.length>=2;
+    });
+    $("st2").classList.toggle("on", !!sel.tam);
+    $("contador").textContent = sel.sab.length===0 ? "(escolha até 2)"
+      : sel.sab.length===1 ? "(1 escolhido, pode somar mais 1)" : "(meio a meio, vale o maior preço)";
+    var pronto = sel.tam && sel.sab.length>0;
+    var nomes=sel.sab.map(function(id){ return SAB.filter(function(x){return x.id===id;})[0].n; });
+    $("previa-txt").innerHTML = !sel.tam ? "Escolha um tamanho para começar."
+      : !nomes.length ? "Agora escolha um ou dois sabores."
+      : "<b>"+sel.tam.n+"</b>, "+nomes.join(" e ")+(nomes.length===2?" (meio a meio)":"");
+    $("previa-vl").textContent = pronto ? brl(precoPizza()) : "—";
+    $("addpizza").disabled=!pronto;
+  }
+  previa();
+
+  $("addpizza").addEventListener("click",function(){
+    var nomes=sel.sab.map(function(id){ return SAB.filter(function(x){return x.id===id;})[0].n; });
+    pedido.pizzas.push({tam:sel.tam.n, sabores:nomes, preco:precoPizza()});
+    sel={tam:null,sab:[]};
+    [].forEach.call(cTam.children,function(x){x.setAttribute("aria-pressed","false");});
+    previa(); pintar();
+  });
+
+  var cIt=$("itens");
+  ITENS.forEach(function(it){
+    var d=document.createElement("div");
+    d.className="item";
+    d.innerHTML='<span class="nm">'+it.n+'</span>'+
+                '<span class="pr">'+brl(it.p)+'</span>'+
+                '<span class="stepper">'+
+                  '<button class="sbtn" type="button" data-a="-" aria-label="Tirar um '+it.n+'">&minus;</button>'+
+                  '<span class="sqt" data-q>0</span>'+
+                  '<button class="sbtn" type="button" data-a="+" aria-label="Somar um '+it.n+'">+</button>'+
+                '</span>'+
+                '<span class="ds">'+it.d+'</span>';
+    d.querySelectorAll(".sbtn").forEach(function(b){
+      b.addEventListener("click",function(){
+        var q=pedido.itens[it.id]||0;
+        q = b.dataset.a==="+" ? q+1 : Math.max(0,q-1);
+        if(q) pedido.itens[it.id]=q; else delete pedido.itens[it.id];
+        pintar();
+      });
+    });
+    cIt.appendChild(d);
+  });
+
+  function setModo(m){
+    modo=m;
+    $("mEntrega").setAttribute("aria-pressed",String(m==="entrega"));
+    $("mRetirada").setAttribute("aria-pressed",String(m==="retirada"));
+    $("fEndereco").style.display = m==="entrega" ? "" : "none";
+    $("taxaline").style.display  = m==="entrega" ? "" : "none";
+    pintar();
+  }
+  $("mEntrega").addEventListener("click",function(){setModo("entrega");});
+  $("mRetirada").addEventListener("click",function(){setModo("retirada");});
+
+  function subtotal(){
+    var s=0;
+    pedido.pizzas.forEach(function(p){ s+=p.preco; });
+    Object.keys(pedido.itens).forEach(function(id){
+      var it=ITENS.filter(function(x){return x.id===id;})[0];
+      s+=it.p*pedido.itens[id];
+    });
+    return s;
+  }
+  function taxa(){ return modo==="entrega" && subtotal()>0 ? TAXA : 0; }
+  function vazioP(){ return pedido.pizzas.length===0 && Object.keys(pedido.itens).length===0; }
+
+  function pintar(){
+    [].forEach.call(cIt.children,function(d,i){
+      var q=pedido.itens[ITENS[i].id]||0;
+      d.querySelector("[data-q]").textContent=q;
+      d.querySelector('[data-a="-"]').disabled = q===0;
+    });
+    var ul=$("linhas"); ul.innerHTML="";
+    pedido.pizzas.forEach(function(p,idx){
+      var li=document.createElement("li");
+      li.innerHTML='<span class="t">Pizza '+p.tam+'</span><span class="v">'+brl(p.preco)+'</span>'+
+                   '<span class="d">'+p.sabores.join(" e ")+(p.sabores.length===2?" (meio a meio)":"")+'</span>'+
+                   '<button class="rm" type="button">tirar</button>';
+      li.querySelector(".rm").addEventListener("click",function(){ pedido.pizzas.splice(idx,1); pintar(); });
+      ul.appendChild(li);
+    });
+    Object.keys(pedido.itens).forEach(function(id){
+      var it=ITENS.filter(function(x){return x.id===id;})[0], q=pedido.itens[id];
+      var li=document.createElement("li");
+      li.innerHTML='<span class="t">'+q+'x '+it.n+'</span><span class="v">'+brl(it.p*q)+'</span>'+
+                   '<button class="rm" type="button">tirar</button>';
+      li.querySelector(".rm").addEventListener("click",function(){ delete pedido.itens[id]; pintar(); });
+      ul.appendChild(li);
+    });
+    var tem=!vazioP();
+    $("vazio").hidden=tem; ul.hidden=!tem; $("soma").hidden=!tem;
+    $("subtotal").textContent=brl(subtotal());
+    $("taxa").textContent=brl(taxa());
+    $("total").textContent=brl(subtotal()+taxa());
+    $("enviar").disabled=!tem;
+    $("enviar").textContent = tem ? ("Enviar pedido de "+brl(subtotal()+taxa())) : "Escolha pelo menos um item";
+    if(!tem) $("saida").dataset.show="0";
+  }
+  setModo("entrega");
+
+  var fone=$("fone");
+  function foneOk(v){ var d=v.replace(/\D/g,""); return d.length===10||d.length===11; }
+  fone.addEventListener("input",function(){
+    var d=fone.value.replace(/\D/g,"").slice(0,11);
+    if(d.length>6) fone.value="("+d.slice(0,2)+") "+d.slice(2,d.length-4)+"-"+d.slice(-4);
+    else if(d.length>2) fone.value="("+d.slice(0,2)+") "+d.slice(2);
+    else fone.value=d;
+    if(foneOk(fone.value)){ fone.removeAttribute("aria-invalid"); $("fErr").dataset.show="0"; }
+  });
+  ["nome","endereco"].forEach(function(id){
+    $(id).addEventListener("input",function(){
+      if($(id).value.trim().length>2){
+        $(id).removeAttribute("aria-invalid");
+        $(id==="nome"?"nErr":"eErr").dataset.show="0";
+      }
+    });
+  });
+
+  $("enviar").addEventListener("click",function(){
+    var falhou=null;
+    function marca(id,errId){
+      $(id).setAttribute("aria-invalid","true"); $(errId).dataset.show="1";
+      if(!falhou) falhou=$(id);
+    }
+    if($("nome").value.trim().length<2) marca("nome","nErr");
+    if(!foneOk(fone.value)) marca("fone","fErr");
+    if(modo==="entrega" && $("endereco").value.trim().length<6) marca("endereco","eErr");
+    if(falhou){ falhou.focus(); return; }
+
+    var b=$("enviar"), txtOrig=b.textContent;
+    b.disabled=true; b.textContent="Enviando...";
+    window.setTimeout(function(){
+      var l=[];
+      pedido.pizzas.forEach(function(p){
+        l.push("1x Pizza "+p.tam+" — "+p.sabores.join(" e ")+
+               (p.sabores.length===2?" (meio a meio)":"")+"   "+brl(p.preco));
+      });
+      Object.keys(pedido.itens).forEach(function(id){
+        var it=ITENS.filter(function(x){return x.id===id;})[0], q=pedido.itens[id];
+        l.push(q+"x "+it.n+"   "+brl(it.p*q));
+      });
+      var obs=$("obs").value.trim();
+      $("msg").innerHTML=
+        "<b>Novo pedido pelo site</b>\n\n"+l.join("\n")+
+        "\n\nSubtotal   "+brl(subtotal())+
+        (taxa()? "\nEntrega    "+brl(taxa()) : "")+
+        "\n<b>Total      "+brl(subtotal()+taxa())+"</b>"+
+        "\n\n"+(modo==="entrega" ? "Entrega em "+$("endereco").value.trim() : "Retirada no balcão")+
+        "\nCliente    "+$("nome").value.trim()+", "+fone.value+
+        (obs ? "\nObservação "+obs : "")+
+        "\n\nResponda com o tempo de entrega para confirmar.";
+      $("saida").dataset.show="1";
+      b.disabled=false; b.textContent=txtOrig;
+      $("saida").scrollIntoView({behavior:"smooth",block:"nearest"});
+    },600);
+  });
+})();
+</script>
