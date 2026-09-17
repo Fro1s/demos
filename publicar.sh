@@ -7,21 +7,17 @@ cd "$(dirname "$0")"
 
 CONTA="$(cat .conta 2>/dev/null || true)"
 REPO="$(cat .repo 2>/dev/null || echo demos)"
+REMOTO="$(cat .remote 2>/dev/null || echo "git@github.com:$CONTA/$REPO.git")"
 if [ -z "$CONTA" ]; then
   echo "Falta o usuario do GitHub. Rode: echo SEU-USUARIO > .conta"
   exit 1
 fi
 
-if [ -f .git-credentials ]; then
-  git config --global credential.helper "store --file=$(pwd)/.git-credentials"
-fi
-
 if [ ! -d .git ]; then
   git init -q -b main
-  git remote add origin "https://github.com/$CONTA/$REPO.git"
 fi
-git config user.name  "$(git config user.name  || echo 'HIGH Development')" >/dev/null 2>&1 || true
-git config user.email "$(git config user.email || echo 'contato@high-development.com.br')" >/dev/null 2>&1 || true
+git remote remove origin 2>/dev/null || true
+git remote add origin "$REMOTO"
 
 ALVO="${1:-.}"
 git add "$ALVO"
