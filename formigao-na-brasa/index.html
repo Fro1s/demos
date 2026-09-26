@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="pt-BR">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Formigão na Brasa</title>
+<meta name="description" content="Formigão na Brasa, no bairro São João, em Canas. Lanche, porção e pizza. Monte o pedido e mande pelo WhatsApp.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="estilo.css">
+<style>
+/* ---------- capa ---------- */
+.capa{position:relative;border-bottom:1px solid var(--line);display:grid;isolation:isolate}
+.capa img{grid-area:1/1;width:100%;height:100%;object-fit:cover;opacity:.55}
+.capa .sobre{grid-area:1/1;display:flex;align-items:flex-end;min-height:440px}
+@media(min-width:768px){.capa .sobre{min-height:520px}}
+@media(min-width:1280px){.capa .sobre{min-height:560px}}
+.capa .sobre > .in{max-width:1080px;margin:0 auto;padding:0 24px 48px;width:100%}
+.capa h1{font-size:30px;line-height:1.05;font-weight:700;letter-spacing:-.03em;
+  background:linear-gradient(90deg,#FFFFFF,#9B9B9B);
+  -webkit-background-clip:text;background-clip:text;color:transparent;max-width:14ch}
+@media(min-width:480px){.capa h1{font-size:40px;line-height:1}}
+@media(min-width:768px){.capa h1{font-size:60px}}
+.capa .lin{font-size:18px;line-height:28px;color:var(--tx2);margin-top:16px;max-width:680px}
+.capa .acts{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.capa::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,.85) 70%,#000 100%)}
+.capa .sobre{z-index:2}
+
+/* ---------- prova ---------- */
+.prova{border-bottom:1px solid var(--line);background:var(--warm)}
+.prova > .in{max-width:1080px;margin:0 auto;padding:24px;display:grid;gap:24px}
+@media(min-width:768px){.prova > .in{grid-template-columns:repeat(4,1fr)}}
+.prova div{display:grid;gap:4px}
+.prova .k{font-size:12px;line-height:16px;color:var(--tx3);letter-spacing:.16em;
+  text-transform:uppercase;font-weight:600}
+.prova .v{font-family:var(--mono);font-size:20px;line-height:28px;color:var(--tx)}
+.prova .v small{font-family:var(--sans);font-size:14px;line-height:20px;color:var(--tx2)}
+
+/* ---------- a casa ---------- */
+.casa{display:grid;gap:32px;margin-top:32px}
+@media(min-width:900px){.casa{grid-template-columns:1fr 1fr;align-items:center}}
+.casa p + p{margin-top:16px}
+.casa .foto{border:1px solid var(--line);border-radius:16px;overflow:hidden;margin:0}
+.casa .foto img{width:100%;height:auto;aspect-ratio:1200/480;object-fit:cover}
+.casa .foto figcaption{padding:12px 16px;font-size:12px;line-height:16px;color:var(--tx3);
+  background:var(--s1)}
+
+/* ---------- destaques ---------- */
+.pratos{display:grid;gap:16px;margin-top:32px}
+@media(min-width:768px){.pratos{grid-template-columns:repeat(3,1fr)}}
+.prato{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--s1);
+  margin:0;display:flex;flex-direction:column}
+.prato img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
+.prato figcaption{padding:24px;flex:1}
+.prato h3{font-size:20px;line-height:28px}
+.prato p{font-size:14px;line-height:20px;color:var(--tx2);margin-top:8px}
+.prato .nota{font-size:12px;line-height:16px;color:var(--tx3);margin-top:12px}
+
+/* ---------- onde ---------- */
+.onde{display:grid;gap:24px;margin-top:32px}
+@media(min-width:900px){.onde{grid-template-columns:1fr 1fr;align-items:center}}
+.ondeimg{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--s1);margin:0}
+.ondeimg img{width:100%;height:auto;aspect-ratio:900/558;object-fit:cover}
+.onde > *{min-width:0}
+.ondecard dl{margin-top:24px;display:grid;grid-template-columns:1fr;gap:4px;
+  font-size:14px;line-height:20px}
+.ondecard dt{color:var(--tx3)}
+.ondecard dd{margin:0;font-family:var(--mono);color:var(--tx2);min-width:0}
+.ondecard dd + dt{margin-top:12px}
+@media(min-width:480px){
+  .ondecard dl{grid-template-columns:auto 1fr;gap:12px 24px}
+  .ondecard dd{text-align:right}
+  .ondecard dd + dt{margin-top:0}
+}
+
+/* ---------- faixa de pedido ---------- */
+.faixa{margin-top:96px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  background:var(--warm)}
+.faixa > .in{max-width:760px;margin:0 auto;padding:80px 24px;text-align:center}
+.faixa h2{margin-top:16px}
+.faixa p{font-size:18px;line-height:28px;color:var(--tx2);margin-top:16px}
+.faixa .acts{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:32px}
+
+/* ---------- proposta ---------- */
+.corte{margin-top:96px;padding:24px 0;border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);background:var(--s1)}
+.corte > .in{max-width:1080px;margin:0 auto;padding:0 24px;display:flex;align-items:center;
+  gap:16px;flex-wrap:wrap;justify-content:space-between}
+.corte p{font-size:14px;line-height:20px;color:var(--tx2);max-width:680px}
+.corte b{color:var(--amber);font-weight:600}
+.final > .in{max-width:760px;margin:0 auto;padding:80px 24px}
+.final h2{margin-top:16px}
+.final .lead{font-size:18px;line-height:28px;color:var(--tx2);margin-top:16px}
+.pacote{background:var(--s1);border:1px solid var(--line);border-radius:16px;padding:24px;
+  margin-top:32px}
+.pacote h3{font-size:16px;line-height:24px}
+.pacote ul{list-style:none;margin-top:16px;padding:0;display:grid;gap:12px}
+.pacote li{display:flex;gap:12px;align-items:flex-start;font-size:14px;line-height:20px;
+  color:var(--tx2)}
+.pacote li svg{flex:0 0 auto;color:var(--ok);margin-top:2px}
+.pacote li b{color:var(--tx);font-weight:600}
+.passos{display:grid;gap:12px;margin-top:32px}
+.passos div{display:flex;gap:12px;align-items:flex-start;font-size:16px;line-height:24px;
+  color:var(--tx2)}
+.passos .n{font-family:var(--mono);font-size:14px;line-height:24px;color:var(--amber);flex:0 0 auto}
+.finalacts{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.nota{font-size:14px;line-height:20px;color:var(--tx3);margin-top:24px}
+
+.faq{margin-top:32px;border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;padding:24px 0;font-size:16px;line-height:24px;
+  font-weight:600;display:flex;justify-content:space-between;gap:16px;align-items:center;
+  transition:color 700ms var(--ease)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:hover{color:var(--amber)}
+.faq summary svg{flex:0 0 auto;color:var(--tx3);transition:transform 700ms var(--ease)}
+.faq details[open] summary svg{transform:rotate(45deg)}
+.faq p{margin-bottom:24px;font-size:16px;line-height:24px;color:var(--tx2);max-width:680px}
+
+/* ---------- gerador ---------- */
+.lead-p{font-size:18px;line-height:28px;color:var(--tx2)}
+.cardp{font-size:16px;line-height:24px;color:var(--tx2);margin-top:12px}
+.fonte{font-size:12px;line-height:16px;color:var(--tx3);margin-top:16px}
+.prova .v.peq{font-size:14px;line-height:28px}
+.onde.so{grid-template-columns:1fr}
+.onde.so .ondecard{max-width:680px}
+.faixa + .corte{margin-top:0;border-top:0}
+</style>
+<a class="skip" href="#casa">Ir para o conteúdo</a>
+
+<div class="flag">
+  <b>Demonstração</b> feita pela HIGH Development para o Formigão na Brasa. Não é a página oficial.
+  Endereço, WhatsApp, Instagram, horário e nota do Google são reais. Cardápio, valores e fotos são exemplo.
+</div>
+
+<nav>
+  <div class="navin">
+    <div class="navtop">
+      <a class="brand" href="index.html"><svg width="20" height="20" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M48.07,104H207.93a16,16,0,0,0,15.72-19.38C216.22,49.5,176,24,128,24S39.78,49.5,32.35,84.62A16,16,0,0,0,48.07,104ZM128,40c39.82,0,74.21,20.61,79.93,48H48.07L48,87.93C53.79,60.61,88.18,40,128,40ZM229.26,152.48l-41.13,15L151,152.57a8,8,0,0,0-5.94,0l-37,14.81L71,152.57a8,8,0,0,0-5.7-.09l-44,16a8,8,0,0,0,5.47,15L40,178.69V184a40,40,0,0,0,40,40h96a40,40,0,0,0,40-40v-9.67l18.73-6.81a8,8,0,1,0-5.47-15ZM200,184a24,24,0,0,1-24,24H80a24,24,0,0,1-24-24V172.88l11.87-4.32L105,183.43a8,8,0,0,0,5.94,0l37-14.81,37,14.81a8,8,0,0,0,5.7.09l9.27-3.37ZM16,128a8,8,0,0,1,8-8H232a8,8,0,0,1,0,16H24A8,8,0,0,1,16,128Z"/></svg>
+        <span class="bl">Formigão na Brasa</span><span class="bs">Formigão</span></a>
+      <a class="btn sm" href="pedido.html">Fazer pedido</a>
+    </div>
+    <div class="navlinks">
+      <a href="index.html" aria-current="page">Início</a>
+      <a href="#casa">A casa</a>
+      <a href="#destaques">Cardápio</a>
+      <a href="#onde">Onde fica</a>
+      <a href="#proposta">Para o dono</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+<div class="capa">
+  <img src="churrasco.webp" width="1400" height="788" alt="Carnes assando na grelha sobre a brasa" loading="eager">
+  <div class="sobre">
+    <div class="in">
+      <p class="eyebrow">São João · Canas</p>
+      <h1>Lanche na brasa, porção pra dividir e pizza</h1>
+      <p class="lin">A nota 4,9 no Google vem de 420 avaliações, e a maioria cita pelo nome quem atendeu. É raro, e diz muito sobre a casa.</p>
+      <div class="acts">
+        <a class="btn big" href="pedido.html">Montar meu lanche</a>
+        <a class="btn big ghost" href="#onde">Ver onde fica</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="prova">
+  <div class="in">
+    <div><span class="k">Nota no Google</span><span class="v">4,9 <small>com 420 avaliações</small></span></div>
+    <div><span class="k">Horário</span><span class="v">Até 23h <small>sexta, sábado e domingo</small></span></div>
+    <div><span class="k">WhatsApp</span><span class="v">(12) 99676-7614</span></div>
+    <div><span class="k">No Instagram</span><span class="v">@formigaonabrasa</span></div>
+  </div>
+</div>
+
+<div class="wrap">
+  <section id="casa">
+    <div class="sechead">
+      <p class="eyebrow rv">A casa</p>
+      <h2 class="rv">Atendimento que o cliente lembra pelo nome</h2>
+    </div>
+    <div class="casa">
+      <div class="rv">
+        <p class="lead-p">Leia as avaliações do Formigão e repare numa coisa: quase todas falam de quem atendeu. Atenciosa, carismática, cuidadosa com o pedido. É por isso que a nota chegou a 4,9.</p>
+        <p class="lead-p">O resto vem junto: lanche e porção que o pessoal chama de excelente, pizza que também tem fã, preço que dizem ser justo e um ambiente tranquilo para sentar com calma.</p>
+      </div>
+      <figure class="foto rv">
+        <img src="burger-mesa.webp" width="1200" height="480" alt="Hambúrguer com gergelim e fritas servido no prato" loading="lazy">
+        <figcaption>Foto ilustrativa. As fotos reais da casa entram no lugar.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="destaques">
+    <div class="sechead">
+      <p class="eyebrow rv">O que mais sai</p>
+      <h2 class="rv">Lanche, porção e pizza</h2>
+      <p class="secsub rv">Os três aparecem nas avaliações. O cardápio completo, com valores de exemplo, está na página de pedido.</p>
+    </div>
+    <div class="pratos">
+      <figure class="prato rv">
+        <img src="burger.webp" width="720" height="540" alt="Hambúrguer com queijo, alface e cebola no pão com gergelim" loading="lazy">
+        <figcaption>
+          <h3>Lanches</h3>
+          <p>Hambúrguer montado do jeito que você pedir: escolhe o ponto da carne e os adicionais.</p>
+          <p class="nota">Foto ilustrativa</p>
+        </figcaption>
+      </figure>
+      <figure class="prato rv">
+        <img src="fritas.webp" width="720" height="540" alt="Porção de batata frita numa travessa branca" loading="lazy">
+        <figcaption>
+          <h3>Porções</h3>
+          <p>Para dividir na mesa. É das coisas que mais aparecem elogiadas nas avaliações.</p>
+          <p class="nota">Foto ilustrativa</p>
+        </figcaption>
+      </figure>
+      <figure class="prato rv">
+        <img src="hero.webp" width="720" height="540" alt="Pizza assada com calabresa, tomate e queijo" loading="lazy">
+        <figcaption>
+          <h3>Pizza</h3>
+          <p>Tem quem venha pelo lanche e saia elogiando a pizza. Inteira ou meio a meio.</p>
+          <p class="nota">Foto ilustrativa</p>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+</div>
+
+<div class="wrap tagline">
+  <p id="tag">Você monta o lanche na tela, vê o total e manda. A cozinha recebe o pedido escrito, do jeito que o cliente pediu.</p>
+</div>
+
+<div class="wrap">
+  <section id="onde">
+    <div class="sechead">
+      <p class="eyebrow rv">Onde fica</p>
+      <h2 class="rv">R. Benedito Vicente da Silva, 133</h2>
+      <p class="secsub rv">No bairro São João, em Canas.</p>
+    </div>
+    <div class="onde">
+      <figure class="ondeimg rv">
+        <img src="canas.webp" width="900" height="600" alt="Vista aérea de uma praça com palmeiras em Canas" loading="lazy">
+      </figure>
+      <div class="blk ondecard rv">
+        <h3>Como falar com a casa</h3>
+        <p class="cardp">Pedido e dúvida pelo mesmo WhatsApp.</p>
+        <dl>
+          <dt>WhatsApp</dt><dd>(12) 99676-7614</dd>
+          <dt>Instagram</dt><dd>@formigaonabrasa</dd>
+          <dt>Endereço</dt><dd>R. Benedito Vicente da Silva, 133 · São João</dd>
+          <dt>seg a qui</dt><dd>8h–18h</dd>
+          <dt>sex</dt><dd>8h–23h</dd>
+          <dt>sáb</dt><dd>8h–12h e 19h–23h</dd>
+          <dt>dom</dt><dd>19h–23h</dd>
+        </dl>
+        <p class="fonte">Endereço, contato e horário como estão no Google hoje.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="faixa">
+  <div class="in">
+    <p class="eyebrow rv">Pronto para pedir</p>
+    <h2 class="rv">Monte seu lanche em menos de um minuto</h2>
+    <p class="rv">Escolha o lanche, o ponto e os adicionais, some porção e bebida e confira o total antes de enviar. O pedido chega escrito e somado no WhatsApp.</p>
+    <div class="acts rv">
+      <a class="btn big" href="pedido.html">Abrir o cardápio</a>
+      <a class="btn big ghost" href="https://wa.me/5512996767614" target="_blank" rel="noopener">Chamar no WhatsApp</a>
+    </div>
+  </div>
+</div>
+
+<div class="corte">
+  <div class="in">
+    <p><b>Daqui para baixo é recado para quem toca o Formigão na Brasa.</b> O que está acima é a página como o cliente veria. O que vem agora é a proposta da HIGH Development.</p>
+    <a class="btn sm ghost" href="#proposta">Ler a proposta</a>
+  </div>
+</div>
+
+<div class="wrap">
+  <section id="proposta" style="padding-top:96px">
+    <div class="sechead">
+      <p class="eyebrow rv">Depois do pedido</p>
+      <h2 class="rv">O que mais dá para ligar aqui</h2>
+      <p class="secsub rv">Tudo roda no mesmo WhatsApp de hoje. Não precisa ser tudo de uma vez: cada item resolve uma dor diferente da casa.</p>
+    </div>
+    <div class="cols2">
+      <article class="blk icon rv">
+        <svg width="20" height="20" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm64-88a8,8,0,0,1-8,8H128a8,8,0,0,1-8-8V72a8,8,0,0,1,16,0v48h48A8,8,0,0,1,192,128Z"/></svg>
+        <div><h3>Confirmação com tempo de preparo</h3><p>O cliente recebe na hora o aviso de que o pedido entrou e quando fica pronto. Some o &quot;já saiu?&quot; que toma o telefone no meio do movimento de sábado.</p></div>
+      </article>
+      <article class="blk icon rv">
+        <svg width="20" height="20" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M255.42,117l-14-35A15.93,15.93,0,0,0,226.58,72H192V64a8,8,0,0,0-8-8H32A16,16,0,0,0,16,72V184a16,16,0,0,0,16,16H49a32,32,0,0,0,62,0h50a32,32,0,0,0,62,0h17a16,16,0,0,0,16-16V120A7.94,7.94,0,0,0,255.42,117ZM192,88h34.58l9.6,24H192ZM32,72H176v64H32ZM80,208a16,16,0,1,1,16-16A16,16,0,0,1,80,208Zm81-24H111a32,32,0,0,0-62,0H32V152H176v12.31A32.11,32.11,0,0,0,161,184Zm31,24a16,16,0,1,1,16-16A16,16,0,0,1,192,208Zm48-24H223a32.06,32.06,0,0,0-31-24V128h48Z"/></svg>
+        <div><h3>Aviso de saiu para entrega</h3><p>Uma mensagem sai sozinha quando o motoboy pega o pedido. O cliente para de ligar e o entregador encontra alguém esperando no portão.</p></div>
+      </article>
+      <article class="blk icon rv">
+        <svg width="20" height="20" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M239.18,97.26A16.38,16.38,0,0,0,224.92,86l-59-4.76L143.14,26.15a16.36,16.36,0,0,0-30.27,0L90.11,81.23,31.08,86a16.46,16.46,0,0,0-9.37,28.86l45,38.83L53,211.75a16.38,16.38,0,0,0,24.5,17.82L128,198.49l50.53,31.08A16.4,16.4,0,0,0,203,211.75l-13.76-58.07,45-38.83A16.43,16.43,0,0,0,239.18,97.26Zm-15.34,5.47-48.7,42a8,8,0,0,0-2.56,7.91l14.88,62.8a.37.37,0,0,1-.17.48c-.18.14-.23.11-.38,0l-54.72-33.65a8,8,0,0,0-8.38,0L69.09,215.94c-.15.09-.19.12-.38,0a.37.37,0,0,1-.17-.48l14.88-62.8a8,8,0,0,0-2.56-7.91l-48.7-42c-.12-.1-.23-.19-.13-.5s.18-.27.33-.29l63.92-5.16A8,8,0,0,0,103,91.86l24.62-59.61c.08-.17.11-.25.35-.25s.27.08.35.25L153,91.86a8,8,0,0,0,6.75,4.92l63.92,5.16c.15,0,.24,0,.33.29S224,102.63,223.84,102.73Z"/></svg>
+        <div><h3>Convite para avaliar no Google</h3><p>Uma hora depois da entrega sai o convite. Com 4,9 e 420 avaliações, cada avaliação nova ajuda quem é de fora de Canas a escolher vocês na busca.</p></div>
+      </article>
+      <article class="blk icon rv">
+        <svg width="20" height="20" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H128a8,8,0,0,1,0-16h88A8,8,0,0,1,224,128ZM128,72h88a8,8,0,0,0,0-16H128a8,8,0,0,0,0,16Zm88,112H128a8,8,0,0,0,0,16h88a8,8,0,0,0,0-16ZM82.34,42.34,56,68.69,45.66,58.34A8,8,0,0,0,34.34,69.66l16,16a8,8,0,0,0,11.32,0l32-32A8,8,0,0,0,82.34,42.34Zm0,64L56,132.69,45.66,122.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32,0l32-32a8,8,0,0,0-11.32-11.32Zm0,64L56,196.69,45.66,186.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32,0l32-32a8,8,0,0,0-11.32-11.32Z"/></svg>
+        <div><h3>Cardápio que vocês mesmos mudam</h3><p>Acabou o bacon? Some da tela em dois toques. Ninguém pede o que não tem e ninguém precisa ligar para avisar.</p></div>
+      </article>
+      <article class="blk icon rv">
+        <svg width="20" height="20" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M240,56v48a8,8,0,0,1-8,8H184a8,8,0,0,1,0-16H211.4L184.81,71.64l-.25-.24a80,80,0,1,0-1.67,114.78,8,8,0,0,1,11,11.63A95.44,95.44,0,0,1,128,224h-1.32A96,96,0,1,1,195.75,60L224,85.8V56a8,8,0,1,1,16,0Z"/></svg>
+        <div><h3>Recado para quem sumiu</h3><p>Quem pedia toda semana e parou há um mês recebe um recado simples. É o jeito mais barato de vender de novo para quem já gosta da casa.</p></div>
+      </article>
+      <article class="blk icon rv">
+        <svg width="20" height="20" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M224,200h-8V40a8,8,0,0,0-8-8H152a8,8,0,0,0-8,8V80H96a8,8,0,0,0-8,8v40H48a8,8,0,0,0-8,8v64H32a8,8,0,0,0,0,16H224a8,8,0,0,0,0-16ZM160,48h40V200H160ZM104,96h40V200H104ZM56,144H88v56H56Z"/></svg>
+        <div><h3>Resumo da semana no seu WhatsApp</h3><p>Toda segunda: quantos pedidos, qual lanche mais saiu e qual noite rendeu mais. Serve para decidir compra e escala sem depender da memória.</p></div>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <div class="sechead">
+      <p class="eyebrow rv">Dúvidas</p>
+      <h2 class="rv">O que costumam perguntar</h2>
+    </div>
+    <div class="faq rv">
+      <details><summary>Precisa instalar alguma coisa?<svg width="20" height="20" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary>
+        <p>Não. É uma página na internet, abre no navegador do celular. O cliente não baixa aplicativo e vocês não instalam nada.</p></details>
+      <details><summary>O número do WhatsApp muda?<svg width="20" height="20" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary>
+        <p>Continua o mesmo (12) 99676-7614. O pedido chega nele como uma mensagem comum, só que escrita e somada.</p></details>
+      <details><summary>Quem atualiza o cardápio e os preços?<svg width="20" height="20" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary>
+        <p>Vocês, por uma tela simples, sem mexer em código. Se preferirem, a gente atualiza quando mandarem a lista nova.</p></details>
+      <details><summary>Substitui o iFood?<svg width="20" height="20" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary>
+        <p>Não precisa substituir. Aqui não existe comissão por pedido e o cliente é de vocês. Muita casa usa os dois e manda este link para quem já é cliente.</p></details>
+      <details><summary>E se o cliente errar o pedido?<svg width="20" height="20" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary>
+        <p>A conversa continua sendo WhatsApp, então é só responder e acertar ali mesmo. A página organiza o pedido, não fecha a porta.</p></details>
+      <details><summary>Quanto tempo leva para ficar no ar?<svg width="20" height="20" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary>
+        <p>Esta demonstração saiu em um dia, só com o que já é público de vocês. Com o cardápio e as fotos em mãos, a versão de verdade sobe na mesma semana.</p></details>
+    </div>
+  </section>
+</div>
+
+<div class="final">
+  <div class="in">
+    <p class="eyebrow rv">Recado final, sem rodeio</p>
+    <h2 class="rv">Esta página é sua se quiser</h2>
+    <p class="lead rv">Montamos por conta própria, com o que já é público do Formigão, para mostrar na prática em vez de explicar por mensagem. Se fizer sentido, a gente termina com o cardápio e as fotos de vocês. Se não fizer, é só dizer e ela sai do ar hoje mesmo.</p>
+
+    <div class="pacote rv">
+      <h3>O que entra na versão de verdade</h3>
+      <ul>
+        <li><svg width="16" height="16" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span><b>O cardápio de vocês,</b> com lanches, adicionais e preços certos, e a tela para vocês mesmos alterarem.</span></li>
+        <li><svg width="16" height="16" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span><b>As fotos da casa e dos lanches</b> no lugar das ilustrativas. Estas aqui são de banco de imagem, e isso aparece.</span></li>
+        <li><svg width="16" height="16" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span><b>Endereço próprio na internet,</b> para colar na bio do Instagram, no cardápio impresso e na embalagem.</span></li>
+        <li><svg width="16" height="16" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span><b>O pedido caindo no (12) 99676-7614,</b> o mesmo número de hoje. Nada muda para quem já atende.</span></li>
+        <li><svg width="16" height="16" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span><b>Uma automação à escolha</b> da lista acima, já ligada na entrega.</span></li>
+      </ul>
+    </div>
+
+    <div class="passos rv">
+      <div><span class="n">01</span><span>Você responde no WhatsApp dizendo se faz sentido.</span></div>
+      <div><span class="n">02</span><span>A gente conversa quinze minutos para pegar cardápio, preços e fotos.</span></div>
+      <div><span class="n">03</span><span>Na mesma semana ela sobe no ar, e aí sim vocês decidem se querem manter.</span></div>
+    </div>
+
+    <div class="finalacts rv">
+      <a class="btn big" href="https://wa.me/5512991231603?text=Oi%20Matheus%2C%20sou%20do%20Formig%C3%A3o%20na%20Brasa.%20Vi%20a%20p%C3%A1gina%20que%20voc%C3%AAs%20montaram." target="_blank" rel="noopener">Responder no WhatsApp</a>
+      <a class="btn big ghost" href="https://www.high-development.com.br/" target="_blank" rel="noopener">Ver quem somos</a>
+    </div>
+    <p class="nota rv">Falar com a gente não custa nada e não gera compromisso. Se preferirem que a página saia do ar agora, basta pedir.</p>
+  </div>
+</div>
+</main>
+
+<div class="sig">
+  <div class="in">
+    <div class="g">
+      <div>
+        <h3>HIGH Development</h3>
+        <p>Matheus e Vinicius, de Cachoeira Paulista. Fazemos site e atendimento automático no WhatsApp para o comércio da região. A maior parte do nosso trabalho é com casas de eventos e negócios daqui e de Lorena. Somos dois: quem monta a página é quem responde você depois.</p>
+      </div>
+      <a class="btn ghost" href="https://www.high-development.com.br/" target="_blank" rel="noopener">high-development.com.br</a>
+    </div>
+  </div>
+</div>
+<footer>
+  <div class="links">
+    <a href="pedido.html">Fazer pedido</a>
+    <a href="#onde">Onde fica</a>
+    <a href="#proposta">Para o dono</a>
+  </div>
+  <small>
+    Demonstração sem vínculo oficial com o Formigão na Brasa. Feita pela HIGH Development em 2026.<br>
+    Fotos do Wikimedia Commons: Hambúrguer por Acabashi (CC BY-SA 4.0), fritas por 4028mdk09 (CC BY-SA 3.0), pizza por Kurt Kaiser (CC0), Canas por João546 (CC BY-SA 4.0), grelha por Leonardo Carvalho (CC BY-SA 2.5), lanche com fritas por Horacio Cambeiro (CC BY-SA 3.0).
+  </small>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("vis"); io.unobserve(e.target);} });
+  },{rootMargin:"0px 0px -10% 0px",threshold:0.1});
+  [].forEach.call(document.querySelectorAll(".rv"),function(el){ io.observe(el); });
+
+  var tag=document.getElementById("tag");
+  tag.innerHTML=tag.textContent.split(" ").map(function(w){return '<span class="w">'+w+'</span>';}).join(" ");
+  var pal=tag.querySelectorAll(".w");
+  var io2=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting) return;
+      var i=[].indexOf.call(pal,e.target);
+      window.setTimeout(function(){ e.target.classList.add("on"); }, i*45);
+      io2.unobserve(e.target);
+    });
+  },{rootMargin:"0px 0px -35% 0px",threshold:1});
+  [].forEach.call(pal,function(w){ io2.observe(w); });
+
+  var io3=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting) return;
+      document.querySelectorAll('.navlinks a[href^="#"]').forEach(function(a){
+        a.setAttribute("aria-current", a.getAttribute("href")==="#"+e.target.id ? "true":"false");
+      });
+    });
+  },{rootMargin:"-40% 0px -55% 0px"});
+  ["casa","destaques","onde","proposta"].forEach(function(id){
+    var el=document.getElementById(id); if(el) io3.observe(el);
+  });
+})();
+</script>

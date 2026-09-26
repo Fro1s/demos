@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="pt-BR">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Padaria Bella Primavera</title>
+<meta name="description" content="Padaria Bella Primavera, no Parque Primavera, em Cachoeira Paulista. Aberta desde as 6h. Encomende bolo e salgados pelo WhatsApp.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="estilo.css">
+<style>
+/* ---------- capa ---------- */
+.capa{position:relative;border-bottom:1px solid var(--line);display:grid;isolation:isolate}
+.capa img{grid-area:1/1;width:100%;height:100%;object-fit:cover;opacity:.55}
+.capa .sobre{grid-area:1/1;display:flex;align-items:flex-end;min-height:440px}
+@media(min-width:768px){.capa .sobre{min-height:520px}}
+@media(min-width:1280px){.capa .sobre{min-height:560px}}
+.capa .sobre > .in{max-width:1080px;margin:0 auto;padding:0 24px 48px;width:100%}
+.capa h1{font-size:30px;line-height:1.05;font-weight:700;letter-spacing:-.03em;
+  background:linear-gradient(90deg,#FFFFFF,#9B9B9B);
+  -webkit-background-clip:text;background-clip:text;color:transparent;max-width:14ch}
+@media(min-width:480px){.capa h1{font-size:40px;line-height:1}}
+@media(min-width:768px){.capa h1{font-size:60px}}
+.capa .lin{font-size:18px;line-height:28px;color:var(--tx2);margin-top:16px;max-width:680px}
+.capa .acts{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.capa::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,.85) 70%,#000 100%)}
+.capa .sobre{z-index:2}
+
+/* ---------- prova ---------- */
+.prova{border-bottom:1px solid var(--line);background:var(--warm)}
+.prova > .in{max-width:1080px;margin:0 auto;padding:24px;display:grid;gap:24px}
+@media(min-width:768px){.prova > .in{grid-template-columns:repeat(4,1fr)}}
+.prova div{display:grid;gap:4px}
+.prova .k{font-size:12px;line-height:16px;color:var(--tx3);letter-spacing:.16em;
+  text-transform:uppercase;font-weight:600}
+.prova .v{font-family:var(--mono);font-size:20px;line-height:28px;color:var(--tx)}
+.prova .v small{font-family:var(--sans);font-size:14px;line-height:20px;color:var(--tx2)}
+
+/* ---------- a casa ---------- */
+.casa{display:grid;gap:32px;margin-top:32px}
+@media(min-width:900px){.casa{grid-template-columns:1fr 1fr;align-items:center}}
+.casa p + p{margin-top:16px}
+.casa .foto{border:1px solid var(--line);border-radius:16px;overflow:hidden;margin:0}
+.casa .foto img{width:100%;height:auto;aspect-ratio:1200/480;object-fit:cover}
+.casa .foto figcaption{padding:12px 16px;font-size:12px;line-height:16px;color:var(--tx3);
+  background:var(--s1)}
+
+/* ---------- destaques ---------- */
+.pratos{display:grid;gap:16px;margin-top:32px}
+@media(min-width:768px){.pratos{grid-template-columns:repeat(3,1fr)}}
+.prato{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--s1);
+  margin:0;display:flex;flex-direction:column}
+.prato img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
+.prato figcaption{padding:24px;flex:1}
+.prato h3{font-size:20px;line-height:28px}
+.prato p{font-size:14px;line-height:20px;color:var(--tx2);margin-top:8px}
+.prato .nota{font-size:12px;line-height:16px;color:var(--tx3);margin-top:12px}
+
+/* ---------- onde ---------- */
+.onde{display:grid;gap:24px;margin-top:32px}
+@media(min-width:900px){.onde{grid-template-columns:1fr 1fr;align-items:center}}
+.ondeimg{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--s1);margin:0}
+.ondeimg img{width:100%;height:auto;aspect-ratio:900/558;object-fit:cover}
+.onde > *{min-width:0}
+.ondecard dl{margin-top:24px;display:grid;grid-template-columns:1fr;gap:4px;
+  font-size:14px;line-height:20px}
+.ondecard dt{color:var(--tx3)}
+.ondecard dd{margin:0;font-family:var(--mono);color:var(--tx2);min-width:0}
+.ondecard dd + dt{margin-top:12px}
+@media(min-width:480px){
+  .ondecard dl{grid-template-columns:auto 1fr;gap:12px 24px}
+  .ondecard dd{text-align:right}
+  .ondecard dd + dt{margin-top:0}
+}
+
+/* ---------- faixa de pedido ---------- */
+.faixa{margin-top:96px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  background:var(--warm)}
+.faixa > .in{max-width:760px;margin:0 auto;padding:80px 24px;text-align:center}
+.faixa h2{margin-top:16px}
+.faixa p{font-size:18px;line-height:28px;color:var(--tx2);margin-top:16px}
+.faixa .acts{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:32px}
+
+/* ---------- proposta ---------- */
+.corte{margin-top:96px;padding:24px 0;border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);background:var(--s1)}
+.corte > .in{max-width:1080px;margin:0 auto;padding:0 24px;display:flex;align-items:center;
+  gap:16px;flex-wrap:wrap;justify-content:space-between}
+.corte p{font-size:14px;line-height:20px;color:var(--tx2);max-width:680px}
+.corte b{color:var(--amber);font-weight:600}
+.final > .in{max-width:760px;margin:0 auto;padding:80px 24px}
+.final h2{margin-top:16px}
+.final .lead{font-size:18px;line-height:28px;color:var(--tx2);margin-top:16px}
+.pacote{background:var(--s1);border:1px solid var(--line);border-radius:16px;padding:24px;
+  margin-top:32px}
+.pacote h3{font-size:16px;line-height:24px}
+.pacote ul{list-style:none;margin-top:16px;padding:0;display:grid;gap:12px}
+.pacote li{display:flex;gap:12px;align-items:flex-start;font-size:14px;line-height:20px;
+  color:var(--tx2)}
+.pacote li svg{flex:0 0 auto;color:var(--ok);margin-top:2px}
+.pacote li b{color:var(--tx);font-weight:600}
+.passos{display:grid;gap:12px;margin-top:32px}
+.passos div{display:flex;gap:12px;align-items:flex-start;font-size:16px;line-height:24px;
+  color:var(--tx2)}
+.passos .n{font-family:var(--mono);font-size:14px;line-height:24px;color:var(--amber);flex:0 0 auto}
+.finalacts{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.nota{font-size:14px;line-height:20px;color:var(--tx3);margin-top:24px}
+
+.faq{margin-top:32px;border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;padding:24px 0;font-size:16px;line-height:24px;
+  font-weight:600;display:flex;justify-content:space-between;gap:16px;align-items:center;
+  transition:color 700ms var(--ease)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:hover{color:var(--amber)}
+.faq summary svg{flex:0 0 auto;color:var(--tx3);transition:transform 700ms var(--ease)}
+.faq details[open] summary svg{transform:rotate(45deg)}
+.faq p{margin-bottom:24px;font-size:16px;line-height:24px;color:var(--tx2);max-width:680px}
+
+/* ---------- gerador ---------- */
+.lead-p{font-size:18px;line-height:28px;color:var(--tx2)}
+.cardp{font-size:16px;line-height:24px;color:var(--tx2);margin-top:12px}
+.fonte{font-size:12px;line-height:16px;color:var(--tx3);margin-top:16px}
+.prova .v.peq{font-size:14px;line-height:28px}
+.onde.so{grid-template-columns:1fr}
+.onde.so .ondecard{max-width:680px}
+.faixa + .corte{margin-top:0;border-top:0}
+</style>
+<a class="skip" href="#casa">Ir para o conteúdo</a>
+
+<div class="flag">
+  <b>Demonstração</b> feita pela HIGH Development para a Padaria Bella Primavera. Não é a página oficial.
+  Endereço, WhatsApp, Facebook, horário e nota do Google são reais. Produtos, valores e fotos são exemplo.
+</div>
+
+<nav>
+  <div class="navin">
+    <div class="navtop">
+      <a class="brand" href="index.html"><svg width="20" height="20" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M240,80a40,40,0,0,0-40-40H48a40,40,0,0,0-16,76.65V200a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V116.65A40.06,40.06,0,0,0,240,80ZM48,120a8,8,0,0,0,0-16,24,24,0,0,1,0-48h96a24,24,0,0,1,0,48,8,8,0,0,0,0,16v80H48Zm152-16a8,8,0,0,0,0,16v80H160V116.65A40,40,0,0,0,176,56h24a24,24,0,0,1,0,48Z"/></svg>
+        <span class="bl">Padaria Bella Primavera</span><span class="bs">Bella Primavera</span></a>
+      <a class="btn sm" href="encomenda.html">Fazer encomenda</a>
+    </div>
+    <div class="navlinks">
+      <a href="index.html" aria-current="page">Início</a>
+      <a href="#casa">A casa</a>
+      <a href="#destaques">Na vitrine</a>
+      <a href="#onde">Onde fica</a>
+      <a href="#proposta">Para o dono</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+<div class="capa">
+  <img src="paes.webp" width="1400" height="788" alt="Pães franceses recém-saídos do forno na vitrine da padaria" loading="eager">
+  <div class="sobre">
+    <div class="in">
+      <p class="eyebrow">Parque Primavera · Cachoeira Paulista</p>
+      <h1>Pão quente às seis, café e empada de palmito</h1>
+      <p class="lin">Aberta de segunda a sábado desde as seis da manhã. Quem passa cedo costuma sair falando do café e do atendimento dos próprios donos.</p>
+      <div class="acts">
+        <a class="btn big" href="encomenda.html">Fazer encomenda</a>
+        <a class="btn big ghost" href="#onde">Ver onde fica</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="prova">
+  <div class="in">
+    <div><span class="k">Nota no Google</span><span class="v">4,6 <small>com 197 avaliações</small></span></div>
+    <div><span class="k">Horário</span><span class="v">Abre às 6h <small>de segunda a sábado</small></span></div>
+    <div><span class="k">WhatsApp</span><span class="v">(12) 99658-6593</span></div>
+    <div><span class="k">No Facebook</span><span class="v peq">/padariabellaprimavera</span></div>
+  </div>
+</div>
+
+<div class="wrap">
+  <section id="casa">
+    <div class="sechead">
+      <p class="eyebrow rv">A casa</p>
+      <h2 class="rv">Tudo fresquinho, feito na hora</h2>
+    </div>
+    <div class="casa">
+      <div class="rv">
+        <p class="lead-p">É o que mais se repete nas avaliações da Bella Primavera: produto fresco e preparado na hora. Teve quem parou bem cedinho só para o café da manhã e chamou a padaria de uma bela surpresa em Cachoeira.</p>
+        <p class="lead-p">E tem os favoritos de quem já é cliente: a empada de palmito, o queijo quente e o lanche. O atendimento, segundo quem avalia, é feito pelos próprios donos, e é cordial.</p>
+      </div>
+      <figure class="foto rv">
+        <img src="cafe-manha.webp" width="1200" height="480" alt="Chá, pão na chapa e queijo minas servidos no café da manhã" loading="lazy" style="object-position:50% 88%">
+        <figcaption>Foto ilustrativa. As fotos reais da casa entram no lugar.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="destaques">
+    <div class="sechead">
+      <p class="eyebrow rv">Na vitrine</p>
+      <h2 class="rv">O que os clientes citam</h2>
+      <p class="secsub rv">Os três aparecem nas avaliações do Google. Bolo e salgados para festa, com valores de exemplo, estão na página de encomenda.</p>
+    </div>
+    <div class="pratos">
+      <figure class="prato rv">
+        <img src="empada.webp" width="720" height="540" alt="Empada de palmito dourada numa forminha de papel" loading="lazy">
+        <figcaption>
+          <h3>Empada de palmito</h3>
+          <p>A que um cliente disse não ter defeito nenhum para comentar.</p>
+          <p class="nota">Foto ilustrativa</p>
+        </figcaption>
+      </figure>
+      <figure class="prato rv">
+        <img src="pao-chapa.webp" width="720" height="540" alt="Pão na chapa com manteiga derretida no prato" loading="lazy">
+        <figcaption>
+          <h3>Queijo quente</h3>
+          <p>Na chapa, com o pão da casa. Aparece nas avaliações como maravilhoso.</p>
+          <p class="nota">Foto ilustrativa</p>
+        </figcaption>
+      </figure>
+      <figure class="prato rv">
+        <img src="coxinha.webp" width="720" height="540" alt="Coxinha dourada sobre guardanapo" loading="lazy">
+        <figcaption>
+          <h3>Salgados</h3>
+          <p>Para o lanche da tarde ou, por cento, para a festa do fim de semana.</p>
+          <p class="nota">Foto ilustrativa</p>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+</div>
+
+<div class="wrap tagline">
+  <p id="tag">Você escolhe o bolo, os salgados e o dia de buscar. A padaria recebe a encomenda escrita e somada, sem recado anotado às pressas no balcão.</p>
+</div>
+
+<div class="wrap">
+  <section id="onde">
+    <div class="sechead">
+      <p class="eyebrow rv">Onde fica</p>
+      <h2 class="rv">R. José da Silveira Mendes, 20</h2>
+      <p class="secsub rv">No Parque Primavera, em Cachoeira Paulista.</p>
+    </div>
+    <div class="onde">
+      <figure class="ondeimg rv">
+        <img src="city.webp" width="900" height="600" alt="Vista da cidade de Cachoeira Paulista com os morros ao fundo" loading="lazy">
+      </figure>
+      <div class="blk ondecard rv">
+        <h3>Como falar com a casa</h3>
+        <p class="cardp">Encomenda, dúvida e pedido pelo mesmo WhatsApp.</p>
+        <dl>
+          <dt>WhatsApp</dt><dd>(12) 99658-6593</dd>
+          <dt>Facebook</dt><dd>/padariabellaprimavera</dd>
+          <dt>Endereço</dt><dd>R. José da Silveira Mendes, 20 · Parque Primavera</dd>
+          <dt>seg a sáb</dt><dd>6h–20h</dd>
+          <dt>dom</dt><dd>6h–12h</dd>
+        </dl>
+        <p class="fonte">Endereço, contato e horário como estão no Google hoje.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="faixa">
+  <div class="in">
+    <p class="eyebrow rv">Festa, reunião ou café da empresa</p>
+    <h2 class="rv">Encomende sem precisar ligar</h2>
+    <p class="rv">Monte o bolo, escolha o cento dos salgados, marque o dia e o horário de buscar e confira o total antes de enviar.</p>
+    <div class="acts rv">
+      <a class="btn big" href="encomenda.html">Fazer encomenda</a>
+      <a class="btn big ghost" href="https://wa.me/5512996586593" target="_blank" rel="noopener">Chamar no WhatsApp</a>
+    </div>
+  </div>
+</div>
+
+<div class="corte">
+  <div class="in">
+    <p><b>Daqui para baixo é recado para quem toca a Padaria Bella Primavera.</b> O que está acima é a página como o cliente veria. O que vem agora é a proposta da HIGH Development.</p>
+    <a class="btn sm ghost" href="#proposta">Ler a proposta</a>
+  </div>
+</div>
+
+<div class="wrap">
+  <section id="proposta" style="padding-top:96px">
+    <div class="sechead">
+      <p class="eyebrow rv">Além da encomenda</p>
+      <h2 class="rv">O que mais dá para ligar aqui</h2>
+      <p class="secsub rv">Tudo roda no mesmo WhatsApp de hoje. Não precisa ser tudo de uma vez: cada item resolve uma dor diferente do balcão.</p>
+    </div>
+    <div class="cols2">
+      <article class="blk icon rv">
+        <svg width="20" height="20" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M221.8,175.94C216.25,166.38,208,139.33,208,104a80,80,0,1,0-160,0c0,35.34-8.26,62.38-13.81,71.94A16,16,0,0,0,48,200H88.81a40,40,0,0,0,78.38,0H208a16,16,0,0,0,13.8-24.06ZM128,216a24,24,0,0,1-22.62-16h45.24A24,24,0,0,1,128,216ZM48,184c7.7-13.24,16-43.92,16-80a64,64,0,1,1,128,0c0,36.05,8.28,66.73,16,80Z"/></svg>
+        <div><h3>Aviso de fornada</h3><p>Saiu pão às quatro da tarde? Quem pediu para ser avisado recebe a mensagem. O pão da tarde para de sobrar e o cliente para de chegar quando já acabou.</p></div>
+      </article>
+      <article class="blk icon rv">
+        <svg width="20" height="20" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM72,48v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V80H48V48ZM208,208H48V96H208V208Zm-38.34-85.66a8,8,0,0,1,0,11.32l-48,48a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L116,164.69l42.34-42.35A8,8,0,0,1,169.66,122.34Z"/></svg>
+        <div><h3>Encomenda com sinal pelo Pix</h3><p>A encomenda de festa só entra na produção com o sinal pago. Acaba o bolo de três quilos que ninguém veio buscar.</p></div>
+      </article>
+      <article class="blk icon rv">
+        <svg width="20" height="20" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm64-88a8,8,0,0,1-8,8H128a8,8,0,0,1-8-8V72a8,8,0,0,1,16,0v48h48A8,8,0,0,1,192,128Z"/></svg>
+        <div><h3>Lembrete na véspera da retirada</h3><p>Um dia antes, o cliente recebe o horário e o endereço. A padaria recebe a lista do que sai no dia seguinte, em ordem de horário.</p></div>
+      </article>
+      <article class="blk icon rv">
+        <svg width="20" height="20" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M240,56v48a8,8,0,0,1-8,8H184a8,8,0,0,1,0-16H211.4L184.81,71.64l-.25-.24a80,80,0,1,0-1.67,114.78,8,8,0,0,1,11,11.63A95.44,95.44,0,0,1,128,224h-1.32A96,96,0,1,1,195.75,60L224,85.8V56a8,8,0,1,1,16,0Z"/></svg>
+        <div><h3>Pedido repetido em um toque</h3><p>Quem compra o café da reunião toda semana responde &quot;o mesmo&quot; e pronto. Serve para empresa, igreja e escola do bairro.</p></div>
+      </article>
+      <article class="blk icon rv">
+        <svg width="20" height="20" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M239.18,97.26A16.38,16.38,0,0,0,224.92,86l-59-4.76L143.14,26.15a16.36,16.36,0,0,0-30.27,0L90.11,81.23,31.08,86a16.46,16.46,0,0,0-9.37,28.86l45,38.83L53,211.75a16.38,16.38,0,0,0,24.5,17.82L128,198.49l50.53,31.08A16.4,16.4,0,0,0,203,211.75l-13.76-58.07,45-38.83A16.43,16.43,0,0,0,239.18,97.26Zm-15.34,5.47-48.7,42a8,8,0,0,0-2.56,7.91l14.88,62.8a.37.37,0,0,1-.17.48c-.18.14-.23.11-.38,0l-54.72-33.65a8,8,0,0,0-8.38,0L69.09,215.94c-.15.09-.19.12-.38,0a.37.37,0,0,1-.17-.48l14.88-62.8a8,8,0,0,0-2.56-7.91l-48.7-42c-.12-.1-.23-.19-.13-.5s.18-.27.33-.29l63.92-5.16A8,8,0,0,0,103,91.86l24.62-59.61c.08-.17.11-.25.35-.25s.27.08.35.25L153,91.86a8,8,0,0,0,6.75,4.92l63.92,5.16c.15,0,.24,0,.33.29S224,102.63,223.84,102.73Z"/></svg>
+        <div><h3>Convite para avaliar no Google</h3><p>Depois da retirada sai o convite. Com 4,6 e 197 avaliações, cada nova ajuda quem procura padaria em Cachoeira a encontrar vocês.</p></div>
+      </article>
+      <article class="blk icon rv">
+        <svg width="20" height="20" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M224,200h-8V40a8,8,0,0,0-8-8H152a8,8,0,0,0-8,8V80H96a8,8,0,0,0-8,8v40H48a8,8,0,0,0-8,8v64H32a8,8,0,0,0,0,16H224a8,8,0,0,0,0-16ZM160,48h40V200H160ZM104,96h40V200H104ZM56,144H88v56H56Z"/></svg>
+        <div><h3>Resumo da semana no seu WhatsApp</h3><p>Toda segunda: quanto saiu de encomenda, qual salgado mais vende e o que já está marcado para a semana. Ajuda a comprar farinha e recheio na medida.</p></div>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <div class="sechead">
+      <p class="eyebrow rv">Dúvidas</p>
+      <h2 class="rv">O que costumam perguntar</h2>
+    </div>
+    <div class="faq rv">
+      <details><summary>Precisa instalar alguma coisa?<svg width="20" height="20" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary>
+        <p>Não. É uma página na internet, abre no navegador do celular. O cliente não baixa aplicativo e vocês não instalam nada.</p></details>
+      <details><summary>O número do WhatsApp muda?<svg width="20" height="20" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary>
+        <p>Continua o mesmo (12) 99658-6593. A encomenda chega nele como uma mensagem comum, só que escrita, somada e com o dia de retirada.</p></details>
+      <details><summary>E se não der para fazer no dia pedido?<svg width="20" height="20" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary>
+        <p>Vocês respondem pelo WhatsApp e combinam outro dia. Nada é confirmado sozinho: a página organiza o pedido, quem decide é a padaria.</p></details>
+      <details><summary>Dá para mudar produtos e preços?<svg width="20" height="20" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary>
+        <p>Sim, por uma tela simples, sem mexer em código. Tirar um sabor que acabou leva dois toques.</p></details>
+      <details><summary>Serve para o dia a dia ou só para festa?<svg width="20" height="20" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary>
+        <p>Para os dois. O café da reunião e o pão para o fim de semana entram do mesmo jeito que o bolo de aniversário.</p></details>
+      <details><summary>Quanto tempo leva para ficar no ar?<svg width="20" height="20" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary>
+        <p>Esta demonstração saiu em um dia, só com o que já é público de vocês. Com os produtos e as fotos em mãos, a versão de verdade sobe na mesma semana.</p></details>
+    </div>
+  </section>
+</div>
+
+<div class="final">
+  <div class="in">
+    <p class="eyebrow rv">Recado final, sem rodeio</p>
+    <h2 class="rv">Esta página é sua se quiser</h2>
+    <p class="lead rv">Montamos por conta própria, com o que já é público da Bella Primavera, para mostrar na prática em vez de explicar por mensagem. Se fizer sentido, a gente termina com os produtos e as fotos de vocês. Se não fizer, é só dizer e ela sai do ar hoje mesmo.</p>
+
+    <div class="pacote rv">
+      <h3>O que entra na versão de verdade</h3>
+      <ul>
+        <li><svg width="16" height="16" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span><b>Os produtos de vocês,</b> com os bolos, salgados e preços certos, e a tela para vocês mesmos alterarem.</span></li>
+        <li><svg width="16" height="16" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span><b>As fotos da vitrine e dos salgados</b> no lugar das ilustrativas. Estas aqui são de banco de imagem, e isso aparece.</span></li>
+        <li><svg width="16" height="16" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span><b>Endereço próprio na internet,</b> para colocar no Facebook, na sacola de pão e no cartão da encomenda.</span></li>
+        <li><svg width="16" height="16" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span><b>A encomenda caindo no (12) 99658-6593,</b> o mesmo número de hoje. Nada muda para quem atende o balcão.</span></li>
+        <li><svg width="16" height="16" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span><b>Uma automação à escolha</b> da lista acima, já ligada na entrega.</span></li>
+      </ul>
+    </div>
+
+    <div class="passos rv">
+      <div><span class="n">01</span><span>Você responde no WhatsApp dizendo se faz sentido.</span></div>
+      <div><span class="n">02</span><span>A gente conversa quinze minutos para pegar produtos, preços e fotos.</span></div>
+      <div><span class="n">03</span><span>Na mesma semana ela sobe no ar, e aí sim vocês decidem se querem manter.</span></div>
+    </div>
+
+    <div class="finalacts rv">
+      <a class="btn big" href="https://wa.me/5512991231603?text=Oi%20Matheus%2C%20sou%20do%20Padaria%20Bella%20Primavera.%20Vi%20a%20p%C3%A1gina%20que%20voc%C3%AAs%20montaram." target="_blank" rel="noopener">Responder no WhatsApp</a>
+      <a class="btn big ghost" href="https://www.high-development.com.br/" target="_blank" rel="noopener">Ver quem somos</a>
+    </div>
+    <p class="nota rv">Falar com a gente não custa nada e não gera compromisso. Se preferirem que a página saia do ar agora, basta pedir.</p>
+  </div>
+</div>
+</main>
+
+<div class="sig">
+  <div class="in">
+    <div class="g">
+      <div>
+        <h3>HIGH Development</h3>
+        <p>Matheus e Vinicius, de Cachoeira Paulista. Fazemos site e atendimento automático no WhatsApp para o comércio da região. A maior parte do nosso trabalho é com casas de eventos e negócios daqui e de Lorena. Somos dois: quem monta a página é quem responde você depois.</p>
+      </div>
+      <a class="btn ghost" href="https://www.high-development.com.br/" target="_blank" rel="noopener">high-development.com.br</a>
+    </div>
+  </div>
+</div>
+<footer>
+  <div class="links">
+    <a href="encomenda.html">Fazer encomenda</a>
+    <a href="#onde">Onde fica</a>
+    <a href="#proposta">Para o dono</a>
+  </div>
+  <small>
+    Demonstração sem vínculo oficial com a Padaria Bella Primavera. Feita pela HIGH Development em 2026.<br>
+    Fotos do Wikimedia Commons: Empada por Melsj (CC0), pão na chapa por Melsj (CC0), coxinha por Sintegrity (CC BY-SA 4.0), Cachoeira Paulista por HVL (CC BY 3.0), pão francês por Gabriel Del Cima (CC BY-SA 4.0), café com pão na chapa por Sintegrity (CC BY-SA 4.0).
+  </small>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("vis"); io.unobserve(e.target);} });
+  },{rootMargin:"0px 0px -10% 0px",threshold:0.1});
+  [].forEach.call(document.querySelectorAll(".rv"),function(el){ io.observe(el); });
+
+  var tag=document.getElementById("tag");
+  tag.innerHTML=tag.textContent.split(" ").map(function(w){return '<span class="w">'+w+'</span>';}).join(" ");
+  var pal=tag.querySelectorAll(".w");
+  var io2=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting) return;
+      var i=[].indexOf.call(pal,e.target);
+      window.setTimeout(function(){ e.target.classList.add("on"); }, i*45);
+      io2.unobserve(e.target);
+    });
+  },{rootMargin:"0px 0px -35% 0px",threshold:1});
+  [].forEach.call(pal,function(w){ io2.observe(w); });
+
+  var io3=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting) return;
+      document.querySelectorAll('.navlinks a[href^="#"]').forEach(function(a){
+        a.setAttribute("aria-current", a.getAttribute("href")==="#"+e.target.id ? "true":"false");
+      });
+    });
+  },{rootMargin:"-40% 0px -55% 0px"});
+  ["casa","destaques","onde","proposta"].forEach(function(id){
+    var el=document.getElementById(id); if(el) io3.observe(el);
+  });
+})();
+</script>
