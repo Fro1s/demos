@@ -2,149 +2,171 @@
 <html lang="pt-BR">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Formigão na Brasa</title>
-<meta name="description" content="Formigão na Brasa, no bairro São João, em Canas. Lanche, porção e pizza. Monte o pedido e mande pelo WhatsApp.">
+<title>Formigão · café de dia, brasa de noite</title>
+<meta name="description" content="Formigão, no bairro São João, em Canas. Formigão Café de segunda a sábado de manhã, Formigão na Brasa de sexta a domingo à noite.">
 <meta name="robots" content="noindex, nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="estilo.css">
 <style>
-/* ---------- capa ---------- */
-.capa{position:relative;border-bottom:1px solid var(--line);display:grid;isolation:isolate}
-.capa img{grid-area:1/1;width:100%;height:100%;object-fit:cover;opacity:.55}
-.capa .sobre{grid-area:1/1;display:flex;align-items:flex-end;min-height:440px}
-@media(min-width:768px){.capa .sobre{min-height:520px}}
-@media(min-width:1280px){.capa .sobre{min-height:560px}}
-.capa .sobre > .in{max-width:1080px;margin:0 auto;padding:0 24px 48px;width:100%}
-.capa h1{font-size:30px;line-height:1.05;font-weight:700;letter-spacing:-.03em;
-  background:linear-gradient(90deg,#FFFFFF,#9B9B9B);
-  -webkit-background-clip:text;background-clip:text;color:transparent;max-width:14ch}
-@media(min-width:480px){.capa h1{font-size:40px;line-height:1}}
-@media(min-width:768px){.capa h1{font-size:60px}}
-.capa .lin{font-size:18px;line-height:28px;color:var(--tx2);margin-top:16px;max-width:680px}
-.capa .acts{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
-.capa::after{content:"";position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,.85) 70%,#000 100%)}
-.capa .sobre{z-index:2}
+/* ---------- herói ---------- */
+.heroi{padding-top:56px}
+.heroi .g{display:grid;gap:48px;align-items:center}
+@media(min-width:960px){.heroi .g{grid-template-columns:1fr 420px;gap:64px}}
+.agora{display:grid;gap:8px}
+.agora p{display:flex;align-items:center;gap:10px;font-size:14px;line-height:20px;color:var(--tx2);font-weight:600}
+.agora i{width:8px;height:8px;border-radius:50%;background:var(--tx3);flex:0 0 auto}
+.agora p[data-on="1"] i{background:var(--ok);box-shadow:0 0 0 4px rgba(91,200,115,.15)}
+.agora p[data-on="1"]{color:var(--tx)}
+.heroi h1{font-size:44px;line-height:1;font-weight:800;letter-spacing:-.035em;margin-top:24px}
+.heroi h1 .cafe{color:var(--cafe)}
+@media(min-width:768px){.heroi h1{font-size:72px;line-height:.98}}
+.heroi .lin{font-size:18px;line-height:28px;color:var(--tx2);margin-top:24px;max-width:36ch}
+.heroi .acts{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.duas{position:relative;height:500px;max-width:420px;width:100%;margin:0 auto}
+.story{position:absolute;margin:0;width:62%;aspect-ratio:9/16;border-radius:22px;overflow:hidden;border:1px solid var(--line);background:var(--s1);
+  box-shadow:0 24px 60px rgba(0,0,0,.55)}
+.story img{width:100%;height:100%;object-fit:cover}
+.story figcaption{position:absolute;left:10px;right:10px;bottom:10px;padding:8px 12px;border-radius:10px;background:rgba(13,9,7,.82);
+  font-size:12px;line-height:16px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.story.dia{left:0;top:0;transform:rotate(-4deg)}
+.story.dia figcaption{color:var(--cafe)}
+.story.noite{right:0;bottom:0;transform:rotate(3deg)}
+.story.noite figcaption{color:var(--amber2)}
+@media(max-width:480px){.duas{height:420px}}
+.prova{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:56px;padding-top:24px;border-top:1px solid var(--line)}
+@media(min-width:768px){.prova{grid-template-columns:repeat(4,1fr)}}
+.prova .k{font-size:12px;line-height:16px;color:var(--tx3);letter-spacing:.14em;text-transform:uppercase;font-weight:700}
+.prova .v{font-family:var(--mono);font-size:18px;line-height:28px;margin-top:4px}
+.prova .v small{font-family:var(--sans);font-size:13px;color:var(--tx2)}
+.prova .l2{grid-column:1/-1}
+@media(min-width:768px){.prova .l2{grid-column:auto}}
 
-/* ---------- prova ---------- */
-.prova{border-bottom:1px solid var(--line);background:var(--warm)}
-.prova > .in{max-width:1080px;margin:0 auto;padding:24px;display:grid;gap:24px}
-@media(min-width:768px){.prova > .in{grid-template-columns:repeat(4,1fr)}}
-.prova div{display:grid;gap:4px}
-.prova .k{font-size:12px;line-height:16px;color:var(--tx3);letter-spacing:.16em;
-  text-transform:uppercase;font-weight:600}
-.prova .v{font-family:var(--mono);font-size:20px;line-height:28px;color:var(--tx)}
-.prova .v small{font-family:var(--sans);font-size:14px;line-height:20px;color:var(--tx2)}
+/* ---------- duas casas ---------- */
+.casas{display:grid;gap:16px;margin-top:32px}
+@media(min-width:900px){.casas{grid-template-columns:1fr 1fr}}
+.casa{border-radius:22px;border:1px solid var(--line);overflow:hidden;display:grid;background:var(--s1)}
+@media(min-width:560px){.casa{grid-template-columns:180px 1fr}}
+.casa img{width:100%;aspect-ratio:4/3;object-fit:cover}
+@media(min-width:560px){.casa img{height:100%;aspect-ratio:auto;min-height:240px}}
+.casa .t{padding:24px}
+.casa .k{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:800}
+.casa.c1 .k{color:var(--cafe)}
+.casa.c2 .k{color:var(--amber2)}
+.casa h3{font-size:24px;line-height:30px;font-weight:800;margin-top:8px}
+.casa .hr{font-family:var(--mono);font-size:14px;color:var(--tx);margin-top:10px}
+.casa p.d{font-size:14px;line-height:21px;color:var(--tx2);margin-top:12px}
+.casa ul{list-style:none;padding:0;margin:14px 0 0;display:flex;flex-wrap:wrap;gap:6px}
+.casa li{font-size:12px;line-height:16px;padding:6px 10px;border-radius:99px;background:var(--s3);color:var(--tx2)}
 
-/* ---------- a casa ---------- */
-.casa{display:grid;gap:32px;margin-top:32px}
-@media(min-width:900px){.casa{grid-template-columns:1fr 1fr;align-items:center}}
-.casa p + p{margin-top:16px}
-.casa .foto{border:1px solid var(--line);border-radius:16px;overflow:hidden;margin:0}
-.casa .foto img{width:100%;height:auto;aspect-ratio:1200/480;object-fit:cover}
-.casa .foto figcaption{padding:12px 16px;font-size:12px;line-height:16px;color:var(--tx3);
-  background:var(--s1)}
+/* ---------- escada de formigas ---------- */
+.escada{margin-top:32px;background:var(--s1);border:1px solid var(--line);border-radius:22px;padding:8px 24px}
+.degrau{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 16px;padding:16px 0;border-bottom:1px solid var(--line);align-items:center}
+.degrau:last-child{border-bottom:0}
+.degrau h3{font-size:17px;line-height:24px;font-weight:800}
+.degrau .p{font-family:var(--mono);font-size:16px;color:var(--amber2);white-space:nowrap}
+.degrau .d{grid-column:1/-1;font-size:13px;line-height:19px;color:var(--tx3)}
+.degrau .barra{grid-column:1/-1;height:6px;border-radius:99px;background:var(--s3);overflow:hidden;margin-top:6px}
+.degrau .barra i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--fogo1),var(--fogo2),var(--fogo3));
+  width:0;transition:width 1200ms var(--ease)}
+.escada.vis .barra i{width:var(--w)}
+.fonte{font-size:13px;line-height:18px;color:var(--tx3);margin-top:16px}
 
-/* ---------- destaques ---------- */
-.pratos{display:grid;gap:16px;margin-top:32px}
-@media(min-width:768px){.pratos{grid-template-columns:repeat(3,1fr)}}
-.prato{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--s1);
-  margin:0;display:flex;flex-direction:column}
-.prato img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
-.prato figcaption{padding:24px;flex:1}
-.prato h3{font-size:20px;line-height:28px}
-.prato p{font-size:14px;line-height:20px;color:var(--tx2);margin-top:8px}
-.prato .nota{font-size:12px;line-height:16px;color:var(--tx3);margin-top:12px}
+/* ---------- galeria ---------- */
+.galeria{display:grid;grid-auto-flow:column;grid-auto-columns:200px;gap:12px;margin-top:32px;overflow-x:auto;padding-bottom:8px;scroll-snap-type:x mandatory}
+@media(min-width:1024px){.galeria{grid-auto-flow:row;grid-template-columns:repeat(5,1fr);overflow:visible}}
+.galeria figure{margin:0;aspect-ratio:9/16;border-radius:18px;overflow:hidden;border:1px solid var(--line);scroll-snap-align:start}
+.galeria img{width:100%;height:100%;object-fit:cover}
+
+/* ---------- avaliações ---------- */
+.falas{display:grid;gap:16px;margin-top:32px}
+@media(min-width:768px){.falas{grid-template-columns:repeat(3,1fr)}}
+.fala{margin:0;border-radius:20px;padding:24px;background:var(--s2);display:flex;flex-direction:column;gap:16px}
+.fala blockquote{margin:0;font-size:19px;line-height:28px;font-weight:700}
+.fala figcaption{font-size:13px;color:var(--tx3);display:flex;gap:6px;align-items:center}
+.fala figcaption svg{color:var(--amber)}
 
 /* ---------- onde ---------- */
-.onde{display:grid;gap:24px;margin-top:32px}
-@media(min-width:900px){.onde{grid-template-columns:1fr 1fr;align-items:center}}
-.ondeimg{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--s1);margin:0}
-.ondeimg img{width:100%;height:auto;aspect-ratio:900/558;object-fit:cover}
-.onde > *{min-width:0}
-.ondecard dl{margin-top:24px;display:grid;grid-template-columns:1fr;gap:4px;
-  font-size:14px;line-height:20px}
-.ondecard dt{color:var(--tx3)}
-.ondecard dd{margin:0;font-family:var(--mono);color:var(--tx2);min-width:0}
-.ondecard dd + dt{margin-top:12px}
-@media(min-width:480px){
-  .ondecard dl{grid-template-columns:auto 1fr;gap:12px 24px}
-  .ondecard dd{text-align:right}
-  .ondecard dd + dt{margin-top:0}
-}
+.ondebox{margin-top:32px;display:grid;gap:24px;background:var(--s1);border:1px solid var(--line);border-radius:22px;padding:24px}
+@media(min-width:900px){.ondebox{grid-template-columns:1.2fr 1fr;padding:32px}}
+.ondebox dl{margin:0;display:grid;grid-template-columns:1fr;gap:4px;font-size:15px;line-height:22px}
+.ondebox dt{color:var(--tx3);font-size:13px}
+.ondebox dd{margin:0 0 12px}
+.semana{display:grid;gap:8px}
+.semana div{display:grid;grid-template-columns:48px 1fr 1fr;gap:8px;font-size:13px;align-items:center}
+.semana span{font-family:var(--mono);color:var(--tx3)}
+.semana b{font-weight:600;font-size:12px;padding:6px 8px;border-radius:8px;text-align:center}
+.semana b.c{background:rgba(233,201,162,.12);color:var(--cafe)}
+.semana b.n{background:rgba(240,122,36,.14);color:var(--amber2)}
+.semana b.x{background:transparent;color:var(--tx3);border:1px dashed var(--line)}
+.semana div.hoje span{color:var(--tx)}
+.ondebox .acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
 
-/* ---------- faixa de pedido ---------- */
-.faixa{margin-top:96px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
-  background:var(--warm)}
-.faixa > .in{max-width:760px;margin:0 auto;padding:80px 24px;text-align:center}
-.faixa h2{margin-top:16px}
-.faixa p{font-size:18px;line-height:28px;color:var(--tx2);margin-top:16px}
-.faixa .acts{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:32px}
+/* ---------- faixa ---------- */
+.faixa{margin-top:96px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--warm)}
+.faixa > .in{max-width:1080px;margin:0 auto;padding:64px 24px;display:grid;gap:24px;align-items:center}
+@media(min-width:900px){.faixa > .in{grid-template-columns:1fr auto}}
+.faixa h2{margin-top:0}
+.faixa p{color:var(--tx2);margin-top:12px;font-size:17px;line-height:26px;max-width:560px}
+.faixa .acts{display:flex;flex-wrap:wrap;gap:12px}
 
 /* ---------- proposta ---------- */
-.corte{margin-top:96px;padding:24px 0;border-top:1px solid var(--line);
-  border-bottom:1px solid var(--line);background:var(--s1)}
-.corte > .in{max-width:1080px;margin:0 auto;padding:0 24px;display:flex;align-items:center;
-  gap:16px;flex-wrap:wrap;justify-content:space-between}
-.corte p{font-size:14px;line-height:20px;color:var(--tx2);max-width:680px}
-.corte b{color:var(--amber);font-weight:600}
-.final > .in{max-width:760px;margin:0 auto;padding:80px 24px}
-.final h2{margin-top:16px}
-.final .lead{font-size:18px;line-height:28px;color:var(--tx2);margin-top:16px}
-.pacote{background:var(--s1);border:1px solid var(--line);border-radius:16px;padding:24px;
-  margin-top:32px}
-.pacote h3{font-size:16px;line-height:24px}
-.pacote ul{list-style:none;margin-top:16px;padding:0;display:grid;gap:12px}
-.pacote li{display:flex;gap:12px;align-items:flex-start;font-size:14px;line-height:20px;
-  color:var(--tx2)}
-.pacote li svg{flex:0 0 auto;color:var(--ok);margin-top:2px}
-.pacote li b{color:var(--tx);font-weight:600}
-.passos{display:grid;gap:12px;margin-top:32px}
-.passos div{display:flex;gap:12px;align-items:flex-start;font-size:16px;line-height:24px;
-  color:var(--tx2)}
-.passos .n{font-family:var(--mono);font-size:14px;line-height:24px;color:var(--amber);flex:0 0 auto}
-.finalacts{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
-.nota{font-size:14px;line-height:20px;color:var(--tx3);margin-top:24px}
-
+.corte{padding:24px 0;background:var(--s1);border-bottom:1px solid var(--line)}
+.corte > .in{max-width:1080px;margin:0 auto;padding:0 24px;display:flex;gap:16px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+.corte p{font-size:14px;line-height:21px;color:var(--tx2);max-width:680px}
+.corte b{color:var(--amber2)}
+.reparos{display:grid;gap:16px;margin-top:32px}
+@media(min-width:900px){.reparos{grid-template-columns:repeat(3,1fr)}}
+.reparo{background:var(--s1);border:1px solid var(--line);border-radius:20px;padding:24px}
+.reparo .n{font-family:var(--mono);font-size:28px;line-height:36px;color:var(--amber2)}
+.reparo h3{font-size:17px;line-height:24px;margin-top:8px}
+.reparo p{font-size:14px;line-height:21px;color:var(--tx2);margin-top:8px}
+.obs{font-family:var(--mono);font-size:12px;line-height:18px;color:var(--tx3);background:var(--s2);border-radius:8px;padding:8px 10px;margin-top:12px}
+.blk{border-radius:20px}
+.blk.icon svg{color:var(--amber)}
 .faq{margin-top:32px;border-top:1px solid var(--line)}
 .faq details{border-bottom:1px solid var(--line)}
-.faq summary{list-style:none;cursor:pointer;padding:24px 0;font-size:16px;line-height:24px;
-  font-weight:600;display:flex;justify-content:space-between;gap:16px;align-items:center;
-  transition:color 700ms var(--ease)}
+.faq summary{list-style:none;cursor:pointer;padding:22px 0;font-size:16px;line-height:24px;font-weight:700;display:flex;justify-content:space-between;gap:16px;align-items:center;transition:color 700ms var(--ease)}
 .faq summary::-webkit-details-marker{display:none}
-.faq summary:hover{color:var(--amber)}
+.faq summary:hover{color:var(--amber2)}
 .faq summary svg{flex:0 0 auto;color:var(--tx3);transition:transform 700ms var(--ease)}
 .faq details[open] summary svg{transform:rotate(45deg)}
-.faq p{margin-bottom:24px;font-size:16px;line-height:24px;color:var(--tx2);max-width:680px}
-
-/* ---------- gerador ---------- */
-.lead-p{font-size:18px;line-height:28px;color:var(--tx2)}
-.cardp{font-size:16px;line-height:24px;color:var(--tx2);margin-top:12px}
-.fonte{font-size:12px;line-height:16px;color:var(--tx3);margin-top:16px}
-.prova .v.peq{font-size:14px;line-height:28px}
-.onde.so{grid-template-columns:1fr}
-.onde.so .ondecard{max-width:680px}
-.faixa + .corte{margin-top:0;border-top:0}
+.faq p{margin-bottom:22px;font-size:15px;line-height:24px;color:var(--tx2);max-width:680px}
+.final > .in{max-width:760px;margin:0 auto;padding:96px 24px 80px}
+.final h2{margin-top:12px}
+.final .lead{font-size:18px;line-height:28px;color:var(--tx2);margin-top:16px}
+.pacote{background:var(--s1);border:1px solid var(--line);border-radius:20px;padding:24px;margin-top:32px}
+.pacote h3{font-size:16px;line-height:24px}
+.pacote ul{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:12px}
+.pacote li{display:flex;gap:12px;font-size:14px;line-height:21px;color:var(--tx2)}
+.pacote li svg{flex:0 0 auto;color:var(--ok);margin-top:2px}
+.pacote li b{color:var(--tx);font-weight:700}
+.passos{display:grid;gap:12px;margin-top:32px}
+.passos div{display:flex;gap:12px;font-size:16px;line-height:24px;color:var(--tx2)}
+.passos .n{font-family:var(--mono);font-size:14px;line-height:24px;color:var(--amber2);flex:0 0 auto}
+.finalacts{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.nota{font-size:14px;line-height:20px;color:var(--tx3);margin-top:24px}
 </style>
-<a class="skip" href="#casa">Ir para o conteúdo</a>
+
+<a class="skip" href="#casas">Ir para o conteúdo</a>
 
 <div class="flag">
-  <b>Demonstração</b> feita pela HIGH Development para o Formigão na Brasa. Não é a página oficial.
-  Endereço, WhatsApp, Instagram, horário e nota do Google são reais. Cardápio, valores e fotos são exemplo.
+  <b>Demonstração</b> feita pela HIGH Development para o Formigão. Não é a página oficial.
+  Endereço, horários, avaliações, cardápio, preços, logo e fotos vêm do Google, do Instagram e do cardápio online de vocês, usados só nesta proposta.
 </div>
 
 <nav>
   <div class="navin">
     <div class="navtop">
-      <a class="brand" href="index.html"><svg width="20" height="20" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M48.07,104H207.93a16,16,0,0,0,15.72-19.38C216.22,49.5,176,24,128,24S39.78,49.5,32.35,84.62A16,16,0,0,0,48.07,104ZM128,40c39.82,0,74.21,20.61,79.93,48H48.07L48,87.93C53.79,60.61,88.18,40,128,40ZM229.26,152.48l-41.13,15L151,152.57a8,8,0,0,0-5.94,0l-37,14.81L71,152.57a8,8,0,0,0-5.7-.09l-44,16a8,8,0,0,0,5.47,15L40,178.69V184a40,40,0,0,0,40,40h96a40,40,0,0,0,40-40v-9.67l18.73-6.81a8,8,0,1,0-5.47-15ZM200,184a24,24,0,0,1-24,24H80a24,24,0,0,1-24-24V172.88l11.87-4.32L105,183.43a8,8,0,0,0,5.94,0l37-14.81,37,14.81a8,8,0,0,0,5.7.09l9.27-3.37ZM16,128a8,8,0,0,1,8-8H232a8,8,0,0,1,0,16H24A8,8,0,0,1,16,128Z"/></svg>
-        <span class="bl">Formigão na Brasa</span><span class="bs">Formigão</span></a>
-      <a class="btn sm" href="pedido.html">Fazer pedido</a>
+      <a class="brand" href="index.html"><img class="logo" src="logo.webp" alt="" width="36" height="36">
+        <span class="nm"><b>Formigão</b><small>café · na brasa</small></span></a>
+      <a class="btn sm" href="https://delivery.yooga.app/formigao-na-brasa" target="_blank" rel="noopener">Pedir delivery</a>
     </div>
     <div class="navlinks">
       <a href="index.html" aria-current="page">Início</a>
-      <a href="#casa">A casa</a>
-      <a href="#destaques">Cardápio</a>
+      <a href="#casas">Café e Brasa</a>
+      <a href="#formigas">As formigas</a>
+      <a href="encomenda.html">Encomendas</a>
       <a href="#onde">Onde fica</a>
       <a href="#proposta">Para o dono</a>
     </div>
@@ -152,112 +174,123 @@
 </nav>
 
 <main>
-
-<div class="capa">
-  <img src="churrasco.webp" width="1400" height="788" alt="Carnes assando na grelha sobre a brasa" loading="eager">
-  <div class="sobre">
-    <div class="in">
-      <p class="eyebrow">São João · Canas</p>
-      <h1>Lanche na brasa, porção pra dividir e pizza</h1>
-      <p class="lin">A nota 4,9 no Google vem de 420 avaliações, e a maioria cita pelo nome quem atendeu. É raro, e diz muito sobre a casa.</p>
+<div class="wrap heroi">
+  <div class="g">
+    <div>
+      <div class="agora" id="agora">
+        <p id="st-cafe"><i></i><span>Formigão Café · seg a sex 8h–18h, sáb 8h–12h</span></p>
+        <p id="st-brasa"><i></i><span>Formigão na Brasa · sex a dom 19h–23h</span></p>
+      </div>
+      <h1><span class="cafe">De dia é café.</span><br><span class="fogo">De noite é brasa.</span></h1>
+      <p class="lin">No bairro São João, em Canas. Cappuccino, croissant e bolo pela manhã; hambúrguer no pão brioche, porção e pizza nas noites de fim de semana.</p>
       <div class="acts">
-        <a class="btn big" href="pedido.html">Montar meu lanche</a>
-        <a class="btn big ghost" href="#onde">Ver onde fica</a>
+        <a class="btn big" href="https://delivery.yooga.app/formigao-na-brasa" target="_blank" rel="noopener">Pedir delivery</a>
+        <a class="btn big ghost" href="encomenda.html">Encomendar bolo ou festa</a>
       </div>
     </div>
+    <div class="duas" aria-hidden="true">
+      <figure class="story dia"><img src="cafe-bolo.webp" width="360" height="640" alt=""><figcaption>Formigão Café</figcaption></figure>
+      <figure class="story noite"><img src="brasa-duplo.webp" width="360" height="640" alt=""><figcaption>Formigão na Brasa</figcaption></figure>
+    </div>
   </div>
-</div>
-
-<div class="prova">
-  <div class="in">
-    <div><span class="k">Nota no Google</span><span class="v">4,9 <small>com 420 avaliações</small></span></div>
-    <div><span class="k">Horário</span><span class="v">Até 23h <small>sexta, sábado e domingo</small></span></div>
-    <div><span class="k">WhatsApp</span><span class="v">(12) 99676-7614</span></div>
-    <div><span class="k">No Instagram</span><span class="v">@formigaonabrasa</span></div>
+  <div class="prova">
+    <div><p class="k">Nota no Google</p><p class="v">4,9 <small>com 420 avaliações</small></p></div>
+    <div><p class="k">No Instagram</p><p class="v">21 mil <small>seguidores</small></p></div>
+    <div class="l2"><p class="k">WhatsApp</p><p class="v">(12) 99676-7614</p></div>
+    <div class="l2"><p class="k">Delivery</p><p class="v">70 min <small>pedido mínimo R$ 12</small></p></div>
   </div>
 </div>
 
 <div class="wrap">
-  <section id="casa">
+  <section id="casas">
     <div class="sechead">
-      <p class="eyebrow rv">A casa</p>
-      <h2 class="rv">Atendimento que o cliente lembra pelo nome</h2>
+      <p class="eyebrow rv">Duas casas, um endereço</p>
+      <h2 class="rv">O Café abre cedo. A Brasa fecha tarde.</h2>
     </div>
-    <div class="casa">
-      <div class="rv">
-        <p class="lead-p">Leia as avaliações do Formigão e repare numa coisa: quase todas falam de quem atendeu. Atenciosa, carismática, cuidadosa com o pedido. É por isso que a nota chegou a 4,9.</p>
-        <p class="lead-p">O resto vem junto: lanche e porção que o pessoal chama de excelente, pizza que também tem fã, preço que dizem ser justo e um ambiente tranquilo para sentar com calma.</p>
-      </div>
-      <figure class="foto rv">
-        <img src="burger-mesa.webp" width="1200" height="480" alt="Hambúrguer com gergelim e fritas servido no prato" loading="lazy">
-        <figcaption>Foto ilustrativa. As fotos reais da casa entram no lugar.</figcaption>
-      </figure>
+    <div class="casas">
+      <article class="casa c1 rv"><img src="cafe-bolo-morango.webp" width="480" height="640" alt="Bolo de chocolate com morangos sobre a mesa do Formigão Café" loading="lazy">
+        <div class="t"><p class="k">Formigão Café</p><h3>Para começar o dia</h3><p class="hr">seg a sex 8h–18h · sáb 8h–12h</p>
+          <p class="d">Café expresso, cappuccino, croissant recheado, pão de petrópolis, tapioca e bolo para levar inteiro.</p>
+          <ul><li>Cappuccino R$ 9</li><li>Croissant com Nutella R$ 22</li><li>Bolo pra café R$ 30</li></ul></div></article>
+      <article class="casa c2 rv"><img src="brasa-bacon.webp" width="360" height="640" alt="Hambúrguer com bacon e queijo gratinado no pão brioche" loading="lazy">
+        <div class="t"><p class="k">Formigão na Brasa</p><h3>Para fechar a semana</h3><p class="hr">sex, sáb e dom · 19h–23h</p>
+          <p class="d">Hambúrguer no pão brioche, porções para dividir, pizza individual, pastel e milk shake.</p>
+          <ul><li>Formigão Bacon R$ 40</li><li>Petisqueira R$ 60</li><li>Pizza Formigão R$ 37</li></ul></div></article>
     </div>
   </section>
 
-  <section id="destaques">
+  <section id="formigas">
     <div class="sechead">
-      <p class="eyebrow rv">O que mais sai</p>
-      <h2 class="rv">Lanche, porção e pizza</h2>
-      <p class="secsub rv">Os três aparecem nas avaliações. O cardápio completo, com valores de exemplo, está na página de pedido.</p>
+      <p class="eyebrow rv">Da Formiguinha à Formigona</p>
+      <h2 class="rv">Escolha o tamanho da sua fome</h2>
+      <p class="secsub rv">Todos no pão brioche. Nomes e preços do cardápio de vocês.</p>
     </div>
-    <div class="pratos">
-      <figure class="prato rv">
-        <img src="burger.webp" width="720" height="540" alt="Hambúrguer com queijo, alface e cebola no pão com gergelim" loading="lazy">
-        <figcaption>
-          <h3>Lanches</h3>
-          <p>Hambúrguer montado do jeito que você pedir: escolhe o ponto da carne e os adicionais.</p>
-          <p class="nota">Foto ilustrativa</p>
-        </figcaption>
-      </figure>
-      <figure class="prato rv">
-        <img src="fritas.webp" width="720" height="540" alt="Porção de batata frita numa travessa branca" loading="lazy">
-        <figcaption>
-          <h3>Porções</h3>
-          <p>Para dividir na mesa. É das coisas que mais aparecem elogiadas nas avaliações.</p>
-          <p class="nota">Foto ilustrativa</p>
-        </figcaption>
-      </figure>
-      <figure class="prato rv">
-        <img src="hero.webp" width="720" height="540" alt="Pizza assada com calabresa, tomate e queijo" loading="lazy">
-        <figcaption>
-          <h3>Pizza</h3>
-          <p>Tem quem venha pelo lanche e saia elogiando a pizza. Inteira ou meio a meio.</p>
-          <p class="nota">Foto ilustrativa</p>
-        </figcaption>
-      </figure>
+    <div class="escada rv" id="escada">
+      <div class="degrau" style="--w:39%"><h3>Formiguinha</h3><span class="p">R$ 28</span><p class="d">Carne, barbecue e maionese.</p><div class="barra"><i></i></div></div>
+      <div class="degrau" style="--w:44%"><h3>Formiga</h3><span class="p">R$ 32</span><p class="d">Carne, muçarela, barbecue e maionese.</p><div class="barra"><i></i></div></div>
+      <div class="degrau" style="--w:56%"><h3>Formigão Bacon</h3><span class="p">R$ 40</span><p class="d">Carne, muçarela, bacon, maionese artesanal e barbecue.</p><div class="barra"><i></i></div></div>
+      <div class="degrau" style="--w:69%"><h3>Formigueiro</h3><span class="p">R$ 50</span><p class="d">Carne, bacon, muçarela, calabresa, ovo, presunto e salada.</p><div class="barra"><i></i></div></div>
+      <div class="degrau" style="--w:90%"><h3>Formigão 300</h3><span class="p">R$ 65</span><p class="d">Dobro de carne, dobro de muçarela e dobro de bacon.</p><div class="barra"><i></i></div></div>
+      <div class="degrau" style="--w:100%"><h3>Formigona</h3><span class="p">R$ 72</span><p class="d">Frango empanado no panko, carne de 150 g, queijo gratinado, bacon empanado e queijo empanado.</p><div class="barra"><i></i></div></div>
     </div>
+    <p class="fonte rv">Preços do cardápio online de vocês em setembro de 2026.</p>
+  </section>
+
+  <section>
+    <div class="galeria">
+      <figure class="rv"><img src="brasa-mao.webp" width="360" height="640" alt="Hambúrguer cortado ao meio com salada e queijo" loading="lazy"></figure>
+      <figure class="rv"><img src="porcao.webp" width="360" height="640" alt="Porção com bolinhos, cebola empanada e costela" loading="lazy"></figure>
+      <figure class="rv"><img src="brasa-crispy.webp" width="360" height="640" alt="Hambúrguer com frango empanado e carne no pão brioche" loading="lazy"></figure>
+      <figure class="rv"><img src="cafe-paes.webp" width="360" height="640" alt="Pães saindo do forno do Formigão Café" loading="lazy"></figure>
+      <figure class="rv"><img src="brasa-duplo.webp" width="360" height="640" alt="Hambúrguer duplo com queijo derretido" loading="lazy"></figure>
+    </div>
+    <p class="fonte"><svg width="14" height="14" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160ZM176,24H80A56.06,56.06,0,0,0,24,80v96a56.06,56.06,0,0,0,56,56h96a56.06,56.06,0,0,0,56-56V80A56.06,56.06,0,0,0,176,24Zm40,152a40,40,0,0,1-40,40H80a40,40,0,0,1-40-40V80A40,40,0,0,1,80,40h96a40,40,0,0,1,40,40ZM192,76a12,12,0,1,1-12-12A12,12,0,0,1,192,76Z"/></svg> Fotos do Instagram @formigaonabrasa.</p>
   </section>
 </div>
 
 <div class="wrap tagline">
-  <p id="tag">Você monta o lanche na tela, vê o total e manda. A cozinha recebe o pedido escrito, do jeito que o cliente pediu.</p>
+  <p id="tag">Feito com amor, por quem ama o que faz.</p>
 </div>
 
 <div class="wrap">
+  <section>
+    <div class="sechead">
+      <p class="eyebrow rv">No Google</p>
+      <h2 class="rv">4,9 de nota em 420 avaliações</h2>
+    </div>
+    <div class="falas">
+      <figure class="fala rv"><blockquote>“Preço justo, porções e lanches excelentes!”</blockquote><figcaption><svg width="14" height="14" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M239.18,97.26A16.38,16.38,0,0,0,224.92,86l-59-4.76L143.14,26.15a16.36,16.36,0,0,0-30.27,0L90.11,81.23,31.08,86a16.46,16.46,0,0,0-9.37,28.86l45,38.83L53,211.75a16.38,16.38,0,0,0,24.5,17.82L128,198.49l50.53,31.08A16.4,16.4,0,0,0,203,211.75l-13.76-58.07,45-38.83A16.43,16.43,0,0,0,239.18,97.26Zm-15.34,5.47-48.7,42a8,8,0,0,0-2.56,7.91l14.88,62.8a.37.37,0,0,1-.17.48c-.18.14-.23.11-.38,0l-54.72-33.65a8,8,0,0,0-8.38,0L69.09,215.94c-.15.09-.19.12-.38,0a.37.37,0,0,1-.17-.48l14.88-62.8a8,8,0,0,0-2.56-7.91l-48.7-42c-.12-.1-.23-.19-.13-.5s.18-.27.33-.29l63.92-5.16A8,8,0,0,0,103,91.86l24.62-59.61c.08-.17.11-.25.35-.25s.27.08.35.25L153,91.86a8,8,0,0,0,6.75,4.92l63.92,5.16c.15,0,.24,0,.33.29S224,102.63,223.84,102.73Z"/></svg>Avaliação de 5 estrelas</figcaption></figure>
+      <figure class="fala rv"><blockquote>“Hambúrguer e pizza maravilhosos.”</blockquote><figcaption><svg width="14" height="14" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M239.18,97.26A16.38,16.38,0,0,0,224.92,86l-59-4.76L143.14,26.15a16.36,16.36,0,0,0-30.27,0L90.11,81.23,31.08,86a16.46,16.46,0,0,0-9.37,28.86l45,38.83L53,211.75a16.38,16.38,0,0,0,24.5,17.82L128,198.49l50.53,31.08A16.4,16.4,0,0,0,203,211.75l-13.76-58.07,45-38.83A16.43,16.43,0,0,0,239.18,97.26Zm-15.34,5.47-48.7,42a8,8,0,0,0-2.56,7.91l14.88,62.8a.37.37,0,0,1-.17.48c-.18.14-.23.11-.38,0l-54.72-33.65a8,8,0,0,0-8.38,0L69.09,215.94c-.15.09-.19.12-.38,0a.37.37,0,0,1-.17-.48l14.88-62.8a8,8,0,0,0-2.56-7.91l-48.7-42c-.12-.1-.23-.19-.13-.5s.18-.27.33-.29l63.92-5.16A8,8,0,0,0,103,91.86l24.62-59.61c.08-.17.11-.25.35-.25s.27.08.35.25L153,91.86a8,8,0,0,0,6.75,4.92l63.92,5.16c.15,0,.24,0,.33.29S224,102.63,223.84,102.73Z"/></svg>Avaliação de 5 estrelas</figcaption></figure>
+      <figure class="fala rv"><blockquote>“Porção maravilhosa e ambiente muito tranquilo.”</blockquote><figcaption><svg width="14" height="14" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M239.18,97.26A16.38,16.38,0,0,0,224.92,86l-59-4.76L143.14,26.15a16.36,16.36,0,0,0-30.27,0L90.11,81.23,31.08,86a16.46,16.46,0,0,0-9.37,28.86l45,38.83L53,211.75a16.38,16.38,0,0,0,24.5,17.82L128,198.49l50.53,31.08A16.4,16.4,0,0,0,203,211.75l-13.76-58.07,45-38.83A16.43,16.43,0,0,0,239.18,97.26Zm-15.34,5.47-48.7,42a8,8,0,0,0-2.56,7.91l14.88,62.8a.37.37,0,0,1-.17.48c-.18.14-.23.11-.38,0l-54.72-33.65a8,8,0,0,0-8.38,0L69.09,215.94c-.15.09-.19.12-.38,0a.37.37,0,0,1-.17-.48l14.88-62.8a8,8,0,0,0-2.56-7.91l-48.7-42c-.12-.1-.23-.19-.13-.5s.18-.27.33-.29l63.92-5.16A8,8,0,0,0,103,91.86l24.62-59.61c.08-.17.11-.25.35-.25s.27.08.35.25L153,91.86a8,8,0,0,0,6.75,4.92l63.92,5.16c.15,0,.24,0,.33.29S224,102.63,223.84,102.73Z"/></svg>Avaliação de 5 estrelas</figcaption></figure>
+    </div>
+  </section>
+
   <section id="onde">
     <div class="sechead">
       <p class="eyebrow rv">Onde fica</p>
       <h2 class="rv">R. Benedito Vicente da Silva, 133</h2>
       <p class="secsub rv">No bairro São João, em Canas.</p>
     </div>
-    <div class="onde">
-      <figure class="ondeimg rv">
-        <img src="canas.webp" width="900" height="600" alt="Vista aérea de uma praça com palmeiras em Canas" loading="lazy">
-      </figure>
-      <div class="blk ondecard rv">
-        <h3>Como falar com a casa</h3>
-        <p class="cardp">Pedido e dúvida pelo mesmo WhatsApp.</p>
+    <div class="ondebox rv">
+      <div class="semana" id="semana" aria-label="Horário da semana">
+        <div data-d="1"><span>seg</span><b class="c">Café 8h–18h</b><b class="x">—</b></div>
+        <div data-d="2"><span>ter</span><b class="c">Café 8h–18h</b><b class="x">—</b></div>
+        <div data-d="3"><span>qua</span><b class="c">Café 8h–18h</b><b class="x">—</b></div>
+        <div data-d="4"><span>qui</span><b class="c">Café 8h–18h</b><b class="x">—</b></div>
+        <div data-d="5"><span>sex</span><b class="c">Café 8h–18h</b><b class="n">Brasa 19h–23h</b></div>
+        <div data-d="6"><span>sáb</span><b class="c">Café 8h–12h</b><b class="n">Brasa 19h–23h</b></div>
+        <div data-d="0"><span>dom</span><b class="x">—</b><b class="n">Brasa 19h–23h</b></div>
+      </div>
+      <div>
         <dl>
+          <dt>Endereço</dt><dd>R. Benedito Vicente da Silva, 133 · São João, Canas</dd>
           <dt>WhatsApp</dt><dd>(12) 99676-7614</dd>
-          <dt>Instagram</dt><dd>@formigaonabrasa</dd>
-          <dt>Endereço</dt><dd>R. Benedito Vicente da Silva, 133 · São João</dd>
-          <dt>seg a qui</dt><dd>8h–18h</dd>
-          <dt>sex</dt><dd>8h–23h</dd>
-          <dt>sáb</dt><dd>8h–12h e 19h–23h</dd>
-          <dt>dom</dt><dd>19h–23h</dd>
+          <dt>Instagram</dt><dd>@formigaonabrasa · @formigaocafe</dd>
         </dl>
-        <p class="fonte">Endereço, contato e horário como estão no Google hoje.</p>
+        <div class="acts">
+          <a class="btn" href="https://wa.me/5512996767614" target="_blank" rel="noopener">Chamar no WhatsApp</a>
+          <a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=Formig%C3%A3o+na+Brasa+Canas" target="_blank" rel="noopener">Abrir no mapa</a>
+        </div>
       </div>
     </div>
   </section>
@@ -265,55 +298,48 @@
 
 <div class="faixa">
   <div class="in">
-    <p class="eyebrow rv">Pronto para pedir</p>
-    <h2 class="rv">Monte seu lanche em menos de um minuto</h2>
-    <p class="rv">Escolha o lanche, o ponto e os adicionais, some porção e bebida e confira o total antes de enviar. O pedido chega escrito e somado no WhatsApp.</p>
-    <div class="acts rv">
-      <a class="btn big" href="pedido.html">Abrir o cardápio</a>
-      <a class="btn big ghost" href="https://wa.me/5512996767614" target="_blank" rel="noopener">Chamar no WhatsApp</a>
+    <div>
+      <h2 class="rv">Aniversário, reunião ou jogo com a turma?</h2>
+      <p class="rv">Encomende bolo, torta, porção de salgados e doces com o sabor escolhido na hora e o dia de buscar marcado.</p>
     </div>
+    <div class="acts rv"><a class="btn big" href="encomenda.html">Fazer encomenda</a></div>
   </div>
 </div>
 
 <div class="corte">
   <div class="in">
-    <p><b>Daqui para baixo é recado para quem toca o Formigão na Brasa.</b> O que está acima é a página como o cliente veria. O que vem agora é a proposta da HIGH Development.</p>
+    <p><b>Daqui para baixo é recado para quem toca o Formigão.</b> O que está acima é a página como o cliente veria. O que vem agora é a proposta da HIGH Development.</p>
     <a class="btn sm ghost" href="#proposta">Ler a proposta</a>
   </div>
 </div>
 
 <div class="wrap">
-  <section id="proposta" style="padding-top:96px">
+  <section id="proposta">
     <div class="sechead">
-      <p class="eyebrow rv">Depois do pedido</p>
-      <h2 class="rv">O que mais dá para ligar aqui</h2>
-      <p class="secsub rv">Tudo roda no mesmo WhatsApp de hoje. Não precisa ser tudo de uma vez: cada item resolve uma dor diferente da casa.</p>
+      <p class="eyebrow rv">O que a gente reparou</p>
+      <h2 class="rv">Vocês têm 21 mil seguidores. O Google só mostra o Instagram.</h2>
+      <p class="secsub rv">A marca já é grande, e o delivery já funciona pelo cardápio online. O que falta é o resto do caminho.</p>
+    </div>
+    <div class="reparos">
+      <div class="reparo rv"><p class="n">2 em 1</p><h3>Café e Brasa misturados</h3><p>No Google, os horários das duas aparecem numa lista só, sem dizer o que é café e o que é hambúrguer. Quem olha não sabe o que vai encontrar aberto.</p></div>
+      <div class="reparo rv"><p class="n">10+</p><h3>“Coloque na observação”</h3><p>Bolo, salgado, brigadeiro, churros, croissant: no cardápio online o sabor vai escrito à mão na observação. É onde o pedido sai errado.</p><p class="obs">Bolo pra café (COLOCAR NA OBSERVAÇÃO O SABOR QUE DESEJA)</p></div>
+      <div class="reparo rv"><p class="n">0</p><h3>Endereço próprio</h3><p>Não existe um site do Formigão. O link da bio leva direto para o delivery, e quem quer encomendar para uma festa não tem por onde.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sechead">
+      <p class="eyebrow rv">O que a gente liga</p>
+      <h2 class="rv">Sem mexer no delivery que já funciona</h2>
+      <p class="secsub rv">O botão de pedir continua levando para o cardápio de vocês. O que entra é o que ele não faz.</p>
     </div>
     <div class="cols2">
-      <article class="blk icon rv">
-        <svg width="20" height="20" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm64-88a8,8,0,0,1-8,8H128a8,8,0,0,1-8-8V72a8,8,0,0,1,16,0v48h48A8,8,0,0,1,192,128Z"/></svg>
-        <div><h3>Confirmação com tempo de preparo</h3><p>O cliente recebe na hora o aviso de que o pedido entrou e quando fica pronto. Some o &quot;já saiu?&quot; que toma o telefone no meio do movimento de sábado.</p></div>
-      </article>
-      <article class="blk icon rv">
-        <svg width="20" height="20" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M255.42,117l-14-35A15.93,15.93,0,0,0,226.58,72H192V64a8,8,0,0,0-8-8H32A16,16,0,0,0,16,72V184a16,16,0,0,0,16,16H49a32,32,0,0,0,62,0h50a32,32,0,0,0,62,0h17a16,16,0,0,0,16-16V120A7.94,7.94,0,0,0,255.42,117ZM192,88h34.58l9.6,24H192ZM32,72H176v64H32ZM80,208a16,16,0,1,1,16-16A16,16,0,0,1,80,208Zm81-24H111a32,32,0,0,0-62,0H32V152H176v12.31A32.11,32.11,0,0,0,161,184Zm31,24a16,16,0,1,1,16-16A16,16,0,0,1,192,208Zm48-24H223a32.06,32.06,0,0,0-31-24V128h48Z"/></svg>
-        <div><h3>Aviso de saiu para entrega</h3><p>Uma mensagem sai sozinha quando o motoboy pega o pedido. O cliente para de ligar e o entregador encontra alguém esperando no portão.</p></div>
-      </article>
-      <article class="blk icon rv">
-        <svg width="20" height="20" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M239.18,97.26A16.38,16.38,0,0,0,224.92,86l-59-4.76L143.14,26.15a16.36,16.36,0,0,0-30.27,0L90.11,81.23,31.08,86a16.46,16.46,0,0,0-9.37,28.86l45,38.83L53,211.75a16.38,16.38,0,0,0,24.5,17.82L128,198.49l50.53,31.08A16.4,16.4,0,0,0,203,211.75l-13.76-58.07,45-38.83A16.43,16.43,0,0,0,239.18,97.26Zm-15.34,5.47-48.7,42a8,8,0,0,0-2.56,7.91l14.88,62.8a.37.37,0,0,1-.17.48c-.18.14-.23.11-.38,0l-54.72-33.65a8,8,0,0,0-8.38,0L69.09,215.94c-.15.09-.19.12-.38,0a.37.37,0,0,1-.17-.48l14.88-62.8a8,8,0,0,0-2.56-7.91l-48.7-42c-.12-.1-.23-.19-.13-.5s.18-.27.33-.29l63.92-5.16A8,8,0,0,0,103,91.86l24.62-59.61c.08-.17.11-.25.35-.25s.27.08.35.25L153,91.86a8,8,0,0,0,6.75,4.92l63.92,5.16c.15,0,.24,0,.33.29S224,102.63,223.84,102.73Z"/></svg>
-        <div><h3>Convite para avaliar no Google</h3><p>Uma hora depois da entrega sai o convite. Com 4,9 e 420 avaliações, cada avaliação nova ajuda quem é de fora de Canas a escolher vocês na busca.</p></div>
-      </article>
-      <article class="blk icon rv">
-        <svg width="20" height="20" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H128a8,8,0,0,1,0-16h88A8,8,0,0,1,224,128ZM128,72h88a8,8,0,0,0,0-16H128a8,8,0,0,0,0,16Zm88,112H128a8,8,0,0,0,0,16h88a8,8,0,0,0,0-16ZM82.34,42.34,56,68.69,45.66,58.34A8,8,0,0,0,34.34,69.66l16,16a8,8,0,0,0,11.32,0l32-32A8,8,0,0,0,82.34,42.34Zm0,64L56,132.69,45.66,122.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32,0l32-32a8,8,0,0,0-11.32-11.32Zm0,64L56,196.69,45.66,186.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32,0l32-32a8,8,0,0,0-11.32-11.32Z"/></svg>
-        <div><h3>Cardápio que vocês mesmos mudam</h3><p>Acabou o bacon? Some da tela em dois toques. Ninguém pede o que não tem e ninguém precisa ligar para avisar.</p></div>
-      </article>
-      <article class="blk icon rv">
-        <svg width="20" height="20" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M240,56v48a8,8,0,0,1-8,8H184a8,8,0,0,1,0-16H211.4L184.81,71.64l-.25-.24a80,80,0,1,0-1.67,114.78,8,8,0,0,1,11,11.63A95.44,95.44,0,0,1,128,224h-1.32A96,96,0,1,1,195.75,60L224,85.8V56a8,8,0,1,1,16,0Z"/></svg>
-        <div><h3>Recado para quem sumiu</h3><p>Quem pedia toda semana e parou há um mês recebe um recado simples. É o jeito mais barato de vender de novo para quem já gosta da casa.</p></div>
-      </article>
-      <article class="blk icon rv">
-        <svg width="20" height="20" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M224,200h-8V40a8,8,0,0,0-8-8H152a8,8,0,0,0-8,8V80H96a8,8,0,0,0-8,8v40H48a8,8,0,0,0-8,8v64H32a8,8,0,0,0,0,16H224a8,8,0,0,0,0-16ZM160,48h40V200H160ZM104,96h40V200H104ZM56,144H88v56H56Z"/></svg>
-        <div><h3>Resumo da semana no seu WhatsApp</h3><p>Toda segunda: quantos pedidos, qual lanche mais saiu e qual noite rendeu mais. Serve para decidir compra e escala sem depender da memória.</p></div>
-      </article>
+      <article class="blk icon rv"><svg width="20" height="20" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M232,96a7.89,7.89,0,0,0-.3-2.2L217.35,43.6A16.07,16.07,0,0,0,202,32H54A16.07,16.07,0,0,0,38.65,43.6L24.31,93.8A7.89,7.89,0,0,0,24,96h0v16a40,40,0,0,0,16,32v72a8,8,0,0,0,8,8H208a8,8,0,0,0,8-8V144a40,40,0,0,0,16-32V96ZM54,48H202l11.42,40H42.61Zm50,56h48v8a24,24,0,0,1-48,0Zm-16,0v8a24,24,0,0,1-35.12,21.26,7.88,7.88,0,0,0-1.82-1.06A24,24,0,0,1,40,112v-8ZM200,208H56V151.2a40.57,40.57,0,0,0,8,.8,40,40,0,0,0,32-16,40,40,0,0,0,64,0,40,40,0,0,0,32,16,40.57,40.57,0,0,0,8-.8Zm4.93-75.8a8.08,8.08,0,0,0-1.8,1.05A24,24,0,0,1,168,112v-8h48v8A24,24,0,0,1,204.93,132.2Z"/></svg><div><h3>Um site que separa Café e Brasa</h3><p>O cliente abre e vê na hora qual das duas está aberta. Com endereço próprio, que aparece no Google e vai na bio no lugar do link solto.</p></div></article>
+      <article class="blk icon rv"><svg width="20" height="20" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M232,112a24,24,0,0,0-24-24H136V79a32.06,32.06,0,0,0,24-31c0-28-26.44-45.91-27.56-46.66a8,8,0,0,0-8.88,0C122.44,2.09,96,20,96,48a32.06,32.06,0,0,0,24,31v9H48a24,24,0,0,0-24,24v23.33a40.84,40.84,0,0,0,8,24.24V200a24,24,0,0,0,24,24H200a24,24,0,0,0,24-24V159.57a40.84,40.84,0,0,0,8-24.24ZM112,48c0-13.57,10-24.46,16-29.79,6,5.33,16,16.22,16,29.79a16,16,0,0,1-32,0ZM40,112a8,8,0,0,1,8-8H208a8,8,0,0,1,8,8v23.33c0,13.25-10.46,24.31-23.32,24.66A24,24,0,0,1,168,136a8,8,0,0,0-16,0,24,24,0,0,1-48,0,8,8,0,0,0-16,0,24,24,0,0,1-24.68,24C50.46,159.64,40,148.58,40,135.33Zm160,96H56a8,8,0,0,1-8-8V172.56A38.77,38.77,0,0,0,62.88,176a39.69,39.69,0,0,0,29-11.31A40.36,40.36,0,0,0,96,160a40,40,0,0,0,64,0,40.36,40.36,0,0,0,4.13,4.67A39.67,39.67,0,0,0,192,176c.38,0,.76,0,1.14,0A38.77,38.77,0,0,0,208,172.56V200A8,8,0,0,1,200,208Z"/></svg><div><h3>Encomenda com sabor escolhido</h3><p>Bolo, torta, salgados e doces para festa, com o sabor em botão, o dia e a hora de buscar. Acaba o “coloque na observação”.</p></div></article>
+      <article class="blk icon rv"><svg width="20" height="20" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M183.89,153.34a57.6,57.6,0,0,1-46.56,46.55A8.75,8.75,0,0,1,136,200a8,8,0,0,1-1.32-15.89c16.57-2.79,30.63-16.85,33.44-33.45a8,8,0,0,1,15.78,2.68ZM216,144a88,88,0,0,1-176,0c0-27.92,11-56.47,32.66-84.85a8,8,0,0,1,11.93-.89l24.12,23.41,22-60.41a8,8,0,0,1,12.63-3.41C165.21,36,216,84.55,216,144Zm-16,0c0-46.09-35.79-85.92-58.21-106.33L119.52,98.74a8,8,0,0,1-13.09,3L80.06,76.16C64.09,99.21,56,122,56,144a72,72,0,0,0,144,0Z"/></svg><div><h3>“A Brasa abriu”</h3><p>Sexta às 19h, quem aceitou receber ganha o aviso com o lanche da semana. Quem pediu no fim de semana passado lembra de pedir de novo.</p></div></article>
+      <article class="blk icon rv"><svg width="20" height="20" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M233.54,142.23a8,8,0,0,0-8-2,88.08,88.08,0,0,1-109.8-109.8,8,8,0,0,0-10-10,104.84,104.84,0,0,0-52.91,37A104,104,0,0,0,136,224a103.09,103.09,0,0,0,62.52-20.88,104.84,104.84,0,0,0,37-52.91A8,8,0,0,0,233.54,142.23ZM188.9,190.34A88,88,0,0,1,65.66,67.11a89,89,0,0,1,31.4-26A106,106,0,0,0,96,56,104.11,104.11,0,0,0,200,160a106,106,0,0,0,14.92-1.06A89,89,0,0,1,188.9,190.34Z"/></svg><div><h3>WhatsApp que responde fora do horário</h3><p>Mensagem chegou quando está fechado? Sai na hora a resposta com o horário de cada casa e o link do cardápio, em vez de ficar sem retorno.</p></div></article>
+      <article class="blk icon rv"><svg width="20" height="20" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM72,48v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V80H48V48ZM208,208H48V96H208V208Zm-38.34-85.66a8,8,0,0,1,0,11.32l-48,48a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L116,164.69l42.34-42.35A8,8,0,0,1,169.66,122.34Z"/></svg><div><h3>Sinal pelo Pix na encomenda</h3><p>Bolo inteiro ou petisqueira para festa só entram na produção com o sinal pago. Ninguém fica com encomenda esquecida no balcão.</p></div></article>
+      <article class="blk icon rv"><svg width="20" height="20" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M239.18,97.26A16.38,16.38,0,0,0,224.92,86l-59-4.76L143.14,26.15a16.36,16.36,0,0,0-30.27,0L90.11,81.23,31.08,86a16.46,16.46,0,0,0-9.37,28.86l45,38.83L53,211.75a16.38,16.38,0,0,0,24.5,17.82L128,198.49l50.53,31.08A16.4,16.4,0,0,0,203,211.75l-13.76-58.07,45-38.83A16.43,16.43,0,0,0,239.18,97.26Zm-15.34,5.47-48.7,42a8,8,0,0,0-2.56,7.91l14.88,62.8a.37.37,0,0,1-.17.48c-.18.14-.23.11-.38,0l-54.72-33.65a8,8,0,0,0-8.38,0L69.09,215.94c-.15.09-.19.12-.38,0a.37.37,0,0,1-.17-.48l14.88-62.8a8,8,0,0,0-2.56-7.91l-48.7-42c-.12-.1-.23-.19-.13-.5s.18-.27.33-.29l63.92-5.16A8,8,0,0,0,103,91.86l24.62-59.61c.08-.17.11-.25.35-.25s.27.08.35.25L153,91.86a8,8,0,0,0,6.75,4.92l63.92,5.16c.15,0,.24,0,.33.29S224,102.63,223.84,102.73Z"/></svg><div><h3>Convite para avaliar no Google</h3><p>Depois da entrega sai o convite. Vocês já têm 4,9 com 420 avaliações; mais gente avaliando ajuda o Formigão a aparecer antes na busca da região.</p></div></article>
     </div>
   </section>
 
@@ -323,18 +349,12 @@
       <h2 class="rv">O que costumam perguntar</h2>
     </div>
     <div class="faq rv">
-      <details><summary>Precisa instalar alguma coisa?<svg width="20" height="20" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary>
-        <p>Não. É uma página na internet, abre no navegador do celular. O cliente não baixa aplicativo e vocês não instalam nada.</p></details>
-      <details><summary>O número do WhatsApp muda?<svg width="20" height="20" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary>
-        <p>Continua o mesmo (12) 99676-7614. O pedido chega nele como uma mensagem comum, só que escrita e somada.</p></details>
-      <details><summary>Quem atualiza o cardápio e os preços?<svg width="20" height="20" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary>
-        <p>Vocês, por uma tela simples, sem mexer em código. Se preferirem, a gente atualiza quando mandarem a lista nova.</p></details>
-      <details><summary>Substitui o iFood?<svg width="20" height="20" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary>
-        <p>Não precisa substituir. Aqui não existe comissão por pedido e o cliente é de vocês. Muita casa usa os dois e manda este link para quem já é cliente.</p></details>
-      <details><summary>E se o cliente errar o pedido?<svg width="20" height="20" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary>
-        <p>A conversa continua sendo WhatsApp, então é só responder e acertar ali mesmo. A página organiza o pedido, não fecha a porta.</p></details>
-      <details><summary>Quanto tempo leva para ficar no ar?<svg width="20" height="20" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary>
-        <p>Esta demonstração saiu em um dia, só com o que já é público de vocês. Com o cardápio e as fotos em mãos, a versão de verdade sobe na mesma semana.</p></details>
+      <details><summary>Vamos ter que largar o cardápio online?<svg width="20" height="20" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary><p>Não. O delivery continua onde está, e o site leva para ele. A gente cuida do que ele não resolve: a apresentação da marca, as encomendas e o WhatsApp.</p></details>
+      <details><summary>Vamos ter que manter o cardápio em dois lugares?<svg width="20" height="20" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary><p>Não. O site mostra os destaques e manda para o cardápio completo de vocês. Só os itens de encomenda ficam aqui, e são poucos.</p></details>
+      <details><summary>O número do WhatsApp muda?<svg width="20" height="20" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary><p>Continua o mesmo (12) 99676-7614. A encomenda chega nele escrita, somada e com o dia de retirada.</p></details>
+      <details><summary>Essas fotos são as nossas?<svg width="20" height="20" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary><p>São do Instagram de vocês e estão aqui só para mostrar como ficaria. A página não é divulgada. Se preferirem que saiam, é só pedir.</p></details>
+      <details><summary>Dá para usar um domínio nosso?<svg width="20" height="20" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary><p>Dá. Na versão de verdade o site fica num endereço com o nome do Formigão, para colocar na bio, na embalagem e no Google.</p></details>
+      <details><summary>Quanto tempo leva para ficar no ar?<svg width="20" height="20" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary><p>Esta demonstração saiu em um dia, só com o que já é público. Com a lista de encomendas em mãos, a versão de verdade sobe na mesma semana.</p></details>
     </div>
   </section>
 </div>
@@ -342,31 +362,27 @@
 <div class="final">
   <div class="in">
     <p class="eyebrow rv">Recado final, sem rodeio</p>
-    <h2 class="rv">Esta página é sua se quiser</h2>
-    <p class="lead rv">Montamos por conta própria, com o que já é público do Formigão, para mostrar na prática em vez de explicar por mensagem. Se fizer sentido, a gente termina com o cardápio e as fotos de vocês. Se não fizer, é só dizer e ela sai do ar hoje mesmo.</p>
-
+    <h2 class="rv">Esta página é de vocês, se quiserem</h2>
+    <p class="lead rv">A gente montou olhando o Instagram, o cardápio online e as avaliações do Formigão, para mostrar na prática em vez de explicar por mensagem. Se fizer sentido, termina com as encomendas de vocês. Se não fizer, é só dizer e ela sai do ar hoje mesmo.</p>
     <div class="pacote rv">
       <h3>O que entra na versão de verdade</h3>
       <ul>
-        <li><svg width="16" height="16" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span><b>O cardápio de vocês,</b> com lanches, adicionais e preços certos, e a tela para vocês mesmos alterarem.</span></li>
-        <li><svg width="16" height="16" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span><b>As fotos da casa e dos lanches</b> no lugar das ilustrativas. Estas aqui são de banco de imagem, e isso aparece.</span></li>
-        <li><svg width="16" height="16" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span><b>Endereço próprio na internet,</b> para colar na bio do Instagram, no cardápio impresso e na embalagem.</span></li>
-        <li><svg width="16" height="16" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span><b>O pedido caindo no (12) 99676-7614,</b> o mesmo número de hoje. Nada muda para quem já atende.</span></li>
+        <li><svg width="16" height="16" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span><b>O site do Formigão,</b> com Café e Brasa separados e o horário de cada um.</span></li>
+        <li><svg width="16" height="16" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span><b>A tela de encomendas</b> com os bolos, tortas e salgados de vocês, que vocês mesmos atualizam.</span></li>
+        <li><svg width="16" height="16" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span><b>Endereço próprio na internet</b> e o cadastro do Google revisado, deixando claro o que é Café e o que é Brasa.</span></li>
         <li><svg width="16" height="16" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span><b>Uma automação à escolha</b> da lista acima, já ligada na entrega.</span></li>
       </ul>
     </div>
-
     <div class="passos rv">
-      <div><span class="n">01</span><span>Você responde no WhatsApp dizendo se faz sentido.</span></div>
-      <div><span class="n">02</span><span>A gente conversa quinze minutos para pegar cardápio, preços e fotos.</span></div>
+      <div><span class="n">01</span><span>Vocês respondem no WhatsApp dizendo se faz sentido.</span></div>
+      <div><span class="n">02</span><span>A gente conversa quinze minutos para pegar as encomendas e os preços.</span></div>
       <div><span class="n">03</span><span>Na mesma semana ela sobe no ar, e aí sim vocês decidem se querem manter.</span></div>
     </div>
-
     <div class="finalacts rv">
-      <a class="btn big" href="https://wa.me/5512991231603?text=Oi%20Matheus%2C%20sou%20do%20Formig%C3%A3o%20na%20Brasa.%20Vi%20a%20p%C3%A1gina%20que%20voc%C3%AAs%20montaram." target="_blank" rel="noopener">Responder no WhatsApp</a>
+      <a class="btn big" href="https://wa.me/5512991231603?text=Oi%20Matheus%2C%20sou%20do%20Formig%C3%A3o.%20Vi%20a%20p%C3%A1gina%20que%20voc%C3%AAs%20montaram." target="_blank" rel="noopener">Responder no WhatsApp</a>
       <a class="btn big ghost" href="https://www.high-development.com.br/" target="_blank" rel="noopener">Ver quem somos</a>
     </div>
-    <p class="nota rv">Falar com a gente não custa nada e não gera compromisso. Se preferirem que a página saia do ar agora, basta pedir.</p>
+    <p class="nota rv">Falar com a gente não custa nada e não gera compromisso.</p>
   </div>
 </div>
 </main>
@@ -376,55 +392,50 @@
     <div class="g">
       <div>
         <h3>HIGH Development</h3>
-        <p>Matheus e Vinicius, de Cachoeira Paulista. Fazemos site e atendimento automático no WhatsApp para o comércio da região. A maior parte do nosso trabalho é com casas de eventos e negócios daqui e de Lorena. Somos dois: quem monta a página é quem responde você depois.</p>
+        <p>Matheus e Vinicius, de Cachoeira Paulista. Fazemos site e atendimento automático no WhatsApp para o comércio da região. Somos dois: quem monta a página é quem responde vocês depois.</p>
       </div>
       <a class="btn ghost" href="https://www.high-development.com.br/" target="_blank" rel="noopener">high-development.com.br</a>
     </div>
   </div>
 </div>
+
 <footer>
   <div class="links">
-    <a href="pedido.html">Fazer pedido</a>
+    <a href="encomenda.html">Encomendas</a>
     <a href="#onde">Onde fica</a>
     <a href="#proposta">Para o dono</a>
   </div>
-  <small>
-    Demonstração sem vínculo oficial com o Formigão na Brasa. Feita pela HIGH Development em 2026.<br>
-    Fotos do Wikimedia Commons: Hambúrguer por Acabashi (CC BY-SA 4.0), fritas por 4028mdk09 (CC BY-SA 3.0), pizza por Kurt Kaiser (CC0), Canas por João546 (CC BY-SA 4.0), grelha por Leonardo Carvalho (CC BY-SA 2.5), lanche com fritas por Horacio Cambeiro (CC BY-SA 3.0).
-  </small>
+  <small>Demonstração sem vínculo oficial com o Formigão na Brasa e o Formigão Café. Feita pela HIGH Development em 2026.<br>
+    Logo e fotos: Instagram @formigaonabrasa. Cardápio e preços: cardápio online da casa. Avaliações: Google. Reproduzidos só nesta proposta.</small>
 </footer>
 
 <script>
 (function(){
   "use strict";
-  var io=new IntersectionObserver(function(es){
-    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("vis"); io.unobserve(e.target);} });
-  },{rootMargin:"0px 0px -10% 0px",threshold:0.1});
-  [].forEach.call(document.querySelectorAll(".rv"),function(el){ io.observe(el); });
+  var CAFE={1:[[480,1080]],2:[[480,1080]],3:[[480,1080]],4:[[480,1080]],5:[[480,1080]],6:[[480,720]]};
+  var BRASA={5:[[1140,1380]],6:[[1140,1380]],0:[[1140,1380]]};
+  var DIAS=["domingo","segunda","terça","quarta","quinta","sexta","sábado"];
+  function hh(m){ var h=Math.floor(m/60), r=m%60; return h+"h"+(r?String(r).padStart(2,"0"):""); }
+  var now=new Date(), d=now.getDay(), m=now.getHours()*60+now.getMinutes();
+  function estado(H,nome){
+    var f=(H[d]||[]).filter(function(x){return m>=x[0]&&m<x[1];})[0];
+    if(f) return {on:1, t:nome+" aberto agora · até "+hh(f[1])};
+    var prox=(H[d]||[]).filter(function(x){return x[0]>m;})[0], q="hoje";
+    if(!prox){ for(var i=1;i<8;i++){ var dd=(d+i)%7; if(H[dd]){ prox=H[dd][0]; q= i===1?"amanhã":DIAS[dd]; break; } } }
+    return {on:0, t:nome+" · abre "+q+" às "+hh(prox[0])};
+  }
+  [["st-cafe",CAFE,"Formigão Café"],["st-brasa",BRASA,"Formigão na Brasa"]].forEach(function(a){
+    var el=document.getElementById(a[0]), s=estado(a[1],a[2]); el.dataset.on=String(s.on); el.querySelector("span").textContent=s.t;
+  });
+  var hoje=document.querySelector('#semana [data-d="'+d+'"]'); if(hoje) hoje.classList.add("hoje");
 
+  var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("vis"); io.unobserve(e.target);} }); },{rootMargin:"0px 0px -10% 0px",threshold:0.1});
+  [].forEach.call(document.querySelectorAll(".rv"),function(el){ io.observe(el); });
   var tag=document.getElementById("tag");
   tag.innerHTML=tag.textContent.split(" ").map(function(w){return '<span class="w">'+w+'</span>';}).join(" ");
   var pal=tag.querySelectorAll(".w");
-  var io2=new IntersectionObserver(function(es){
-    es.forEach(function(e){
-      if(!e.isIntersecting) return;
-      var i=[].indexOf.call(pal,e.target);
-      window.setTimeout(function(){ e.target.classList.add("on"); }, i*45);
-      io2.unobserve(e.target);
-    });
-  },{rootMargin:"0px 0px -35% 0px",threshold:1});
+  var io2=new IntersectionObserver(function(es){ es.forEach(function(e){ if(!e.isIntersecting) return; var i=[].indexOf.call(pal,e.target);
+    window.setTimeout(function(){ e.target.classList.add("on"); }, i*60); io2.unobserve(e.target); }); },{rootMargin:"0px 0px -35% 0px",threshold:1});
   [].forEach.call(pal,function(w){ io2.observe(w); });
-
-  var io3=new IntersectionObserver(function(es){
-    es.forEach(function(e){
-      if(!e.isIntersecting) return;
-      document.querySelectorAll('.navlinks a[href^="#"]').forEach(function(a){
-        a.setAttribute("aria-current", a.getAttribute("href")==="#"+e.target.id ? "true":"false");
-      });
-    });
-  },{rootMargin:"-40% 0px -55% 0px"});
-  ["casa","destaques","onde","proposta"].forEach(function(id){
-    var el=document.getElementById(id); if(el) io3.observe(el);
-  });
 })();
 </script>

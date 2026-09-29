@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="pt-BR">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Encomendas · Formigão</title>
+<meta name="description" content="Encomende bolo, torta, salgados e doces do Formigão Café, com sabor escolhido e dia de buscar.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="estilo.css">
+<style>
+header.topo{padding-top:48px;display:grid;gap:32px;align-items:end}
+@media(min-width:900px){header.topo{grid-template-columns:1fr auto}}
+header.topo h1{font-size:40px;line-height:1;font-weight:800;letter-spacing:-.035em;margin-top:12px;max-width:640px}
+@media(min-width:768px){header.topo h1{font-size:56px}}
+header.topo p{font-size:18px;line-height:28px;color:var(--tx2);margin-top:16px;max-width:620px}
+.fotos{display:flex;gap:12px}
+.fotos img{width:120px;height:120px;border-radius:18px;object-fit:cover;border:1px solid var(--line)}
+@media(max-width:480px){.fotos img{width:96px;height:96px}}
+.build{display:grid;gap:24px;margin-top:40px}
+.build > *{min-width:0}
+@media(min-width:1000px){.build{grid-template-columns:1fr 380px;align-items:start}}
+#grupos{margin-top:24px}
+.card h3{font-size:20px;line-height:28px}
+.card .hint{font-size:14px;line-height:20px;color:var(--tx3);margin-top:4px}
+.item .pr{color:var(--amber2)}
+.voltar{margin-top:96px;border-top:1px solid var(--line)}
+.voltar > .in{max-width:760px;margin:0 auto;padding:64px 24px;text-align:center}
+.voltar p{font-size:18px;line-height:28px;color:var(--tx2);margin-top:16px}
+.voltar .acts{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:32px}
+</style>
+
+<a class="skip" href="#func">Ir para a encomenda</a>
+
+<div class="flag">
+  <b>Demonstração</b> feita pela HIGH Development para o Formigão. Não é a página oficial.
+  Itens e preços vêm do cardápio online de vocês. A encomenda não é enviada de verdade.
+</div>
+
+<nav>
+  <div class="navin">
+    <div class="navtop">
+      <a class="brand" href="index.html"><img class="logo" src="logo.webp" alt="" width="36" height="36">
+        <span class="nm"><b>Formigão</b><small>café · na brasa</small></span></a>
+      <a class="btn sm" href="https://delivery.yooga.app/formigao-na-brasa" target="_blank" rel="noopener">Pedir delivery</a>
+    </div>
+    <div class="navlinks">
+      <a href="index.html">Início</a>
+      <a href="index.html#casas">Café e Brasa</a>
+      <a href="index.html#formigas">As formigas</a>
+      <a href="#func" aria-current="page">Encomendas</a>
+      <a href="index.html#onde">Onde fica</a>
+      <a href="index.html#proposta">Para o dono</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+<div class="wrap">
+  <header class="topo" id="func">
+    <div>
+      <p class="eyebrow">Encomendas do Formigão Café</p>
+      <h1>Festa marcada? <span class="fogo">A gente separa.</span></h1>
+      <p>Escolha o bolo pelo sabor, some porções e doces e marque quando buscar. Cada sabor tem o seu botão.</p>
+    </div>
+    <div class="fotos" aria-hidden="true"><img src="t-bolo.webp" alt=""><img src="t-bolo-morango.webp" alt=""><img src="t-porcao.webp" alt=""></div>
+  </header>
+
+  <div class="build">
+    <div>
+      <div class="card">
+        <div id="passos"></div>
+        <div class="previa">
+          <p class="txt" id="previa-txt"></p>
+          <span class="vl" id="previa-vl" aria-live="polite">—</span>
+        </div>
+        <button class="btn" id="addmont" type="button" style="width:100%;margin-top:16px" disabled>Adicionar bolo à encomenda</button>
+      </div>
+      <div id="grupos"></div>
+    </div>
+
+    <div class="cart card">
+      <h3>Sua encomenda</h3>
+      <div id="vazio" class="empty" style="margin-top:16px">
+        <svg width="20" height="20" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,160H40V56H216V200ZM176,88a48,48,0,0,1-96,0,8,8,0,0,1,16,0,32,32,0,0,0,64,0,8,8,0,0,1,16,0Z"/></svg>
+        <span>Ainda sem itens. Escolha o bolo ou o que vai para a festa. Nada é enviado sem você confirmar.</span>
+      </div>
+      <ul class="lines" id="linhas" hidden></ul>
+      <div class="soma" id="soma" hidden>
+        <div><span>Subtotal</span><span id="subtotal">R$ 0,00</span></div>
+        
+        <div class="tot"><span>Total</span><span id="total">R$ 0,00</span></div>
+      </div>
+      <div class="duo">
+        <div class="field">
+          <label for="data">Dia de buscar</label>
+          <input id="data" type="date" aria-describedby="dErr">
+        </div>
+        <div class="field">
+          <label for="hora">Horário</label>
+          <select id="hora" disabled aria-describedby="hErr"></select>
+        </div>
+      </div>
+      <p class="err" id="dErr">Escolha um dia a partir de amanhã.</p>
+      <p class="err" id="hErr">Escolha o horário.</p>
+      <p class="hint" style="margin-top:8px">Retirada no horário do Café: segunda a sexta das 8h às 18h, sábado das 8h ao meio-dia. Um dia de antecedência.</p>
+      <div class="field">
+        <label for="nome">Seu nome</label>
+        <input id="nome" type="text" placeholder="Nome para a encomenda" autocomplete="name" aria-describedby="nErr">
+        <p class="err" id="nErr">Escreva seu nome.</p>
+      </div>
+      <div class="field">
+        <label for="fone">Seu WhatsApp</label>
+        <input id="fone" type="tel" inputmode="numeric" placeholder="(12) 90000-0000" autocomplete="tel" aria-describedby="fErr">
+        <p class="err" id="fErr">Escreva um número com DDD, como (12) 90000-0000.</p>
+      </div>
+      <div class="field">
+        <label for="obs">Alguma observação</label>
+        <textarea id="obs" placeholder="Vela, escrita, horário de chegada da festa"></textarea>
+      </div>
+      <button class="btn" id="enviar" type="button" disabled></button>
+      <div class="sent" id="saida">
+        <p class="lbl"><svg width="16" height="16" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg>
+          Chegou assim no WhatsApp do Formigão</p>
+        <div class="msg" id="msg"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="voltar">
+  <div class="in">
+    <p class="eyebrow">É isso que a HIGH Development entrega</p>
+    <p>Esta tela é a parte que funciona. A apresentação do Formigão e a proposta completa estão na página inicial.</p>
+    <div class="acts">
+      <a class="btn big" href="index.html">Voltar para o início</a>
+      <a class="btn big ghost" href="index.html#proposta">Ler a proposta</a>
+    </div>
+  </div>
+</div>
+</main>
+
+<footer>
+  <div class="links"><a href="index.html">Início</a><a href="index.html#onde">Onde fica</a><a href="index.html#proposta">Para o dono</a></div>
+  <small>Demonstração sem vínculo oficial com o Formigão na Brasa e o Formigão Café. Feita pela HIGH Development em 2026.<br>
+    Logo e fotos: Instagram @formigaonabrasa. Itens e preços: cardápio online da casa. Reproduzidos só nesta proposta.</small>
+</footer>
+
+<script>
+window.DEMO = {"montador": {"rotulo": "Bolo pra café", "botao": "Adicionar bolo à encomenda", "inicio": "Escolha o sabor do bolo.", "falta": "", "passos": [{"id": "base", "titulo": "Bolo pra café · sabor", "tipo": "base", "obrigatorio": true, "itens": [{"id": "ninho", "n": "Ninho", "d": "R$ 30", "p": 3000}, {"id": "mescl", "n": "Mesclado", "d": "R$ 30", "p": 3000}, {"id": "churr", "n": "Churros", "d": "R$ 30", "p": 3000}]}]}, "grupos": [{"titulo": "Para a festa", "hint": "Porções e torta para buscar prontas.", "itens": [{"id": "pet", "n": "Petisqueira", "d": "4 bolinhos, 4 coxinhas, 150 g de torresmo, 200 g de batata e 8 cebolas empanadas.", "p": 6000, "img": "t-porcao.webp"}, {"id": "c25", "n": "Porção com 25 coxinhas", "p": 3600}, {"id": "b25", "n": "Porção com 25 bolinhas de queijo", "p": 3600}, {"id": "mm", "n": "Metade coxinha, metade bolinha de queijo", "p": 3600}, {"id": "torta", "n": "Torta de frango com requeijão", "d": "Inteira.", "p": 7500}]}, {"titulo": "Doces", "hint": "Cada sabor tem o seu botão. Nada de escrever na observação.", "itens": [{"id": "brt", "n": "Brigadeiro tradicional", "d": "Unidade.", "p": 600}, {"id": "brn", "n": "Brigadeiro ninho com Nutella", "d": "Unidade.", "p": 600}, {"id": "chd", "n": "Churros doce de leite", "d": "12 mini churros.", "p": 1500}, {"id": "chc", "n": "Churros chocolate", "d": "12 mini churros.", "p": 1500}, {"id": "chn", "n": "Churros com Nutella", "d": "12 mini churros, acompanha Nutella.", "p": 2000}, {"id": "bpb", "n": "Bolo de pote brigadeiro", "p": 1500}, {"id": "bpp", "n": "Bolo de pote prestígio", "p": 1500}]}, {"titulo": "Do café", "itens": [{"id": "pq", "n": "Pão de queijo", "d": "Porção com 10.", "p": 1800}, {"id": "crq", "n": "Croissant de presunto e queijo", "p": 1800}, {"id": "pps", "n": "Pão de Petrópolis sem lactose", "p": 1700}]}], "modo": {"tipo": "agendado", "antecedencia_dias": 1, "antecedencia_txt": "amanhã", "intervalo": 30, "rotulo": "Retirada no Formigão Café", "rotulo_campo": "Dia de buscar", "nota": "Retirada no horário do Café: segunda a sexta das 8h às 18h, sábado das 8h ao meio-dia. Um dia de antecedência.", "horarios": {"1": [[480, 1080]], "2": [[480, 1080]], "3": [[480, 1080]], "4": [[480, 1080]], "5": [[480, 1080]], "6": [[480, 720]], "0": []}}, "textos": {"titulo": "Sua encomenda", "vazio": "Ainda sem itens. Escolha o bolo ou o que vai para a festa. Nada é enviado sem você confirmar.", "enviar": "Enviar encomenda de", "enviar_vazio": "Escolha pelo menos um item", "cabecalho": "Nova encomenda pelo site", "rodape": "Responda confirmando e com a chave Pix para o sinal.", "chegou": "Chegou assim no WhatsApp do Formigão", "nome_ph": "Nome para a encomenda", "obs_ph": "Vela, escrita, horário de chegada da festa"}};
+</script>
+<script>
+/* Pedido / encomenda — lê a configuração de window.DEMO (gerada pelo gerar.py).
+   Valores sempre em centavos. Nada é enviado de verdade: a mensagem é montada na tela. */
+(function(){
+  "use strict";
+  var C = window.DEMO;
+  var M = C.montador || null;
+  var GRUPOS = C.grupos || [];
+  var MODO = C.modo || {tipo:"entrega", taxa:0};
+  var T = C.textos || {};
+
+  function $(id){ return document.getElementById(id); }
+  function brl(c){ return "R$ "+(c/100).toFixed(2).replace(".",","); }
+  function esc(s){ return String(s).replace(/[&<>"]/g,function(ch){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[ch];}); }
+  function cap(s){ s=String(s); return s.charAt(0).toUpperCase()+s.slice(1); }
+  function porId(lista,id){ for(var i=0;i<lista.length;i++){ if(lista[i].id===id) return lista[i]; } return null; }
+
+  var pedido = {montados:[], itens:{}};
+  var modo = MODO.tipo==="agendado" ? "agendado" : "entrega";
+
+  /* ---------------- montador ---------------- */
+  var sel = {};
+  function limpaSel(){ sel={}; if(M) M.passos.forEach(function(p){ sel[p.id]=[]; }); }
+  limpaSel();
+
+  function precoMontado(){
+    if(!M) return 0;
+    var total=0;
+    M.passos.forEach(function(p){
+      var escolhidos = sel[p.id].map(function(id){ return porId(p.itens,id); });
+      if(p.tipo==="base"){ escolhidos.forEach(function(it){ total+=it.p||0; }); return; }
+      if(p.regra==="maior"){
+        var m=0; escolhidos.forEach(function(it){ if((it.ad||0)>m) m=it.ad||0; }); total+=m;
+      } else {
+        escolhidos.forEach(function(it){ total+=it.ad||0; });
+      }
+    });
+    return total;
+  }
+  function passoOk(p){ return !p.obrigatorio || sel[p.id].length>0; }
+  function montadoPronto(){ return M && M.passos.every(passoOk); }
+
+  function descMontado(){
+    var base=null, partes=[];
+    M.passos.forEach(function(p){
+      var nomes=sel[p.id].map(function(id){ return porId(p.itens,id).n; });
+      if(!nomes.length) return;
+      if(p.tipo==="base"){ base=nomes.join(", "); return; }
+      var txt = nomes.join(p.juntar || " e ");
+      if(p.regra==="maior" && nomes.length>1 && p.sufixo_varios) txt+=" "+p.sufixo_varios;
+      partes.push(p.prefixo ? p.prefixo+" "+txt : txt);
+    });
+    return {base:base, detalhes:partes};
+  }
+
+  function montarUI(){
+    if(!M) return;
+    var box=$("passos");
+    M.passos.forEach(function(p, idx){
+      var wrap=document.createElement("div");
+      wrap.style.marginTop = idx ? "24px" : "0";
+      var cab=document.createElement("div");
+      cab.className="step"+(idx===0?" on":""); cab.id="st-"+p.id;
+      cab.innerHTML='<span class="k">'+(idx+1)+'</span><h3>'+esc(p.titulo)+
+        (p.dica?' <span class="cont" id="ct-'+p.id+'">'+esc(p.dica)+'</span>':'')+'</h3>';
+      wrap.appendChild(cab);
+      var grade=document.createElement("div");
+      grade.className = p.tipo==="base" ? "chips" : "sabores";
+      grade.id="g-"+p.id;
+      p.itens.forEach(function(it){
+        var b=document.createElement("button");
+        b.type="button"; b.dataset.id=it.id; b.setAttribute("aria-pressed","false");
+        if(p.tipo==="base"){
+          b.className="chip";
+          b.innerHTML=esc(it.n)+(it.d?' <span class="px">'+esc(it.d)+'</span>':'');
+        } else {
+          b.className="sab";
+          var tag = it.ad ? "+"+brl(it.ad).replace("R$ ","R$") : (it.tag||"");
+          b.innerHTML='<span>'+esc(cap(it.n))+'</span><span class="tag">'+esc(tag)+'</span>';
+        }
+        b.addEventListener("click",function(){ escolher(p,it.id); });
+        grade.appendChild(b);
+      });
+      wrap.appendChild(grade);
+      box.appendChild(wrap);
+    });
+    $("addmont").addEventListener("click",function(){
+      var d=descMontado();
+      pedido.montados.push({base:d.base, detalhes:d.detalhes, preco:precoMontado()});
+      limpaSel(); previa(); pintar();
+    });
+    previa();
+  }
+
+  function escolher(p,id){
+    var lista=sel[p.id], i=lista.indexOf(id);
+    var max = p.tipo==="varios" ? (p.max||99) : 1;
+    if(i>-1){ lista.splice(i,1); }
+    else if(max===1){ sel[p.id]=[id]; }
+    else if(lista.length<max){ lista.push(id); }
+    previa();
+  }
+
+  function previa(){
+    if(!M) return;
+    M.passos.forEach(function(p, idx){
+      var lista=sel[p.id], max = p.tipo==="varios" ? (p.max||99) : 1;
+      [].forEach.call($("g-"+p.id).children,function(b){
+        var on=lista.indexOf(b.dataset.id)>-1;
+        b.setAttribute("aria-pressed",String(on));
+        b.disabled = max>1 && !on && lista.length>=max;
+      });
+      var anteriores = M.passos.slice(0,idx).every(passoOk);
+      $("st-"+p.id).classList.toggle("on", anteriores);
+      var ct=$("ct-"+p.id);
+      if(ct && p.tipo==="varios" && p.max>1){
+        ct.textContent = lista.length===0 ? p.dica
+          : lista.length<p.max ? "("+lista.length+" de "+p.max+")"
+          : (p.cheio || "("+p.max+" de "+p.max+")");
+      }
+    });
+    var d=descMontado(), pronto=montadoPronto();
+    $("previa-txt").innerHTML = !d.base ? esc(M.inicio || "Escolha uma opção para começar.")
+      : !pronto ? "<b>"+esc(M.rotulo+" "+d.base)+"</b>"+(d.detalhes.length?", "+esc(d.detalhes.join(" · ")):"")+". "+esc(M.falta || "Complete as escolhas.")
+      : "<b>"+esc(M.rotulo+" "+d.base)+"</b>"+(d.detalhes.length?", "+esc(d.detalhes.join(" · ")):"");
+    $("previa-vl").textContent = d.base ? brl(precoMontado()) : "—";
+    $("addmont").disabled=!pronto;
+  }
+
+  /* ---------------- itens avulsos ---------------- */
+  var todosItens=[];
+  function itensUI(){
+    var box=$("grupos");
+    GRUPOS.forEach(function(g){
+      var card=document.createElement("div"); card.className="card";
+      card.innerHTML='<h3>'+esc(g.titulo)+'</h3>'+(g.hint?'<p class="hint">'+esc(g.hint)+'</p>':'')+'<div class="itens"></div>';
+      var lista=card.querySelector(".itens");
+      g.itens.forEach(function(it){
+        todosItens.push(it);
+        var d=document.createElement("div"); d.className="item"+(it.img?" com-img":""); d.dataset.id=it.id;
+        d.innerHTML=(it.img?'<img class="it-img" src="'+esc(it.img)+'" alt="" loading="lazy">':'')+'<span class="nm">'+esc(it.n)+'</span>'+
+          '<span class="pr">'+(it.p==null?'<small>'+esc(T.consultar||"preço no balcão")+'</small>':brl(it.p))+(it.un?'<small> '+esc(it.un)+'</small>':'')+'</span>'+
+          '<span class="stepper">'+
+            '<button class="sbtn" type="button" data-a="-" aria-label="Tirar um '+esc(it.n)+'">&minus;</button>'+
+            '<span class="sqt" data-q>0</span>'+
+            '<button class="sbtn" type="button" data-a="+" aria-label="Somar um '+esc(it.n)+'">+</button>'+
+          '</span>'+(it.d?'<span class="ds">'+esc(it.d)+'</span>':'');
+        d.querySelectorAll(".sbtn").forEach(function(b){
+          b.addEventListener("click",function(){
+            var q=pedido.itens[it.id]||0;
+            q = b.dataset.a==="+" ? q+1 : Math.max(0,q-1);
+            if(q) pedido.itens[it.id]=q; else delete pedido.itens[it.id];
+            pintar();
+          });
+        });
+        lista.appendChild(d);
+      });
+      box.appendChild(card);
+    });
+  }
+
+  /* ---------------- entrega / retirada / data ---------------- */
+  var DIAS=["domingo","segunda","terça","quarta","quinta","sexta","sábado"];
+  function hhmm(m){ return String(Math.floor(m/60)).padStart(2,"0")+":"+String(m%60).padStart(2,"0"); }
+  function dataLocal(s){ var p=s.split("-"); return new Date(+p[0],+p[1]-1,+p[2]); }
+  function iso(d){ return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0"); }
+
+  function modoUI(){
+    if(modo==="agendado"){
+      var hoje=new Date(); hoje.setHours(0,0,0,0);
+      var min=new Date(hoje); min.setDate(min.getDate()+(MODO.antecedencia_dias||1));
+      var max=new Date(hoje); max.setDate(max.getDate()+60);
+      $("data").min=iso(min); $("data").max=iso(max);
+      $("data").addEventListener("change",horariosDoDia);
+      $("hora").addEventListener("change",function(){ limpaErro("hora","hErr"); });
+      return;
+    }
+    $("mEntrega").addEventListener("click",function(){ setModo("entrega"); });
+    $("mRetirada").addEventListener("click",function(){ setModo("retirada"); });
+    setModo("entrega");
+  }
+  function horariosDoDia(){
+    var sel_=$("hora"); sel_.innerHTML="";
+    limpaErro("data","dErr");
+    var v=$("data").value; if(!v){ sel_.disabled=true; return; }
+    var d=dataLocal(v), faixas=(MODO.horarios||{})[d.getDay()]||[];
+    if(!faixas.length){
+      sel_.disabled=true;
+      $("dErr").textContent="A casa não abre "+(d.getDay()===0||d.getDay()===6?"no ":"na ")+DIAS[d.getDay()]+". Escolha outro dia.";
+      $("dErr").dataset.show="1"; $("data").setAttribute("aria-invalid","true");
+      return;
+    }
+    var passo=MODO.intervalo||30;
+    var op=document.createElement("option"); op.value=""; op.textContent="Escolha o horário"; sel_.appendChild(op);
+    faixas.forEach(function(f){
+      for(var m=f[0]; m<=f[1]-passo; m+=passo){
+        var o=document.createElement("option"); o.value=hhmm(m); o.textContent=hhmm(m); sel_.appendChild(o);
+      }
+    });
+    sel_.disabled=false;
+  }
+  function setModo(m){
+    modo=m;
+    $("mEntrega").setAttribute("aria-pressed",String(m==="entrega"));
+    $("mRetirada").setAttribute("aria-pressed",String(m==="retirada"));
+    $("fEndereco").style.display = m==="entrega" ? "" : "none";
+    $("taxaline").style.display  = m==="entrega" && !TAXA_A_COMBINAR ? "" : "none";
+    pintar();
+  }
+
+  /* ---------------- carrinho ---------------- */
+  function subtotal(){
+    var s=0;
+    pedido.montados.forEach(function(p){ s+=p.preco; });
+    Object.keys(pedido.itens).forEach(function(id){ s+=(porId(todosItens,id).p||0)*pedido.itens[id]; });
+    return s;
+  }
+  var TAXA_A_COMBINAR = MODO.taxa==null;
+  function taxa(){ return modo==="entrega" && subtotal()>0 && !TAXA_A_COMBINAR ? MODO.taxa : 0; }
+  function temConsulta(){ return Object.keys(pedido.itens).some(function(id){ return porId(todosItens,id).p==null; }); }
+  function vazio(){ return pedido.montados.length===0 && Object.keys(pedido.itens).length===0; }
+
+  function pintar(){
+    document.querySelectorAll("#grupos .item").forEach(function(d){
+      var q=pedido.itens[d.dataset.id]||0;
+      d.querySelector("[data-q]").textContent=q;
+      d.querySelector('[data-a="-"]').disabled = q===0;
+    });
+    var ul=$("linhas"); ul.innerHTML="";
+    pedido.montados.forEach(function(p,idx){
+      var li=document.createElement("li");
+      li.innerHTML='<span class="t">'+esc(M.rotulo+" "+p.base)+'</span><span class="v">'+brl(p.preco)+'</span>'+
+        (p.detalhes.length?'<span class="d">'+esc(p.detalhes.join(" · "))+'</span>':'')+
+        '<button class="rm" type="button">tirar</button>';
+      li.querySelector(".rm").addEventListener("click",function(){ pedido.montados.splice(idx,1); pintar(); });
+      ul.appendChild(li);
+    });
+    Object.keys(pedido.itens).forEach(function(id){
+      var it=porId(todosItens,id), q=pedido.itens[id];
+      var li=document.createElement("li");
+      li.innerHTML='<span class="t">'+q+'x '+esc(it.n)+'</span><span class="v">'+(it.p==null?'a confirmar':brl(it.p*q))+'</span>'+
+                   '<button class="rm" type="button">tirar</button>';
+      li.querySelector(".rm").addEventListener("click",function(){ delete pedido.itens[id]; pintar(); });
+      ul.appendChild(li);
+    });
+    var tem=!vazio();
+    $("vazio").hidden=tem; ul.hidden=!tem; $("soma").hidden=!tem;
+    $("subtotal").textContent=brl(subtotal());
+    if($("taxa")) $("taxa").textContent=brl(taxa());
+    $("total").textContent=brl(subtotal()+taxa());
+    $("enviar").disabled=!tem;
+    $("enviar").textContent = tem ? (subtotal()>0 ? (T.enviar||"Enviar pedido de")+" "+brl(subtotal()+taxa())+(temConsulta()?" + a confirmar":"") : (T.enviar_sem||"Enviar pedido")) : (T.enviar_vazio||"Escolha pelo menos um item");
+    if(!tem) $("saida").dataset.show="0";
+  }
+
+  /* ---------------- validação e envio ---------------- */
+  var fone=$("fone");
+  function foneOk(v){ var d=v.replace(/\D/g,""); return d.length===10||d.length===11; }
+  function limpaErro(id,err){ $(id).removeAttribute("aria-invalid"); $(err).dataset.show="0"; }
+  fone.addEventListener("input",function(){
+    var d=fone.value.replace(/\D/g,"").slice(0,11);
+    if(d.length>6) fone.value="("+d.slice(0,2)+") "+d.slice(2,d.length-4)+"-"+d.slice(-4);
+    else if(d.length>2) fone.value="("+d.slice(0,2)+") "+d.slice(2);
+    else fone.value=d;
+    if(foneOk(fone.value)) limpaErro("fone","fErr");
+  });
+  $("nome").addEventListener("input",function(){ if($("nome").value.trim().length>1) limpaErro("nome","nErr"); });
+  if($("endereco")) $("endereco").addEventListener("input",function(){ if($("endereco").value.trim().length>5) limpaErro("endereco","eErr"); });
+
+  $("enviar").addEventListener("click",function(){
+    var falhou=null;
+    function marca(id,err){ $(id).setAttribute("aria-invalid","true"); $(err).dataset.show="1"; if(!falhou) falhou=$(id); }
+    if(modo==="agendado"){
+      if(!$("data").value || $("hora").disabled) marca("data","dErr");
+      else if(!$("hora").value) marca("hora","hErr");
+    }
+    if(modo==="entrega" && $("endereco").value.trim().length<6) marca("endereco","eErr");
+    if($("nome").value.trim().length<2) marca("nome","nErr");
+    if(!foneOk(fone.value)) marca("fone","fErr");
+    if(falhou){ falhou.focus(); return; }
+
+    var b=$("enviar"), orig=b.textContent;
+    b.disabled=true; b.textContent="Enviando...";
+    window.setTimeout(function(){
+      var l=[];
+      pedido.montados.forEach(function(p){
+        l.push("1x "+M.rotulo+" "+p.base+(p.detalhes.length?" — "+p.detalhes.join(" · "):"")+"   "+brl(p.preco));
+      });
+      Object.keys(pedido.itens).forEach(function(id){
+        var it=porId(todosItens,id), q=pedido.itens[id];
+        l.push(q+"x "+it.n+"   "+(it.p==null?"valor a confirmar":brl(it.p*q)));
+      });
+      var quando;
+      if(modo==="agendado"){
+        var d=dataLocal($("data").value);
+        quando=(MODO.rotulo||"Retirada")+" "+DIAS[d.getDay()]+", "+String(d.getDate()).padStart(2,"0")+"/"+String(d.getMonth()+1).padStart(2,"0")+" às "+$("hora").value;
+      } else {
+        quando = modo==="entrega" ? "Entrega em "+$("endereco").value.trim() : (MODO.retirada||"Retirada no balcão");
+      }
+      var obs=$("obs").value.trim();
+      $("msg").innerHTML=
+        "<b>"+esc(T.cabecalho||"Novo pedido pelo site")+"</b>\n\n"+esc(l.join("\n"))+
+        "\n\nSubtotal   "+brl(subtotal())+
+        (taxa()? "\nEntrega    "+brl(taxa()) : (modo==="entrega"&&TAXA_A_COMBINAR? "\nEntrega    taxa a combinar" : ""))+
+        "\n<b>Total      "+brl(subtotal()+taxa())+"</b>"+
+        "\n\n"+esc(quando)+
+        "\nCliente    "+esc($("nome").value.trim())+", "+esc(fone.value)+
+        (obs ? "\nObservação "+esc(obs) : "")+
+        (temConsulta()? "\n(itens sem preço: valor confirmado na resposta)" : "")+
+        "\n\n"+esc(T.rodape||"Responda com o tempo de entrega para confirmar.");
+      $("saida").dataset.show="1";
+      b.disabled=false; b.textContent=orig;
+      $("saida").scrollIntoView({behavior:"smooth",block:"nearest"});
+    },600);
+  });
+
+  montarUI(); itensUI(); modoUI(); pintar();
+})();
+</script>
